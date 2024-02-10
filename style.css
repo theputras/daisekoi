@@ -213,12 +213,20 @@ body{
 }
 
 @media (max-width:1020px) {
+    body {
+        padding: 10px;
+        margin: 37px;
+    }
     .form-right img{
         width: 250px;
     }
 
 }
 @media (max-width:800px) {
+    body {
+        padding: 10px;
+        margin: 37px;
+    }
     .form-input{
         width:80vw;
     }
@@ -293,7 +301,7 @@ body{
         display: flex;
         align-items: center;
         position: sticky;
-        transform: translateY(25px);
+        transform: translateY(35px);
         bottom:10px;
     }
 }
