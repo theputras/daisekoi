@@ -6,7 +6,7 @@
 
 body{
     font-family: 'Roboto';
-    background: linear-gradient(#0092c2, #00ADCA);
+    background: linear-gradient(#40BAE2, #4BA4E1);
 }
 
 .form-container{
@@ -43,9 +43,9 @@ body{
 
 .form-left-title p{
     font-weight: 600;
-    color: #a0d6ff;
+    color: #cae8ff;
     font-size: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .form-left-title hr{
@@ -209,7 +209,6 @@ body{
 
 .form-right img{
     width: 500px;
-    box-shadow: #f70cff;
 }
 
 @media (max-width:1020px) {
