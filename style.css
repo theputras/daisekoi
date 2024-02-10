@@ -207,11 +207,7 @@ body{
     }
     
     .form-right img{
-        width: 200px;
-        display: none;
-        align-items: center;
-        position: fixed;
-        bottom:100px;
+        display:none;
     }
 
     .form-container {
