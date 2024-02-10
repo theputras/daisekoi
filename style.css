@@ -6,8 +6,7 @@
 
 body{
     font-family: 'Roboto';
-    background: linear-gradient(#0092c2d5, #00ADCA);
-    
+    background: linear-gradient(#0092c2, #00ADCA);
 }
 
 .form-container{
@@ -17,6 +16,8 @@ body{
     justify-content: space-evenly;
    
 }
+
+
 
 .bg{
     height: 100vh;
@@ -35,14 +36,14 @@ body{
 
 .form-left-title h2{
     font-weight: 600;
-    color: #4DDDA4;
+    color: #F8B900;
     font-size: 40px;
     margin-bottom: 5px;
 }
 
 .form-left-title p{
     font-weight: 600;
-    color: #374955;
+    color: #a0d6ff;
     font-size: 20px;
     margin-bottom: 5px;
 }
@@ -56,10 +57,21 @@ body{
     margin-bottom: 20px;
 }
 
-.form-left-title  span{
-    color:#ec0064;
+.form-left-title span{
+    color:#ff006a;
 }
 
+.form-left span{
+    display: flex;
+    align-items: center;
+
+    color: #ffffff;
+    gap: 10px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 6;    
+}
 .form-input{
     width: 400px;
     height: 50px;
@@ -72,22 +84,27 @@ body{
 }
 
 .form-input:focus{
-    border: 2px solid #7F3E6D ;
-}
-
-.form-input:hover {
+    border: 2.5px solid #7F3E6D;
     visibility: visible;
     opacity: 1;
     transform: scale(1.1);
-    transition: transform .3s ease;
+    transition: transform .3s ease-in-out;
+    
 }
 
 
-.form-input:hover::after {
+.form-input:focus::after {
+    transform: scaleX(1)
+}
+
+.form-input:focus::after {
     transform: scaleX(0);
     transform-origin: right;
     transition: transform .35s;
 }
+
+
+
 
 .form-input::placeholder{
     color: #436074;
@@ -116,20 +133,26 @@ body{
 }
 
 
+.progressBar{
+    border: none;
+    height: 5px;
+    background-color: #4DDDA4;
+}
+
 .btn-submit svg{
     width: 1.25rem;
     height: 1.25rem;
     position: relative;
 }
 
-.btn-submit:hover .btn-submit_tooltip,.chat_btn-submit:hover .btn-submit_tooltip {
+.btn-submit:hover {
     visibility: visible;
     opacity: 1;
     margin-left: 20px;
     transition: margin-left .3s ease
 }
 
-.btn-submit .btn-submit_tooltip,.chat_btn-submit .btn-submit_tooltip {
+.btn-submit .btn{
     position: absolute;
     top: 50%;
     left: 100%;
@@ -170,7 +193,7 @@ body{
     width: 100%;
     height: 100%;
     transform: scaleX(0);
-    transform-origin: right;
+    transform-origin: left;
     transition: transform .35s;
 }
 
@@ -178,7 +201,13 @@ body{
     transform: scaleX(1)
 }
 
+.btn-submit:hover svg {
+    transform: scale(1.1)
+}
 
+.btn-submit:hover p {
+    transform: scale(1.1)
+}
 
 .form-left button img {
     height: 15px;
@@ -200,13 +229,13 @@ body{
     .form-input{
         width:80vw;
     }
-
+    
     .form-left-title h2{
-        font-size: 10vw;
+        font-size: 5vw;
     }
 
     .form-left-title p{
-        font-size: 5vw;
+        font-size: 2.5vw;
     }
     .form-left-title hr{
         width: 20vw;
@@ -217,7 +246,7 @@ body{
         display: flex;
         align-items: center;
         position: sticky;
-        transform: translateY(25px);
+        transform: translateY(-25px);
         bottom:10px;
     }
     
@@ -225,10 +254,53 @@ body{
     .form-container {
         display: grid;
         align-items: center;
-        justify-content: space-evenly;
-        padding: 37px;
+        align-content: space-evenly;
+        justify-items: center;
     }
+    .form-container img {
+        display: grid;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    
     .bg{
        display: none;
+    }
+}
+
+@media (max-width:490px){
+    body{
+        padding: 10px;
+        margin: 37px;
+    }
+    .form-input{
+        width:80vw;
+    }
+
+    .form-container {
+        display: grid;
+        align-items: center;
+        align-content: space-evenly;
+        justify-items: center;
+    }
+    .form-left-title h2{
+        font-size: 10vw;
+    }
+
+    .form-left-title p{
+        font-size: 5vw;
+    }
+    .form-left-title hr{
+        width: 20vw;
+    }
+
+
+    .form-right img{
+        width: 100px;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        transform: translateY(25px);
+        bottom:10px;
     }
 }
