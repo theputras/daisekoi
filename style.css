@@ -196,22 +196,18 @@ body{
     }
 
     .form-left-title h2{
-        font-size: 5vw;
+        font-size: 10vw;
     }
 
     .form-left-title p{
-        font-size: 2.5vw;
+        font-size: 5vw;
     }
     .form-left-title hr{
         width: 20vw;
     }
     
     .form-right img{
-        width: 200px;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        bottom:100px;
+        display:none;
     }
 
     .form-container {
