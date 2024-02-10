@@ -145,13 +145,6 @@ body{
     position: relative;
 }
 
-.btn-submit:hover {
-    visibility: visible;
-    opacity: 1;
-    margin-left: 20px;
-    transition: margin-left .3s ease
-}
-
 .btn-submit .btn{
     position: absolute;
     top: 50%;
