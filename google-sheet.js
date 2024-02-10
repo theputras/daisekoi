@@ -5,6 +5,6 @@ const url = '/daisekoi/output.html'
 form.addEventListener('submit', e => {
   e.preventDefault()
   fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-    .then(response => window.location.replace("${url}"))
+    .then(response => window.location.replace(url))
     .catch(error => console.error('Error!', error.message))
 })
