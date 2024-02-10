@@ -190,6 +190,12 @@ body{
     box-shadow: #f70cff;
 }
 
+@media (max-width:1020px) {
+    .form-right img{
+        width: 250px;
+    }
+
+}
 @media (max-width:800px) {
     .form-input{
         width:80vw;
@@ -207,13 +213,20 @@ body{
     }
     
     .form-right img{
-        display:none;
+        width: 100px;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        transform: translateY(25px);
+        bottom:10px;
     }
+    
 
     .form-container {
         display: grid;
         align-items: center;
-        justify-content: space-evenly;         
+        justify-content: space-evenly;
+        padding: 37px;
     }
     .bg{
        display: none;
