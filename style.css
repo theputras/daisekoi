@@ -19,12 +19,10 @@ body{
 
 
 
-.bg{
-    height: 100vh;
-    display: flex;
-    align-items: center;
+.icon .img-bg {
+    height: 200px;
+    width:fit-content;
     position: absolute;
-    padding: 1px;
 }
 
 .form-left{
@@ -211,6 +209,18 @@ body{
     width: 500px;
 }
 
+
+@media (max-width:1420px) {
+    body {
+        padding: 10px;
+        margin: 37px;
+    }
+    .form-right img{
+        width: 250px;
+    }
+
+}
+
 @media (max-width:1020px) {
     body {
         padding: 10px;
@@ -263,7 +273,7 @@ body{
         justify-content: space-evenly;
     }
     
-    .bg{
+    .img-bg{
        display: none;
     }
 }
@@ -294,7 +304,9 @@ body{
         width: 20vw;
     }
 
-
+    .icon .img-bg{
+        height: 100px;
+    }
     .form-right img{
         width: 100px;
         display: flex;
