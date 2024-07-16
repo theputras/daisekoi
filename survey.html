@@ -1,0 +1,69 @@
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no">
+        <title>Form Pendaftaran</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="./assets/daisekoi logo 2023.png" style="border-radius: 100%;" type="image/jpg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+        
+    <div class="form-container">
+        
+        <form name="submit-to-google-sheet" class="form-left">
+            <div class="form-left-title">
+              <h2>Selamat datang di form pendaftaran UKM Daisekoi</h2>
+              <p>Silakan mengisi form Survey yang telah disediakan</p>
+              <hr id="progressBar">                
+            </div>
+            
+            <div class="dropdown">
+              <input type="text" id="sekte" name="sekte" class="sekte-form form-input" placeholder="Pilih Sektemu">
+              <div class="dropdown-content">
+                <a href="#" data-value="Hololive">Hololive</a>
+                <a href="#" data-value="JKT48">JKT48</a>
+                <a href="#" data-value="Game Turu">Game Turu</a>
+                <a href="#" data-value="Anime">Anime</a>
+                <a href="#" data-value="Kritik">Kritik</a>
+              </div>
+            </div>
+            
+            <div class="hololive" style="display: none;">
+                <input type="text" name="oshi_hololive" placeholder="Siapa Oshimu di Hololive" class="oshi-form form-input" required>
+                <input style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" class="alasan-form form-input" required>
+              </div>
+              <div class="jkt48" style="display: none;">
+                <input type="text" name="oshi_jkt48" placeholder="Siapa Oshimu di JKT48?" class="oshi-form form-input" required>
+                <input style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" class="alasan-form form-input" required>
+              </div>
+              <div class="anime" style="display: none;">
+                <input type="text" name="anime" placeholder="Apa judul anime yang kamu tonton?" class="game-form form-input" required>
+                <input style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" class="alasan-form form-input" required>
+              </div>  
+              <div class="Game-Turu" style="display: none;">
+                <input type="text" name="game" placeholder="Apa Game yang kamu mainkan?" class="game-form form-input" required>
+                <input style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" class="alasan-form form-input" required>
+              </div>     
+              <div class="kritik" style="display: none;">
+                <input style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" class="alasan-form form-input" required>
+                <input type="text" name="kritik" placeholder="Biasanya kamu suka kritik masalah apa?" class="kritik-form form-input" required>
+              </div>
+            <button class="btn-submit btn"  type="submit"> <p>Kirim</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="#FFFFFF"/></svg> </button>
+          </form>
+        
+        <div class="form-right">
+            <img class="logo-header" src="./assets/Logo - Daisekoi.png" alt="png">
+          
+            
+            
+        </div>
+    </div>
+
+    <script src="./form-survey.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+
+</html>
+
