@@ -8,7 +8,7 @@ form.addEventListener('submit', e => {
   e.preventDefault()
   // Simulasi loading (misalnya, fetch data dari server)
 setTimeout(() => {
-  progressBar.style.transition = 'width 5s ease-in-out';
+  progressBar.style.transition = 'width 3s ease-in-out';
   progressBar.style.width = "100%";
   setTimeout(() => {
   }, 3000); // Setelah 3 detik, sembunyikan progress bar

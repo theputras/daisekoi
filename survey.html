@@ -13,8 +13,8 @@
         
         <form name="submit-to-google-sheet" class="form-left">
             <div class="form-left-title">
-              <h2>Selamat datang di form pendaftaran UKM Daisekoi</h2>
-              <p>Silakan mengisi form Survey yang telah disediakan</p>
+              <h2>Pilih sektemu di Sini</h2>
+              <p>Silakan mengisi Survey yang telah disediakan</p>
               <hr id="progressBar">                
             </div>
             
@@ -23,33 +23,57 @@
               <div class="dropdown-content">
                 <a href="#" data-value="Hololive">Hololive</a>
                 <a href="#" data-value="JKT48">JKT48</a>
-                <a href="#" data-value="Game Turu">Game Turu</a>
+                <a href="#" data-value="Game">Game</a>
                 <a href="#" data-value="Anime">Anime</a>
+                <a href="#" data-value="Tokusatsu">Tokusatsu</a>
+                <a href="#" data-value="KPOP">KPOP</a>
                 <a href="#" data-value="Kritik">Kritik</a>
               </div>
             </div>
             
             <div class="hololive" style="display: none;">
-                <input type="text" name="oshi_hololive" placeholder="Siapa Oshimu di Hololive" class="oshi-form form-input" required>
-                <input style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" class="alasan-form form-input" required>
+                <input type="text" name="oshi_hololive" placeholder="Siapa Oshimu di Hololive?" class="oshi-form form-input" required>
               </div>
+              
               <div class="jkt48" style="display: none;">
                 <input type="text" name="oshi_jkt48" placeholder="Siapa Oshimu di JKT48?" class="oshi-form form-input" required>
-                <input style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" class="alasan-form form-input" required>
               </div>
+              
+              <div class="KPOP" style="display: none;">
+                <input type="text" name="group_kpop" placeholder="Siapa Group KPOP favoritmu?" class="group-kpop-form form-input" required>
+                <input type="text" name="bias_kpop" placeholder="Siapa bias favoritmu?" class="bias-kpop-form form-input" required>
+              </div>
+              
+              <div class="Tokusatsu" style="display: none;">
+                <input type="text" name="tokusatsu" placeholder="Apa tokosatsu favoritmu?" class="tokusatsu-form form-input" required>
+              </div>
+              
               <div class="anime" style="display: none;">
                 <input type="text" name="anime" placeholder="Apa judul anime yang kamu tonton?" class="game-form form-input" required>
-                <input style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" class="alasan-form form-input" required>
-              </div>  
-              <div class="Game-Turu" style="display: none;">
-                <input type="text" name="game" placeholder="Apa Game yang kamu mainkan?" class="game-form form-input" required>
-                <input style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" class="alasan-form form-input" required>
+              </div> 
+              
+              <div class="game" style="display: none;">
+                <input type="text" name="game" placeholder="Apa Game favoritmu?" class="game-form form-input" required>
               </div>     
+              
               <div class="kritik" style="display: none;">
-                <input style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" class="alasan-form form-input" required>
                 <input type="text" name="kritik" placeholder="Biasanya kamu suka kritik masalah apa?" class="kritik-form form-input" required>
+                
               </div>
-            <button class="btn-submit btn"  type="submit"> <p>Kirim</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="#FFFFFF"/></svg> </button>
+              
+              <div class="alasan-form" style="display: none;">
+                <input type="text" name="alasan" placeholder="Apa Alasannya?" class="form-input" required>
+              </div>
+              <div class="button">
+              <button class="btn-submit btn"  type="submit"> <p>Kirim</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="#FFFFFF"/></svg> </button>
+              <!-- Add the "Kosongkan Formulir" button -->
+              <button class="btn-reset" type="button" id="resetFormButton">
+                <p>Kosongkan Formulir</p>
+              </button>
+              
+              </div>
+            
+
           </form>
         
         <div class="form-right">
@@ -61,7 +85,7 @@
     </div>
 
     <script src="./form-survey.js"></script>
-    <script src="./index.js"></script>
+    <script src="./survey.js"></script>
 </body>
 
 

@@ -1,5 +1,12 @@
 const input = document.getElementById('sekte');
 const dropdownContent = document.querySelector('.dropdown-content');
+const hololive = document.querySelector('.hololive');
+const jkt48 = document.querySelector('.jkt48');
+const game = document.querySelector('.game');
+const kritik = document.querySelector('.kritik');
+const anime = document.querySelector('.anime');
+const kpop = document.querySelector('.kpop');
+const tokusatsu = document.querySelector('.tokusatsu');
 const alasanForm = document.querySelector('.alasan-form');
 const resetFormButton = document.getElementById('resetFormButton');
 
@@ -43,7 +50,44 @@ dropdownContent.addEventListener('click', (e) => {
     dropdownContent.style.display = 'none';
     input.blur();
 
-    
+    // Hide all sections and remove required attribute
+    [hololive, jkt48, game, anime, kritik, tokusatsu, kpop].forEach(section => {
+      section.style.display = 'none';
+      section.querySelectorAll('input').forEach(input => {
+        input.removeAttribute('required');
+      });
+    });
+
+    // Hide the alasan form initially
+    alasanForm.style.display = 'none';
+
+    // Show the relevant section and set required attribute
+    let selectedSection;
+    switch (value) {
+      case 'Hololive':
+        selectedSection = hololive;
+        break;
+      case 'JKT48':
+        selectedSection = jkt48;
+        break;
+      case 'Game':
+        selectedSection = game;
+        break;
+      case 'Anime':
+        selectedSection = anime;
+        break;
+      case 'Kritik':
+        selectedSection = kritik;
+        break;
+      case 'Tokusatsu':
+        selectedSection = tokusatsu;
+        break;
+      case 'KPOP':
+        selectedSection = kpop;
+        break;
+      default:
+        selectedSection = null;
+    }
 
     if (selectedSection) {
       selectedSection.style.display = 'flex';
