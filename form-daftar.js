@@ -1,5 +1,5 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyZrfJCK1ST6AK7myOY3p-rIJRFfBCiOTAVa7phmfEjOyJJXDx3igdp6logFYbRg2GxIQ/exec'
-const form = document.forms['submit-to-google-sheet']
+const form = document.forms['submit-to-form']
 const url = './survey.html'
 const sucess = document.getElementById('success')
 const progressBar = document.getElementById('progressBar');
