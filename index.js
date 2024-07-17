@@ -1,5 +1,7 @@
 const inputJurusan = document.getElementById('jurusan');
 const inputSekte = document.getElementById('sekte');
+const inputnama = document.getElementById('nama');
+const inputnim = document.getElementById('nim');
 const dropdownContent = document.querySelector('.dropdown-content');
 const alasanForm = document.querySelector('.alasan-form');
 const resetFormButton = document.getElementById('resetFormButton');
@@ -30,26 +32,15 @@ inputSekte.addEventListener('focus', (e) => {
   dropdownContentSekte.style.display = 'block';
 });
 
-// Hide dropdown on blur if not clicking within it
-inputJurusan.addEventListener('blur', (e) => {
-  const dropdownContent = document.querySelector('.dropdown-content');
-  if (!dropdownContent.contains(document.activeElement)) {
-    dropdownContent.style.display = 'none';
-  }
-});
-
-// Hide dropdown on blur if not clicking within it
-inputJurusan.addEventListener('blur', (e) => {
-  const dropdownContent = document.querySelector('.dropdown-content');
-  if (!dropdownContent.contains(document.activeElement)) {
-    dropdownContent.style.display = 'none';
-  }
-});
-
 // Prevent default behavior on mousedown in dropdown
 dropdownContent.addEventListener('mousedown', (e) => {
   e.preventDefault();
 });
+
+dropdownContentSekte.addEventListener('mousedown', (e) => {
+  e.preventDefault();
+});
+
 
 // Hide dropdown on blur if not clicking within it
 inputJurusan.addEventListener('blur', (e) => {
@@ -59,8 +50,8 @@ inputJurusan.addEventListener('blur', (e) => {
 });
 
 inputSekte.addEventListener('blur', (e) => {
-  if (!dropdownContent.contains(document.activeElement)) {
-    dropdownContent.style.display = 'none';
+  if (!dropdownContentSekte.contains(document.activeElement)) {
+    dropdownContentSekte.style.display = 'none';
   }
 });
 
@@ -189,15 +180,10 @@ resetFormButton.addEventListener('click', () => {
 
   // Clear the dropdown input field
   inputSekte.value = '';
+  inputJurusan.value = '';
+  inputnim.value = '';
+  inputnama.value = '';
 });
 
-// Handle next button click
-document.getElementById('nextButton').addEventListener('click', () => {
-  const form1 = document.getElementById('form1');
-  const form2 = document.getElementById('form2');
 
-  // Hide form 1 and show form 2
-  form1.style.display = 'none';
-  form2.style.display = 'block';
-});
 

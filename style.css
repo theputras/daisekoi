@@ -16,10 +16,7 @@
 body{
     font-family: 'Montserrat' !important;
     background: linear-gradient(-21.11deg, #00c0fa 30%,#015eea);
-    padding: 50px 0; /* Reduced padding */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    padding: 50px 0 0; /* Reduced padding */
 }   
 
 
@@ -33,15 +30,31 @@ a {
     display: none;
   }
 
+input ::placeholder {
+    word-wrap: break-word; /* Ensures long words will wrap */
+}
+
 .container{
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Tambahkan ini untuk memastikan container mengambil ruang yang tersedia */
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+    min-height: 100vh;
 }
-.form-container{
-    height: 80vh;
+
+.container .form-container, .container .output-container{
+    height: 200vh;
+}
+
+.form-container, .output-container{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -61,30 +74,36 @@ a {
     gap: 20px;
 }
 
-footer .container {
+.footer .container {
+    position: relative;
+    bottom: 0;
     display: flex;
-    position:fixed;
-    flex-wrap: nowrap;
-    align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  min-height: calc(1vh - 1px); /* 90px adalah tinggi footer */
 }
+
+
+
 
 .footer {
     display: flex;
-    position:fixed;
-    flex-wrap: nowrap;
+    justify-content: center;
+    justify-content: space-evenly;
+    flex-grow: 1;
     align-items: center;
-    bottom: 0 ;
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: auto;
-    height: 90px; /* adjust the height to your liking */
-        background: #41C9E2;
-        padding: 10px 0;
-        z-index: 9;
-        justify-content: center
+    position: relative;
+    bottom: 0px;
+    height: 90px;
+    background: #41C9E2;
+    padding: 10px 0;
+    justify-content: center;
+    margin: 40px 0 0 0;
+    z-index: 1000; /* Tambahkan ini untuk memastikan footer berada di atas elemen lainnya */
 }
 
 
@@ -95,6 +114,8 @@ display: none;
 .footer p {
  margin: 0;
  text-align: center;
+ word-wrap: break-word; /* Ensures long words will wrap */
+ font-size: calc(0.5rem + 0.5vw);
 }
 
 
@@ -169,7 +190,7 @@ opacity: 100% !important;
 
 
 .form-input:focus::after {
-    transform: scaleX(1)
+    transform: scaleX(1);
 }
 
 .form-input:focus::after {
@@ -192,7 +213,43 @@ input[type="number"] {
 }
 
 
-
+/* Back Button */
+.back-to-history {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding-left: 0;
+    width: 64px;
+    cursor: pointer;
+  }
+  
+  
+  .back-to-history  div{
+    display: flex;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 10px 0 0px 0px!important;
+  }
+  
+  
+  
+  .back-to-history span {
+    color: #f3f3f3;
+  }
+  .back-to-history svg {
+    fill: #f3f3f3;
+  }
+  
+  .back-to-history svg {
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+  }
 
 /* Dropdown */
 .dropdown-content {
@@ -320,7 +377,7 @@ input[type="number"] {
 
 
 .btn-submit, .form-left-title .btn-submit {
-    overflow: hidden
+    overflow: hidden;
 }
 
 .btn-submit svg, .form-left-title .btn-submit svg{
@@ -333,6 +390,9 @@ input[type="number"] {
     margin: 0;
 }
 
+.btn-reset {
+    font-size: 1rem!important;
+    }
 
 
 .btn-submit::after, .form-left-title .btn-submit::after {
@@ -349,11 +409,11 @@ input[type="number"] {
 }
 
 .btn-submit:hover::after, .form-left-title .btn-submit:hover::after {
-    transform: scaleX(1)
+    transform: scaleX(1);
 }
 
 .btn-submit:hover svg, .form-left-title .btn-submit:hover svg{
-    transform: scale(1.1)
+    transform: scale(1.1);
 }
 
 .btn-submit:hover p, .form-left-title .btn-submit:hover p {
@@ -369,26 +429,33 @@ input[type="number"] {
 .form-right img{
     width: 350px;
 }
-
+@media (max-width:1500px) {
+    .footer p {
+        font-size: 1rem;
+      }
+}
 
 @media (max-width:1420px) {
     .form-right img{
         width: 250px;
     }
-
+    
+   
 }
 
 @media (max-width:1020px) {
     .form-right img{
         width: 250px;
     }
-
 }
-@media (max-width:800px) {
+
+@media (max-width:985px) {
     .form-input{
         width:80vw;
     }
-    
+    .footer p {
+        font-size: 1rem;
+      }
     .form-left-title h2{
         font-size: 5vw;
     }
@@ -399,17 +466,18 @@ input[type="number"] {
     .form-left-title hr{
         width: 20vw;
     }
-    
+
     .form-right {
         display: none;
-      }
-      .logo-footer {
-      display: block;
+    }
+    .logo-footer {
+        display: block;
         width: 100px;
         height: auto;
         margin: 10px;
-      }
-      footer .container {
+    }
+
+    footer .container {
         display: flex;
         position:fixed;
         flex-wrap: nowrap;
@@ -421,33 +489,30 @@ input[type="number"] {
         justify-content: space-evenly;
         flex-grow: 1;
         align-items: center;
-      }
-    
-      .footer img {
-        width: auto;
-        height: 50px;
-        margin-left: auto;
-        margin-top: 0;
-    margin-bottom: 1rem;
-      }
-    
+    }
 
-    .form-container {
+    .footer img {
+        width: auto;
+        height: 40px;
+        margin-left: auto;
+    }
+
+    .form-container, .output-container {
         display: grid;
         align-items: center;
         align-content: space-evenly;
         justify-items: center;
     }
-    .form-container img {
+    .form-container img, .output-container img {
         display: grid;
         align-items: center;
         justify-content: space-evenly;
     }
-    
+
     .img-bg{
-       display: none;
+        display: none;
     }
-    
+
     .dropdown-content {
         width: 500px;
     }
@@ -458,15 +523,25 @@ input[type="number"] {
     }
 }
 
+@media (max-width:490px) {
 
-
-@media (max-width:490px){
-    
+    .btn-reset {
+        font-size: 0.8rem!important;
+        }
     .form-input{
         width:80vw;
     }
+    .footer p {
+        font-size: 0.8rem;
+      }
+    
+    .footer img {
+        width: auto;
+        height: 30px;
+        margin-left: auto;
+    }
 
-    .form-container {
+    .form-container, .output-container {
         display: grid;
         align-items: center;
         align-content: space-evenly;
@@ -494,7 +569,7 @@ input[type="number"] {
         transform: translateY(35px);
         bottom:10px;
     }
-    
+
     .dropdown-content {
         width: 350px;
     }
@@ -502,6 +577,7 @@ input[type="number"] {
 
 @media (max-width: 767px) {
     .dropdown-content {
-      width: 300px; /* atur tinggi sesuai kebutuhan Anda */
+        width: 300px; /* atur tinggi sesuai kebutuhan Anda */
     }
-  }
+    
+}

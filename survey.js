@@ -32,7 +32,7 @@ inputsekte.addEventListener('blur', (e) => {
 });
 
 // Filter dropdown options based on inputsekte value
-inputsekte.addEventListener('inputsekte', (e) => {
+inputsekte.addEventListener('input', (e) => {
   const inputsekteValue = e.target.value.toLowerCase();
   const options = dropdownContent.querySelectorAll('a');
 
