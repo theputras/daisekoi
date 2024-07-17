@@ -159,6 +159,10 @@ dropdownContent.addEventListener('click', (e) => {
         // Append the alasan-form to the selected section
         selectedSection.appendChild(alasanForm);
         alasanForm.style.display = 'block';
+        
+        // Append the alasan-form to the selected section
+        kritik.appendChild(alasanForm);
+        alasanForm.style.display = 'none';
       }
     }
   });
