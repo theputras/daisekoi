@@ -24,6 +24,10 @@
             <img class="logo-header" src="./assets/Logo - Daisekoi.png" alt="png">
         </div>
     </div>
+    <audio id="youtube-audio" controls>
+        <source src="" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
     
     
     </div>
@@ -48,8 +52,25 @@
     
         // Memulai hitung mundur saat halaman dimuat
         countDown();
+        
+        const audioElement = document.getElementById('youtube-audio');
+const youtubeUrl = 'https://www.youtube.com/watch?v=dQw4w9WgXcQhttps://www.youtube.com/watch?v=nwuW98yLsgY&list=PLlaZvBCNWk27NkGfiowdW8V0IV60OxOmu&index=2'; // Replace with your YouTube video URL
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // Proxy server URL
+
+fetch(`${proxyUrl}https://youtube.com/get_video_info?video_id=${youtubeUrl.split('v=')[1]}`)
+  .then(response => response.text())
+  .then(data => {
+    const audioUrl = data.match(/url_encoded_fmt_stream_map=([^&]+)/)[1];
+    const audioUrlDecoded = decodeURIComponent(audioUrl);
+    const audioUrls = audioUrlDecoded.split(',');
+    const audioUrlFinal = audioUrls.find(url => url.includes('audio/mp4'));
+
+    audioElement.src = audioUrlFinal;
+    audioElement.play();
+  })
+  .catch(error => console.error('Error:', error));
     </script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/youtube-audio-library@1.2.1/dist/youtube-audio-library.min.js"></script>
     <!-- <script type="text/javascript">
         setTimeout(function() {
             window.location.href = "/";

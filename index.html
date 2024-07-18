@@ -54,7 +54,8 @@
       </a>
         <div class="form-left-title">
           <h2>Pilih sektemu di Sini</h2>
-          <p>Silakan mengisi Survey yang telah disediakan</p>
+          <p id="title">Silakan mengisi Survey yang telah disediakan</p>
+          <p id="alert" style="display: none;">Loading....</p>
           <hr id="progressBar2">
         </div>
         <div class="dropdown">
@@ -88,12 +89,10 @@
         <div class="game" style="display: none;">
           <input type="text" name="game" placeholder="Apa Game favoritmu?" class="game-form form-input" required>
         </div>
-        <div class="kritik" style="display: none;">
+        <div class="kritik" style="display: none;" id="kritik">
           <input type="text" name="kritik" placeholder="Apa hal yang suka kamu kritik?" class="kritik-form form-input" required>
         </div>
-        <div class="alasan-form" style="display: none;">
-          <input type="text" name="alasan" placeholder="Apa Alasannya?" class="form-input" required>
-        </div>
+          <input class="alasan-form form-input" style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" required>
         <div class="button">
           <button class="btn btn-primary btn-submit" id="submitButton" type="submit"><p>Kirim</p></button>
           <button class="btn btn-secondary btn-reset" type="button" id="resetFormButton">Kosongkan Formulir</button>
@@ -125,11 +124,10 @@
     
     <footer class="footer"> 
     <div class="container">
-    <p>Website created by <a href="https://theputras.github.io/">THE PUTRAS</a> Ver. 2.0</p>
+    <p>Website created by <a href="https://theputras.github.io/">THE PUTRAS</a> Beta Version 2.1</p>
     <img src="./assets/Logo - Daisekoi.png" alt="png" class="logo-footer">
     </div>
      </footer>
-     <script src="./submit.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="./index.js"></script>
 </body>

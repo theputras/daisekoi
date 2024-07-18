@@ -43,7 +43,7 @@ input ::placeholder {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    min-height: 100vh;
+    min-height: 80vh;
 }
 
 .container .form-container, .container .output-container{
@@ -154,7 +154,7 @@ opacity: 100% !important;
 }
 
 .form-left-title span{
-    color:#ff006a;
+    color:#ff0000;
 }
 
 .form-left span{
