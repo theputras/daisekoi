@@ -4,9 +4,24 @@ const inputnama = document.getElementById('nama');
 const inputnim = document.getElementById('nim');
 const dropdownContent = document.querySelector('.dropdown-content');
 const alasanForm = document.querySelector('.alasan-form');
-const resetFormButton = document.getElementById('resetFormButton');
+const resetFormButton1 = document.getElementById('resetFormButton1');
+const resetFormButton2 = document.getElementById('resetFormButton2');
 const dropdownContentSekte = inputSekte.nextElementSibling; // get the dropdown content element
+const sekteDropdown = inputSekte.nextElementSibling; // define sekteDropdown
 
+//submit
+const form1 = document.getElementById('Formulir1');
+const form2 = document.getElementById('Formulir2');
+const nextButton = document.getElementById('nextButton');
+const alert2 = document.getElementById('alert');
+const title = document.getElementById('title');
+var url = "https://chat.whatsapp.com/Epm3Pet6hid8W99f4TlAjI"; // Ganti dengan URL tujuan Anda
+var count = 5; // Waktu hitung mundur dalam detik
+const sekteInput = document.querySelector('#sekte');
+const selectedElement = Array.from(sekteDropdown.children).find(a => a.classList.contains('selected'));
+let sekteValue = selectedElement ? selectedElement.dataset.value : null;
+
+//form 2
 const hololive = document.querySelector('.hololive');
 const jkt48 = document.querySelector('.jkt48');
 const game = document.querySelector('.game');
@@ -170,45 +185,50 @@ dropdownContent.addEventListener('click', (e) => {
     }
   });
 
-// Handle form reset
-resetFormButton.addEventListener('click', () => {
-  const form = document.forms['submit-to-survey'];
-  // Clear all input fields
-  form.reset();
-
-  // Hide all sections
-  [hololive, jkt48, game, anime, kritik, tokusatsu, kpop].forEach((section) => {
-    section.style.display = 'none';
-  });
-
-  // Hide the alasan form
-  alasanForm.style.display = 'none';
-
-  // Clear the dropdown input fields
-  inputSekte.value = '';
+// Handle form reset form 1
+resetFormButton1.addEventListener('click', () => {
+  // Clear the dropdown input field
   inputJurusan.value = '';
   inputnim.value = '';
   inputnama.value = '';
+  dropdownContent.style.display = 'none';
 
-  // Clear the selected option in the dropdown
-  sekteDropdown.querySelector('.selected').classList.remove('selected');
+  // Remove data-value attribute from selected option
+  const selectedOption = dropdownContent.querySelector('a[selected]');
+  if (selectedOption) {
+    selectedOption.removeAttribute('data-value');
+    selectedOption.removeAttribute('selected');
+  }
 });
+
+// Handle form reset form 2
+resetFormButton2.addEventListener('click', () => {
+  // Clear the dropdown input field
+  inputSekte.value = '';
+  dropdownContentSekte.style.display = 'none';
+
+  // Remove data-value attribute from selected option
+  const selectedOptionSekte = dropdownContentSekte.querySelector('a[selected]');
+  if (selectedOptionSekte) {
+    selectedOptionSekte.removeAttribute('data-value');
+    selectedOptionSekte.classList.remove('selected'); // remove the selected class
+  }
+
+  // Reset the displayed section below the dropdown
+  [hololive, jkt48, game, anime, kritik, tokusatsu, kpop].forEach((section) => {
+    section.style.display = 'none';
+    section.querySelectorAll('input').forEach((input) => {
+      input.removeAttribute('required');
+    });
+  });
+});
+
 
 
 
 //submit
 // Form 1 (Formulir1)
-const form1 = document.getElementById('Formulir1');
-const form2 = document.getElementById('Formulir2');
-const nextButton = document.getElementById('nextButton');
-const alert2 = document.getElementById('alert');
-const title = document.getElementById('title');
-const sekteDropdown = document.querySelector('.dropdown-content');
-var url = "https://chat.whatsapp.com/Epm3Pet6hid8W99f4TlAjI"; // Ganti dengan URL tujuan Anda
-var count = 5; // Waktu hitung mundur dalam detik
-const sekteInput = document.querySelector('#sekte');
-const selectedElement = Array.from(sekteDropdown.children).find(a => a.classList.contains('selected'));
-let sekteValue = selectedElement ? selectedElement.dataset.value : null;
+
 
 nextButton.addEventListener('click', e => {
   e.preventDefault();
@@ -381,7 +401,10 @@ if (formData2) {
     combinedData.append(input.name, input.value);
   });
 
-
+// Debugging output
+combinedData.forEach((value, key) => {
+  console.log(`${key}: ${value}`);
+});
 
   // Simulasi loading (misalnya, fetch data dari server)
   setTimeout(() => {
