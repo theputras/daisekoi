@@ -173,7 +173,6 @@ dropdownContent.addEventListener('click', (e) => {
 // Handle form reset
 resetFormButton.addEventListener('click', () => {
   const form = document.forms['submit-to-survey'];
-
   // Clear all input fields
   form.reset();
 
@@ -185,11 +184,14 @@ resetFormButton.addEventListener('click', () => {
   // Hide the alasan form
   alasanForm.style.display = 'none';
 
-  // Clear the dropdown input field
+  // Clear the dropdown input fields
   inputSekte.value = '';
   inputJurusan.value = '';
   inputnim.value = '';
   inputnama.value = '';
+
+  // Clear the selected option in the dropdown
+  sekteDropdown.querySelector('.selected').classList.remove('selected');
 });
 
 

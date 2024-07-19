@@ -12,16 +12,21 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+html {
+    min-height: -80vh;
+}
 body{
-    font-family: 'Montserrat' !important;
-    background: linear-gradient(-21.11deg, #00c0fa 30%,#015eea);
-    padding: 50px 0 0; /* Reduced padding */
+    font-family: 'Montserrat' !important;   
+    background: linear-gradient(-21.11deg, #00c0fa 30%, #015eea);
+    background-size: 100% 100vh;
+    background-attachment: fixed; /* add this line */
+    height: 100vh;
+    overflow-y: auto; /* add a scrollbar if the content exceeds the height */
 }   
 
 
 a {
-    color: #0d6efd;
+    color: #5ce6ff !important;
     text-decoration: none !important;
     background-color: transparent;
 }
@@ -31,7 +36,7 @@ a {
   }
 
 input ::placeholder {
-    word-wrap: break-word; /* Ensures long words will wrap */
+    word-wrap: break-word; /* Ensures long words will wrap*/
 }
 
 .container{
@@ -39,11 +44,11 @@ input ::placeholder {
     flex-direction: column;
     flex: 1; /* Tambahkan ini untuk memastikan container mengambil ruang yang tersedia */
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
     min-height: 80vh;
+    
+    padding: 50px 0 15px 15px; /* Reduced padding */
 }
 
 .container .form-container, .container .output-container{
@@ -82,8 +87,7 @@ input ::placeholder {
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 1px 1px 1px 1px; /* Reduced padding */
   min-height: calc(1vh - 1px); /* 90px adalah tinggi footer */
 }
 
@@ -94,16 +98,14 @@ input ::placeholder {
     display: flex;
     justify-content: center;
     justify-content: space-evenly;
-    flex-grow: 1;
     align-items: center;
     position: relative;
-    bottom: 0px;
-    height: 90px;
-    background: #41C9E2;
+    top: 100px;
+    height: 55px;
+    background: #015eea;
     padding: 10px 0;
     justify-content: center;
-    margin: 40px 0 0 0;
-    z-index: 1000; /* Tambahkan ini untuk memastikan footer berada di atas elemen lainnya */
+    margin: 40px 0 0 0; /* Tambahkan ini untuk memastikan footer berada di atas elemen lainnya */
 }
 
 
@@ -113,9 +115,10 @@ display: none;
 
 .footer p {
  margin: 0;
- text-align: center;
+ text-align: start;
  word-wrap: break-word; /* Ensures long words will wrap */
  font-size: calc(0.5rem + 0.5vw);
+ color: #fff;
 }
 
 
@@ -264,6 +267,7 @@ input[type="number"] {
     border-radius: 10px;
     max-height: 200px;
     overflow-y: auto;
+    
   }
   
   .dropdown.form-input:focus + .dropdown-content {
@@ -276,6 +280,7 @@ input[type="number"] {
     text-decoration: none;
     display: block;
     cursor: pointer;
+    color: #374955 !important;
   }
   
   .dropdown-content a:hover {
@@ -431,7 +436,8 @@ input[type="number"] {
 }
 @media (max-width:1500px) {
     .footer p {
-        font-size: 1rem;
+        font-size: 0.9rem;
+        bottom: auto;
       }
 }
 
@@ -454,7 +460,7 @@ input[type="number"] {
         width:80vw;
     }
     .footer p {
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
     .form-left-title h2{
         font-size: 5vw;
@@ -484,17 +490,16 @@ input[type="number"] {
         align-items: center;
     }
     .footer {
-        display: flex;
-        justify-content: center;
-        justify-content: space-evenly;
-        flex-grow: 1;
-        align-items: center;
+        top: 135px;
     }
 
     .footer img {
         width: auto;
         height: 40px;
         margin-left: auto;
+        margin-top: 0;
+        margin-bottom: 0;
+        justify-content:flex-end;
     }
 
     .form-container, .output-container {
@@ -520,16 +525,21 @@ input[type="number"] {
         width: 100% !important;
         padding-right: 20px !important;
         padding-left: 20px !important;
+        min-height: 75vh;
     }
 }
 
 @media (max-width:490px) {
-
-    .btn-reset {
+    .footer{
+    top: 135px;
+    }
+    
+    .btn-primary, .btn-reset {
         font-size: 0.8rem!important;
+        width: auto !important;
         }
     .form-input{
-        width:80vw;
+        width:85vw;
     }
     .footer p {
         font-size: 0.8rem;
@@ -539,6 +549,7 @@ input[type="number"] {
         width: auto;
         height: 30px;
         margin-left: auto;
+        padding-left: 60px;
     }
 
     .form-container, .output-container {
@@ -579,5 +590,6 @@ input[type="number"] {
     .dropdown-content {
         width: 300px; /* atur tinggi sesuai kebutuhan Anda */
     }
+    
     
 }
