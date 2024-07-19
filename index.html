@@ -12,12 +12,14 @@
 <body>
 <div class="container">
 <section id="form" class="form-container">
-        
+  <div id="loadingIndicator" style="display: none;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="92" height="92" viewBox="0 0 92 92" id="loading"><path d="M46 25.7c-2.2 0-4-1.8-4-4V4.5c0-2.2 1.8-4 4-4s4 1.8 4 4v17.2c0 2.2-1.8 4-4 4zm-11.9 3.9c1.8-1.3 2.2-3.8.9-5.6L24.8 10.1c-1.3-1.8-3.8-2.2-5.6-.9-1.8 1.3-2.2 3.8-.9 5.6l10.1 13.9c.8 1.1 2 1.6 3.2 1.6.9.1 1.8-.2 2.5-.7zm-7.4 10.1c.7-2.1-.5-4.4-2.6-5L7.7 29.4c-2.1-.7-4.4.5-5 2.6-.7 2 .5 4.3 2.6 5l16.4 5.3c.4.1.8.2 1.2.2 1.7 0 3.2-1.1 3.8-2.8zm-19 22.9l16.4-5.3c2.1-.7 3.3-2.9 2.6-5-.7-2.1-2.9-3.2-5-2.6L5.3 55c-2.1.7-3.3 2.9-2.6 5 .5 1.7 2.1 2.8 3.8 2.8.4 0 .8 0 1.2-.2zm17.1 19.3L35 68c1.3-1.8.9-4.3-.9-5.6s-4.3-.9-5.6.9L18.4 77.2c-1.3 1.8-.9 4.3.9 5.6.7.5 1.5.8 2.3.8 1.2 0 2.4-.6 3.2-1.7zM50 87.5V70.3c0-2.2-1.8-4-4-4s-4 1.8-4 4v17.2c0 2.2 1.8 4 4 4s4-1.8 4-4zm22.8-4.7c1.8-1.3 2.2-3.8.9-5.6L63.5 63.3c-1.3-1.8-3.8-2.2-5.6-.9-1.8 1.3-2.2 3.8-.9 5.6l10.1 13.9c.8 1.1 2 1.6 3.2 1.6.9.1 1.8-.2 2.5-.7zm16.5-22.7c.7-2.1-.5-4.4-2.6-5l-16.4-5.3c-2.1-.7-4.4.5-5 2.6-.7 2.1.5 4.4 2.6 5l16.4 5.3c.4.1.8.2 1.2.2 1.7-.1 3.3-1.2 3.8-2.8zm-19-17.8L86.7 37c2.1-.7 3.3-2.9 2.6-5-.7-2.1-2.9-3.2-5-2.6l-16.4 5.3c-2.1.7-3.3 2.9-2.6 5 .5 1.7 2.1 2.8 3.8 2.8.4 0 .8-.1 1.2-.2zm-6.8-13.6l10.1-13.9c1.3-1.8.9-4.3-.9-5.6-1.8-1.3-4.3-.9-5.6.9L57 24c-1.3 1.8-.9 4.3.9 5.6.7.5 1.5.8 2.3.8 1.3 0 2.5-.6 3.3-1.7z"></path></svg>
+  </div>
         <!-- Form 1 -->
     <form id="Formulir1" name="submit-to-form" class="form-left">
         <div class="form-left-title">
           
-          <h2>Selamat datang di form pendaftaran UKM Daisekoi</h2>
+          <h2 id="text-container"></h2>
           <p>Silakan mengisi form yang telah disediakan</p>
           <hr id="progressBar">
         </div>
@@ -45,7 +47,7 @@
   
       <!-- Form 2 -->
       <form id="Formulir2" name="submit-to-survey" class="form-left" style="display: none;">
-        <a class="back-to-history" id="back">
+        <a class="back-to-history" id="backButton">
           <svg _ngcontent-xie-c18="" version="1.1" viewBox="0 0 31.494 31.494" x="0px" y="0px">
             <path _ngcontent-xie-c18=""d="M10.273,5.009c0.444-0.444,1.143-0.444,1.587,0c0.429,0.429,0.429,1.143,0,1.571l-8.047,8.047h26.554 c0.619,0,1.127,0.492,1.127,1.111c0,0.619-0.508,1.127-1.127,1.127H3.813l8.047,8.032c0.429,0.444,0.429,1.159,0,1.587 c-0.444,0.444-1.143,0.444-1.587,0l-9.952-9.952c-0.429-0.429-0.429-1.143,0-1.571L10.273,5.009z">
             </path>
@@ -68,6 +70,7 @@
             <a href="#" data-value="Tokusatsu">Tokusatsu</a>
             <a href="#" data-value="KPOP">KPOP</a>
             <a href="#" data-value="Kritik">Kritik</a>
+            <a href="#" data-value="Skip">Skip</a>
           </div>
         </div>
         <div class="hololive" style="display: none;">
@@ -100,7 +103,7 @@
       </form>
         
         <div class="form-right">
-            <img class="logo-header" src="./assets/Logo - Daisekoi.png" alt="png">
+            <img id="img" class="logo-header" src="./assets/Logo - Daisekoi.png" alt="png">
           
             
             
@@ -124,12 +127,13 @@
     
     <footer class="footer"> 
     <div class="container">
-    <p>Website created by <a href="https://theputras.github.io/">THE PUTRAS</a> Beta Version 2.2</p>
+    <p>Website created by <a href="https://theputras.github.io/">THE PUTRAS</a> Beta Version 2.3</p>
     <img src="./assets/Logo - Daisekoi.png" alt="png" class="logo-footer">
     </div>
      </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="./index.js"></script>
+    <!-- <script src="./k.js"></script> -->
 </body>
 
 
