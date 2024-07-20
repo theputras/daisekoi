@@ -12,10 +12,11 @@
     margin: 0;
     box-sizing: border-box;
 }
-
 #error-message {
   display: none; 
   color: red;
+  font-size: 14px;
+  margin-top: 5px;
   text-align: center;
   flex-direction: column;
   justify-content: center;
@@ -53,7 +54,24 @@ a {
 input ::placeholder {
     word-wrap: break-word; /* Ensures long words will wrap*/
 }
+/* Example of other elements in the form */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
 
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -78,6 +96,7 @@ input ::placeholder {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    gap: 10vh;
    
 }
 
@@ -234,7 +253,7 @@ display: none;
 #text-container {
     overflow: hidden; /* hide excess text */
     text-overflow: ellipsis; /* add ellipsis at the end */
-    max-width: 600px; /* adjust the width to your liking */
+    max-width: 63vh; /* adjust the width to your liking */
   }
 
 
@@ -275,15 +294,15 @@ opacity: 100% !important;
     position: relative;
     z-index: 6;    
 }
-.form-input{
-    width: 600px;
-    height: 50px;
-    border: none;
-    outline: none;
-    padding-left: 25px;
-    font-weight: 500;
-    color: #374955;
-    border-radius: 50px;
+.form-input {
+  width: 65vh;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding-left: 25px;
+  font-weight: 500;
+  color: #374955;
+  border-radius: 50px;
 }
 
 .form-input:focus{
@@ -416,7 +435,18 @@ input[type="number"] {
   
   
   
-
+.switch-toggle {
+  width: 65px;
+  height: 35px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #007bff;
+  border-radius: 50px;
+  padding: 0 5px;
+  cursor: pointer;
+}
 .form-input::placeholder{
     color: #436074;
 }
@@ -568,7 +598,9 @@ input[type="number"] {
     .form-right img{
         width: 250px;
     }
-    
+    #text-container {
+      max-width: 65vh;
+  }
    
 }
 
@@ -576,6 +608,14 @@ input[type="number"] {
     .form-right img{
         width: 250px;
     }
+    
+}
+
+@media (max-width: 889px){
+#text-container {
+      max-width: 60vh !important;
+  }
+
 }
 
 @media (max-width:985px) {
@@ -588,6 +628,9 @@ input[type="number"] {
     .form-left-title h2{
         font-size: 5vw;
     }
+    #text-container {
+      max-width: 65vh;
+  }
 
     .form-left-title p{
         font-size: 2.5vw;
@@ -656,6 +699,12 @@ input[type="number"] {
     .footer{
     top: 135px;
     }
+    .form-left-title h2 {
+      font-size: 6vw;
+  }
+  #text-container {
+    max-width: 45vh;
+}
     .btn-submit svg, .form-left-title .btn-submit svg, .btn-reset svg{
       width: 0.6rem;
     height: 0.6rem;
@@ -683,12 +732,9 @@ input[type="number"] {
         align-content: space-evenly;
         justify-items: center;
     }
-    .form-left-title h2{
-        font-size: 10vw;
-    }
 
     .form-left-title p{
-        font-size: 5vw;
+        font-size: 3vw;
     }
     .form-left-title hr{
         width: 20vw;
@@ -711,6 +757,12 @@ input[type="number"] {
     }
 }
 
+@media (max-width:490px) {
+  #text-container {
+    max-width: 35vh;
+}
+
+}
 @media (max-width: 767px) {
     .dropdown-content {
         width: 300px; /* atur tinggi sesuai kebutuhan Anda */
