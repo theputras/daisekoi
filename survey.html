@@ -7,74 +7,85 @@
         <link rel="stylesheet" href="style.css">
         <link rel="shortcut icon" href="./assets/daisekoi logo 2023.png" style="border-radius: 100%;" type="image/jpg">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<body>
-        
-    <div class="container">
-      <div id="loadingIndicator" class="loading-animation">
-        <svg xmlns="http://www.w3.org/2000/svg" width="92" height="92" viewBox="0 0 92 92" id="loading"><path d="M46 25.7c-2.2 0-4-1.8-4-4V4.5c0-2.2 1.8-4 4-4s4 1.8 4 4v17.2c0 2.2-1.8 4-4 4zm-11.9 3.9c1.8-1.3 2.2-3.8.9-5.6L24.8 10.1c-1.3-1.8-3.8-2.2-5.6-.9-1.8 1.3-2.2 3.8-.9 5.6l10.1 13.9c.8 1.1 2 1.6 3.2 1.6.9.1 1.8-.2 2.5-.7zm-7.4 10.1c.7-2.1-.5-4.4-2.6-5L7.7 29.4c-2.1-.7-4.4.5-5 2.6-.7 2 .5 4.3 2.6 5l16.4 5.3c.4.1.8.2 1.2.2 1.7 0 3.2-1.1 3.8-2.8zm-19 22.9l16.4-5.3c2.1-.7 3.3-2.9 2.6-5-.7-2.1-2.9-3.2-5-2.6L5.3 55c-2.1.7-3.3 2.9-2.6 5 .5 1.7 2.1 2.8 3.8 2.8.4 0 .8 0 1.2-.2zm17.1 19.3L35 68c1.3-1.8.9-4.3-.9-5.6s-4.3-.9-5.6.9L18.4 77.2c-1.3 1.8-.9 4.3.9 5.6.7.5 1.5.8 2.3.8 1.2 0 2.4-.6 3.2-1.7zM50 87.5V70.3c0-2.2-1.8-4-4-4s-4 1.8-4 4v17.2c0 2.2 1.8 4 4 4s4-1.8 4-4zm22.8-4.7c1.8-1.3 2.2-3.8.9-5.6L63.5 63.3c-1.3-1.8-3.8-2.2-5.6-.9-1.8 1.3-2.2 3.8-.9 5.6l10.1 13.9c.8 1.1 2 1.6 3.2 1.6.9.1 1.8-.2 2.5-.7zm16.5-22.7c.7-2.1-.5-4.4-2.6-5l-16.4-5.3c-2.1-.7-4.4.5-5 2.6-.7 2.1.5 4.4 2.6 5l16.4 5.3c.4.1.8.2 1.2.2 1.7-.1 3.3-1.2 3.8-2.8zm-19-17.8L86.7 37c2.1-.7 3.3-2.9 2.6-5-.7-2.1-2.9-3.2-5-2.6l-16.4 5.3c-2.1.7-3.3 2.9-2.6 5 .5 1.7 2.1 2.8 3.8 2.8.4 0 .8-.1 1.2-.2zm-6.8-13.6l10.1-13.9c1.3-1.8.9-4.3-.9-5.6-1.8-1.3-4.3-.9-5.6.9L57 24c-1.3 1.8-.9 4.3.9 5.6.7.5 1.5.8 2.3.8 1.3 0 2.5-.6 3.3-1.7z"></path></svg>
-      </div>
-      <section id="form" class="form-container">
-        <form id="Formulir2" name="submit-to-survey" class="form-left">
-          <div class="form-left-title">
-            <h2>Pilih sektemu di Sini</h2>
-            <p>Silakan mengisi Survey yang telah disediakan</p>
-            <hr id="progressBar2">
+        <body>
+          <div class="container-fluid">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <section id="form" class="form-container object-fit-lg-contain">
+                              <div id="loadingIndicator" style="display: none;">
+                                  <svg>
+                                      <circle cx="70" cy="70" r="70"></circle>
+                                  </svg>
+                              </div>
+                              <!-- Form 1 -->
+                              <form id="Formulir1" name="submit-to-form" class="form-left show">
+                                  <div class="form-left-title">
+                                      <h2 class="fs-2" id="text-container"></h2>
+                                      <p class="fs-16" id="title1">Silakan mengisi form yang telah disediakan</p>
+                                      <p class="fs-16" id="alert1" style="display: none;">Loading......</p>
+                                      <p class="fs-16" id="alerthapus1">Berhasil dihapus.</p>
+                                      <hr id="progressBar" class="progress-bar">
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" id="nama" name="nama" placeholder="Nama kamu" class="nama-form form-input form-control" required>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" id="jurusan" name="jurusan" placeholder="Jurusan" class="jurusan-form form-input form-control" required>
+                                      <div class="dropdown-content">
+                                          <a href="#" data-value="S1 Sistem Informasi">S1 Sistem Informasi</a>
+                                          <a href="#" data-value="S1 Teknik Komputer">S1 Teknik Komputer</a>
+                                          <a href="#" data-value="DIII Sistem Informasi">DIII Sistem Informasi</a>
+                                          <a href="#" data-value="S1 Sistem Manajemen">S1 Sistem Manajemen</a>
+                                          <a href="#" data-value="S1 Akuntansi">S1 Akuntansi</a>
+                                          <a href="#" data-value="S1 Desain Komunikasi Visual">S1 Desain Komunikasi Visual</a>
+                                          <a href="#" data-value="S1 Desain Produk">S1 Desain Produk</a>
+                                          <a href="#" data-value="DIV Produksi Film dan Televisi">DIV Produksi Film dan Televisi</a>
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="mb-3">
+                                    <label for="basic-url" class="form-label">Your vanity URL</label>
+                                    <div class="input-group">
+                                      <span class="input-group-text" id="basic-addon3">23410100090</span>
+                                      <input id="nim" type="number" name="nim" placeholder="NIM kamu" class="nim-form form-input form-control" required>
+                                    </div>
+                                    <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
+                                  </div>
+                                  <div class="form-group">
+                                      
+                                  </div>
+                                  <div class="buttonID">
+                                      <button class="btn btn-secondary btn-reset" type="button" id="resetFormButton1"><p>Kosongkan Formulir</p></button>
+                                  </div>
+                              </form>
+                          </section>
+                      </div>
+                      <div class="col-md-6">
+                          <section id="output" class="output-container" style="display: none;">
+                              <div class="form-left-title">
+                                  <h2>Kamu akan diarahkan ke Grup Whatsapp Daisekoi, silakan join ya</h2>
+                                  <p>Halaman ini akan berubah dalam hitungan  <span id="msg"></span></p>
+                                  <button class="btn-submit btn"  type="submit"> <p>Atau Tekan Tombol ini</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="#FFFFFF"/></svg> </button>
+                              </div>
+                          </section>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="dropdown">
-            <input type="text" id="sekte" name="sekte" class="sekte-form form-input" placeholder="Pilih Sektemu">
-            <div class="dropdown-content">
-              <a href="#" data-value="Hololive">Hololive</a>
-              <a href="#" data-value="JKT48">JKT48</a>
-              <a href="#" data-value="Game">Game</a>
-              <a href="#" data-value="Anime">Anime</a>
-              <a href="#" data-value="Tokusatsu">Tokusatsu</a>
-              <a href="#" data-value="KPOP">KPOP</a>
-              <a href="#" data-value="Kritik">Kritik</a>
-            </div>
-          </div>
-          <div class="hololive" style="display: none;">
-            <input type="text" name="oshi_hololive" placeholder="Siapa Oshimu di Hololive?" class="oshi-form form-input" required>
-          </div>
-          <div class="jkt48" style="display: none;">
-            <input type="text" name="oshi_jkt48" placeholder="Siapa Oshimu di JKT48?" class="oshi-form form-input" required>
-          </div>
-          <div class="KPOP" style="display: none;">
-            <input type="text" name="group_kpop" placeholder="Siapa Group KPOP favoritmu?" class="group-kpop-form form-input" required>
-            <input type="text" name="bias_kpop" placeholder="Siapa bias favoritmu?" class="bias-kpop-form form-input" required>
-          </div>
-          <div class="Tokusatsu" style="display: none;">
-            <input type="text" name="tokusatsu" placeholder="Apa tokosatsu favoritmu?" class="tokusatsu-form form-input" required>
-          </div>
-          <div class="anime" style="display: none;">
-            <input type="text" name="anime" placeholder="Apa judul anime yang kamu tonton?" class="game-form form-input" required>
-          </div>
-          <div class="game" style="display: none;">
-            <input type="text" name="game" placeholder="Apa Game favoritmu?" class="game-form form-input" required>
-          </div>
-          <div class="kritik" style="display: none;">
-            <input type="text" name="kritik" placeholder="Apa hal yang suka kamu kritik?" class="kritik-form form-input" required>
-          </div>
-          <div class="alasan-form" style="display: none;">
-            <input type="text" name="alasan" placeholder="Apa Alasannya?" class="form-input" required>
-          </div>
-          <div class="button">
-            <button class="btn btn-primary btn-submit" type="submit"><p>Kirim</p></button>
-            <button class="btn btn-secondary btn-reset" type="button" id="resetFormButton">Kosongkan Formulir</button>
-          </div>
-        </form>
-      </section>
-        
-        <div class="form-right">
-            <img class="logo-header" src="./assets/Logo - Daisekoi.png" alt="png">
-          
-            
-            
-        </div>
-    </div>
-
-    <script src="./form-survey.js"></script>
-    <script src="./index.js"></script>
-</body>
+      
+          <footer class="footer"> 
+              <div class="container">
+                  <p>Website created by <a href="https://theputras.github.io/">THE PUTRAS</a> Beta Version 2.4</p>
+                  <img src="./assets/Logo - Daisekoi.png" alt="png" class="logo-footer">
+              </div>
+          </footer>
+      
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+          <script src="./index.js"></script> 
+          <!-- <script src="./k.js"></script> -->
+      </body>
+      </html>
 
 
 </html>

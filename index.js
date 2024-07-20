@@ -19,6 +19,7 @@ const inputFields = document.querySelectorAll('.hololive, .jkt48, .KPOP, .Tokusa
 //submit
 const form1 = document.getElementById('Formulir1');
 const form2 = document.getElementById('Formulir2');
+const footer = document.querySelector('.footer');
 const img = document.getElementById('img');
 const nextButton = document.getElementById('nextButton');
 const buttonDivs = document.getElementById('button2');
@@ -229,8 +230,9 @@ dropdownContent.addEventListener('click', (e) => {
     resetFormButton2.addEventListener('click', () => {
       resetForm(form2);
       localStorage.removeItem('form2Data');
+      title2.style.display = 'none'; 
       alerthapus2.style.display = 'block';
-      title2.style.display = 'none';  
+       
       setTimeout(() => {
         alerthapus2.style.display = 'none';
         title2.style.display = 'block';
@@ -248,6 +250,12 @@ function handleError(error) {
   form1.style.display = 'none';
   form2.style.display = 'none';
 }
+
+window.onbeforeunload = function(e) {
+  var message = "Anda yakin ingin meninggalkan halaman ini?";
+  e.returnValue = message;
+  return message;
+};
 
 
 
@@ -293,6 +301,7 @@ document.querySelectorAll('.btn-submit, .form-left-title .btn-submit, .btn-reset
 progressBar2.style.transition = 'width 3s ease-in-out';
 progressBar2.style.width = "20%";
 form1.classList.add('show');
+footer.classList.add('show');
 img.classList.add('show');
 window.addEventListener('beforeunload', () => {
   localStorage.removeItem('form1Data');
@@ -302,16 +311,12 @@ window.addEventListener('beforeunload', () => {
 try {
 nextButton.addEventListener('click', e => {
   e.preventDefault();
-  // Make input fields of Form 1 readonly
-  form1Inputs.forEach(input => {
-    input.disabled = true;
-  });
   // Get form 1 data
   const formData1 = new FormData(form1);
   const formData1Entries = Object.fromEntries(formData1.entries());
   // Check if form 1 data is empty
   if (Object.values(formData1Entries).some(value => value === '')) {
-    alert('Ada yang kosong, silakan di lengkapi');
+    alert('Ada yang kosong atau data salah, silakan di lengkapi');
     return;
   }
   else {      
@@ -328,10 +333,6 @@ nextButton.addEventListener('click', e => {
         // Show loading indicator
         loadingIndicator.classList.add('loading-animation');
         loadingIndicator.style.display = 'flex';
-        // Make input fields of Form 1 readonly
-        form1Inputs.forEach(input => {
-          input.disabled = false;
-        });
         setTimeout(() => { 
           // Hide loading indicator after 2 seconds
           loadingIndicator.classList.remove('loading-animation');
@@ -360,10 +361,6 @@ nextButton.addEventListener('click', e => {
 
 backButton.addEventListener('click', e => {
   e.preventDefault();  
-  // Make input fields of Form 2 readonly
-  form2Inputs.forEach(input => {
-    input.disabled = true;
-  });
   progressBar2.style.width = "1%";
   alertback.style.display = "block";
   title2.style.display = 'none';
@@ -371,9 +368,6 @@ backButton.addEventListener('click', e => {
       img.classList.remove('show');
       form2.classList.remove('show');
       setTimeout(() => { 
-        form2Inputs.forEach(input => {
-          input.disabled = false;
-        });
         // Show loading indicator
         loadingIndicator.classList.add('loading-animation');
         loadingIndicator.style.display = 'flex';
@@ -403,7 +397,6 @@ const submitButton = document.getElementById('submitButton');
 
 // Get all form 2 input elements
 const form2Inputs = document.querySelectorAll('#Formulir2 input');
-const form1Inputs = document.querySelectorAll('#Formulir1 input');
 
 // Function to save form data to local storage
 function saveFormData() {
@@ -437,13 +430,12 @@ submitButton.addEventListener('click', e => {
   const sekteValue = formData2.sekte;
    // ...
 
-  // Make input fields of Form 2 readonly
-  form2Inputs.forEach(input => {
-    input.disabled = true;
-  });
+  
 
 // ...
-
+form2Inputs.forEach(input => {
+  input.disabled = false;
+});
   // Check data form 2
   if (sekteValue === 'Hololive' && (!formData2 || formData2.oshi_hololive === '' || formData2.alasan === '')) {
     alert('Isi oshi hololive kamu, jangan sampai kosong');
@@ -485,7 +477,10 @@ submitButton.addEventListener('click', e => {
       combinedData.append(key, value);
     }
   }
-
+// Make input fields of Form 2 readonly
+form2Inputs.forEach(input => {
+  input.disabled = true;
+});
   
   // Add additional fields to combinedData
   const inputs = document.querySelectorAll('input[type="text"]');
@@ -538,6 +533,10 @@ submitButton.addEventListener('click', e => {
   })
   .catch(error => console.error('Error URL 1!', error.message));
     setTimeout(() => { 
+    // Make input fields of Form 2 readonly
+  form2Inputs.forEach(input => {
+    input.disabled = false;
+  });
       progressBar2.style.transition = 'width 3s ease-in-out';
     progressBar2.style.display ='none';
     // Submit combined data to both URLs

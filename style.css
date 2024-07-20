@@ -125,7 +125,7 @@ input ::placeholder {
 /* Transition effect */
 .form-left, .form-right img {
     opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(50%);
     transition: opacity 0.5s, transform 0.5s;
   }
   
@@ -141,7 +141,15 @@ input ::placeholder {
   transform: translateY(0);
 }
   
+.footer {
+  opacity: 0;
+  transition: opacity 0.5s; /* add transition effect */
+}
 
+.footer.show {
+  opacity: 1;
+  transition: opacity 0.5s; /* add transition effect */
+}
 
 .footer .container {
     position: relative;
@@ -249,8 +257,28 @@ display: none;
  color: #fff;
 }
 
+.input-group {
+  width: 65vh !important;
+}
 
+.input-group-text {
+  display: flex !important;
+  align-items: center !important;
+  padding: .375rem .75rem !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: var(--bs-body-color) !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  background-color: #00c0fa !important;
+  border: var(--bs-border-width) solid #015eea !important;
+  border-radius: var(--bs-border-radius) !important;
+}
 
+.form-label, .form-text{
+color: #ffffff !important;
+}
 .form-left-title {
     margin-bottom: 20px;
     max-width: 100%; /* Ensures the title container doesn't exceed its parent's width */
@@ -317,10 +345,11 @@ opacity: 100% !important;
   font-weight: 500;
   color: #374955;
   border-radius: 50px;
+  transition: border-color .3s ease-in-out, transform .3s ease-in-out;
 }
 
 .form-input:focus{
-    border: 2.5px solid #7F3E6D;
+    border: 2.5px solid #7F3E6D !important;
     visibility: visible;
     opacity: 1;
     transform: scale(1.1);
