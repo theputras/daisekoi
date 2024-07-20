@@ -95,6 +95,15 @@ input ::placeholder {
     gap: 20px;
 }
 
+/* Alert */
+
+ #alert1, #alert2, #alert3{
+  color:#ec0064;
+  display: none;
+  
+ }
+ 
+
 /* Transition effect */
 .form-left, .form-right img {
     opacity: 0;

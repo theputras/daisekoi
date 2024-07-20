@@ -23,6 +23,7 @@ const nextButton = document.getElementById('nextButton');
 const buttonDivs = document.getElementById('button2');
 const alert1 = document.getElementById('alert1');
 const alert2 = document.getElementById('alert2');
+const alert3 = document.getElementById('alert3');
 const title1 = document.getElementById('title1');
 const title2 = document.getElementById('title2');
 var url = "https://instagram.com/daisekoi"; // Ganti dengan URL Grup Daisekoi tujuan Anda
@@ -297,8 +298,7 @@ nextButton.addEventListener('click', e => {
   else {      
     localStorage.setItem('form1Data', JSON.stringify(formData1Entries));
     alert1.style.display = 'block';
-    title1.style.display = 'none';
-    alert1.style.color = '#ec0064';  
+    title1.style.display = 'none';  
   
     setTimeout(() => {
       form1.classList.remove('show');  
@@ -405,7 +405,10 @@ submitButton.addEventListener('click', e => {
   const sekteValue = formData2.sekte;
    // ...
 
-
+  // Make input fields of Form 2 readonly
+  form2Inputs.forEach(input => {
+    input.disabled = true;
+  });
 
 // ...
 
@@ -457,54 +460,62 @@ submitButton.addEventListener('click', e => {
   inputs.forEach(input => {
     combinedData.append(input.name, input.value);
   });
-
+  progressBar2.style.width = "0%";  
   // Simulasi loading (misalnya, fetch data dari server)
   setTimeout(() => {
     progressBar2.style.transition = 'width 3s ease-in-out';
-    progressBar2.style.width = "100%";
+   progressBar2.style.width = "100%";   
     alert2.style.display = 'block';
-    title2.style.display = 'none';
-    alert2.style.color = '#ec0064';  
+    title2.style.display = 'none';  
     buttonDivs.style.display = 'none';
     // Show loading indicator
     loadingIndicator2.classList.add('loading-animation');
     loadingIndicator2.style.display = 'block';
-    
-    setTimeout(() => {
-    }, 500); // Setelah 3 detik, sembunyikan progress bar
+    fetch(urlForm1, { method: 'POST', body: combinedData })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Response from URL 1:', data);
+    // Submit to second URL
+    fetch(urlForm2, { method: 'POST', body: combinedData })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Response from URL 2:', data);
+                  // Clear cache data
+                  localStorage.removeItem('form1Data');
+                  localStorage.removeItem('form2Data');
+                  //Success Warning
+                  alert2.style.display = 'none';
+                  alert3.style.display = 'block';
+                    // Hide form 1 and show form 2
+                    setTimeout(() => {
+                      // Hide form 1 and show form 2
+                      form.style.display = 'none';
+                      output.style.display = 'flex';
+                      //countdown output
+                      function countDown() {
+                        if (count > 0) {
+                          count--;
+                          var waktu = count + 1;
+                          document.getElementById('msg').innerHTML =  waktu;
+                          setTimeout(countDown, 1000); // Memanggil fungsi ini setiap 1 detik
+                        } else {
+                          window.location.replace(url); // Mengarahkan pengguna setelah hitung mundur selesai
+                        }
+                      }
+                      // Memulai hitung mundur saat halaman dimuat
+                      countDown();
+                    }, 1000); // Setelah 1 detik, tampilkan output
+        
+      })
+      .catch(error => console.error('Error URL 2!', error.message));
+  })
+  .catch(error => console.error('Error URL 1!', error.message));
+    setTimeout(() => { 
+    progressBar2.style.display ='none';
+    // Submit combined data to both URLs
+  
+    }, 3000); // Setelah 3 detik, sembunyikan progress bar
   }, 500); // Setelah 1 detik, perbarui progress bar ke 100%
 
-  // Submit combined data to both URLs
-  fetch(urlForm1, { method: 'POST', body: combinedData })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Response from URL 1:', data);
-      // Submit to second URL
-      fetch(urlForm2, { method: 'POST', body: combinedData })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Response from URL 2:', data);
-                    // Clear cache data
-                    localStorage.removeItem('form1Data');
-                    localStorage.removeItem('form2Data');
-          // Hide form 1 and show form 2
-          form.style.display = 'none';
-          output.style.display = 'flex';
-          //countdown output
-          function countDown() {
-              if (count > 0) {
-                  count--;
-                  var waktu = count + 1;
-                  document.getElementById('msg').innerHTML =  waktu;
-                  setTimeout(countDown, 1000); // Memanggil fungsi ini setiap 1 detik
-              } else {
-                  window.location.replace(url); // Mengarahkan pengguna setelah hitung mundur selesai
-              }
-          }
-          // Memulai hitung mundur saat halaman dimuat
-          countDown();
-        })
-        .catch(error => console.error('Error URL 2!', error.message));
-    })
-    .catch(error => console.error('Error URL 1!', error.message));
+  
 });
