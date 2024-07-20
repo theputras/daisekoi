@@ -124,3 +124,119 @@ resetFormButton.addEventListener('click', () => {
   // Clear the dropdown inputsekte field
   inputsekte.value = '';
 });
+
+
+dropdownContentSekte.addEventListener('click', (e) => {
+  if (e.target.tagName === 'A') {
+    const value = e.target.getAttribute('data-value');
+    inputSekte.value = value;
+    dropdownContentSekte.style.display = 'none';
+    inputSekte.blur();
+
+    // Reset all input fields in form2 except input sekte
+    const form2Inputs = form2.querySelectorAll('input, select, textarea');
+    form2Inputs.forEach((input) => {
+      if (input !== inputSekte) {
+        input.value = '';
+      }
+    });
+
+    // Hide all sections and remove required attribute
+    [hololive, jkt48, game, anime, kritik, tokusatsu, kpop].forEach((section) => {
+      section.style.display = 'none';
+      section.querySelectorAll('input').forEach((input) => {
+        input.removeAttribute('required');
+      });
+    });
+
+    // Show the relevant section and set required attribute
+    let selectedSection;
+    switch (value) {
+      case 'Hololive':
+        selectedSection = hololive;
+        break;
+      case 'JKT48':
+        selectedSection = jkt48;
+        break;
+      case 'Game':
+        selectedSection = game;
+        break;
+      case 'Anime':
+        selectedSection = anime;
+        break;
+      case 'Tokusatsu':
+        selectedSection = tokusatsu;
+        break;
+      case 'KPOP':
+        selectedSection = kpop;
+        break;
+      case 'Kritik':
+        selectedSection = kritik;
+        break;
+      default:
+        selectedSection = null;
+    }
+
+    if (selectedSection) {
+      selectedSection.style.display = 'flex';
+      selectedSection.style.flexDirection = 'column';
+      selectedSection.style.alignItems = 'start';
+      selectedSection.style.gap = '20px';
+      selectedSection.querySelectorAll('input').forEach((input) => {
+        input.setAttribute('required', 'required');
+      });
+
+      // Append the alasan-form to the selected section
+      selectedSection.appendChild(alasanForm);
+      alasanForm.style.display = 'block';
+
+      if (selectedSection == kritik) {
+        // Clear reason form when critique section is selected
+        selectedSection.appendChild(alasanForm);
+        alasanForm.style.display = 'none';
+      }
+    }
+  }
+});
+
+// Handle form reset form 1
+resetFormButton1.addEventListener('click', () => {
+  // Clear the dropdown input field
+  inputJurusan.value = '';
+  inputnim.value = '';
+  inputnama.value = '';
+  dropdownContent.style.display = 'none';
+  localStorage.removeItem('form1Data');
+  localStorage.removeItem('form2Data');
+
+  // Remove data-value attribute from selected option
+  const selectedOption = dropdownContent.querySelector('a[selected]');
+  if (selectedOption) {
+    selectedOption.removeAttribute('data-value');
+    selectedOption.removeAttribute('selected');
+  }
+});
+
+// Handle form reset form 2
+resetFormButton2.addEventListener('click', () => {
+  // Clear the dropdown input field
+  inputSekte.value = '';
+  dropdownContentSekte.style.display = 'none';
+  localStorage.removeItem('form1Data');
+  localStorage.removeItem('form2Data');
+
+  // Remove data-value attribute from selected option
+  const selectedOptionSekte = dropdownContentSekte.querySelector('a[selected]');
+  if (selectedOptionSekte) {
+    selectedOptionSekte.removeAttribute('data-value');
+    selectedOptionSekte.classList.remove('selected'); // remove the selected class
+  }
+
+  // Reset the displayed section below the dropdown
+  [hololive, jkt48, game, anime, kritik, tokusatsu, kpop].forEach((section) => {
+    section.style.display = 'none';
+    section.querySelectorAll('input').forEach((input) => {
+      input.removeAttribute('required');
+    });
+  });
+});

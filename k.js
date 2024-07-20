@@ -35,6 +35,7 @@ const kritik = document.querySelector('.kritik');
 const anime = document.querySelector('.anime');
 const kpop = document.querySelector('.kpop');
 const tokusatsu = document.querySelector('.tokusatsu');
+const sekteLain = document.querySelector('.sekte-lain');
 
 // Show dropdown on input click or focus
 inputJurusan.addEventListener('click', (e) => {
@@ -108,21 +109,6 @@ dropdownContent.addEventListener('click', (e) => {
     dropdownContent.style.display = 'none';
     inputJurusan.blur();
   }
-
-
-    if (selectedSection) {
-      selectedSection.style.display = 'flex';
-      selectedSection.style.flexDirection = 'column';
-      selectedSection.style.alignItems = 'tart';
-      selectedSection.style.gap = '20px';
-      selectedSection.querySelectorAll('input').forEach((input) => {
-        input.setAttribute('required', 'equired');
-      });
-
-      // Append the alasan-form to the selected section
-      selectedSection.appendChild(alasanForm);
-      alasanForm.style.display = 'block';
-    }
   });
   
   dropdownContentSekte.addEventListener('click', (e) => {
@@ -133,10 +119,11 @@ dropdownContent.addEventListener('click', (e) => {
       inputSekte.blur();
   
       // Hide all sections and remove required attribute
-      [hololive, jkt48, game, anime, kritik, tokusatsu, kpop].forEach((section) => {
+      [hololive, jkt48, game, anime, kritik, tokusatsu, kpop, sekteLain].forEach((section) => {
         section.style.display = 'none';
         section.querySelectorAll('input').forEach((input) => {
           input.removeAttribute('required');
+          input.value = ''; // Reset input value
         });
       });
   
@@ -191,47 +178,39 @@ dropdownContent.addEventListener('click', (e) => {
     }
   });
 
-// Handle form reset form 1
-resetFormButton1.addEventListener('click', () => {
-  // Clear the dropdown input field
-  inputJurusan.value = '';
-  inputnim.value = '';
-  inputnama.value = '';
-  dropdownContent.style.display = 'none';
-  localStorage.removeItem('form1Data');
-  localStorage.removeItem('form2Data');
 
-  // Remove data-value attribute from selected option
-  const selectedOption = dropdownContent.querySelector('a[selected]');
-  if (selectedOption) {
-    selectedOption.removeAttribute('data-value');
-    selectedOption.removeAttribute('selected');
-  }
-});
+//Reset form
+    function resetForm(form) {
+      form.reset();
+      dropdownContentSekte.style.display = 'none';
+      const selectedOptionSekte = dropdownContentSekte.querySelector('a[selected]');
+      if (selectedOptionSekte) {
+        selectedOptionSekte.removeAttribute('data-value');
+        selectedOptionSekte.classList.remove('selected'); // remove the selected class
+      }
+      form.querySelectorAll('input, select, textarea').forEach(input => {
+        input.value = '';
+        input.removeAttribute('required');
+      });
+      [hololive, jkt48, game, anime, kritik, tokusatsu, kpop].forEach((section) => {
+        section.style.display = 'none';
+        section.querySelectorAll('input').forEach((input) => {
+          input.removeAttribute('required');
+        });
+      });      
+    }
 
-// Handle form reset form 2
-resetFormButton2.addEventListener('click', () => {
-  // Clear the dropdown input field
-  inputSekte.value = '';
-  dropdownContentSekte.style.display = 'none';
-  localStorage.removeItem('form1Data');
-  localStorage.removeItem('form2Data');
-
-  // Remove data-value attribute from selected option
-  const selectedOptionSekte = dropdownContentSekte.querySelector('a[selected]');
-  if (selectedOptionSekte) {
-    selectedOptionSekte.removeAttribute('data-value');
-    selectedOptionSekte.classList.remove('selected'); // remove the selected class
-  }
-
-  // Reset the displayed section below the dropdown
-  [hololive, jkt48, game, anime, kritik, tokusatsu, kpop].forEach((section) => {
-    section.style.display = 'none';
-    section.querySelectorAll('input').forEach((input) => {
-      input.removeAttribute('required');
+    resetFormButton1.addEventListener('click', () => {
+      resetForm(form1);
     });
-  });
-});
+
+    resetFormButton2.addEventListener('click', () => {
+      resetForm(form2);
+    });
+
+
+
+
 
 const textContainer = document.getElementById('text-container');
 const texts = ['Selamat datang di UKM Daisekoi', 'Form Pendaftaran anggota Daisekoi'];
@@ -313,25 +292,23 @@ nextButton.addEventListener('click', e => {
 
 backButton.addEventListener('click', e => {
   e.preventDefault();
-  setTimeout(() => {
-      // Show loading indicator
+  form2.classList.remove('show');
+    // Show loading indicator
     loadingIndicator.classList.add('loading-animation');
     loadingIndicator.style.display = 'block';
-    form2.classList.remove('show');
-    form2.classList.remove('hide');
-    form1.classList.add('show');
-    img.classList.add('show');// Update the image in.form-right
-  }, 500); // wait for 500ms for the transition to complete
-  // Hide form 2 and show form 1
-  setTimeout(() => {
+
+      // Show loading indicator
     loadingIndicator.classList.remove('loading-animation');
     loadingIndicator.style.display = 'none';
+  setTimeout(() => {
+    form1.classList.add('show');
+    img.classList.add('show');
     form2.style.display = 'none';
     form1.style.display = 'flex';
     form1.style.flexDirection = 'column';
     form1.style.alignItems = 'tart';
     form1.style.gap = '20px';
-  }, 500); // wait for 500ms for the transition to complete
+  }, 1000); // wait for 500ms for the transition to complete
 });
 
 // Form 2 (Formulir2)
@@ -345,10 +322,10 @@ const form2Inputs = document.querySelectorAll('#Formulir2 input');
 // Function to save form data to local storage
 function saveFormData() {
   // Get form data
-  const formData = new FormData(form2);
+  const formData2 = new FormData(form2);
 
   // Convert FormData object to an object
-  const formDataObj = Object.fromEntries(formData.entries());
+  const formDataObj = Object.fromEntries(formData2.entries());
 
   // Save form data to local storage
   localStorage.setItem('form2Data', JSON.stringify(formDataObj));
@@ -373,48 +350,7 @@ submitButton.addEventListener('click', e => {
   }
   const sekteValue = formData2.sekte;
    // ...
-let filteredData = {}; // Define filteredData here
-dropdownContent.addEventListener('click', (e) => {
-  if (e.target.tagName === 'A') {
-    const value = e.target.getAttribute('data-value');
-    inputSekte.value = value;
-    inputSekte.nextElementSibling.style.display = 'none';
 
-    // Hide all input fields
-    inputFields.forEach((inputField) => {
-      inputField.style.display = 'none';
-    });
-
-    // Show input field based on sekte value
-    switch (value) {
-      case 'Hololive':
-        filteredData = {
-          oshi_hololive: formData2.oshi_hololive,
-          alasan: formData2.alasan
-        };
-        showInputFields(['hololive', 'alasan-form']);
-        break;
-      case 'JKT48':
-        filteredData = {
-          oshi_jkt48: formData2.oshi_jkt48,
-          alasan: formData2.alasan
-        };
-        showInputFields(['jkt48', 'alasan-form']);
-        break;
-      //...
-    }
-  }
-});
-
-function showInputFields(fields) {
-  inputFields.forEach((inputField) => {
-    if (fields.includes(inputField.classList[0])) {
-      inputField.style.display = 'block';
-    } else {
-      inputField.style.display = 'none';
-    }
-  });
-}
 
 
 // ...
@@ -456,7 +392,7 @@ function showInputFields(fields) {
     }
   }
   for (const [key, value] of Object.entries(formData2)) {
-    if (filteredData.hasOwnProperty(key)) {
+    if (formData2.hasOwnProperty(key)) {
       combinedData.append(key, value);
     }
   }
@@ -467,7 +403,6 @@ function showInputFields(fields) {
   inputs.forEach(input => {
     combinedData.append(input.name, input.value);
   });
-
 // Debugging output
 combinedData.forEach((value, key) => {
   console.log(`${key}: ${value}`);

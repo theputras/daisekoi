@@ -7,6 +7,7 @@ const alasanForm = document.querySelector('.alasan-form');
 const resetFormButton1 = document.getElementById('resetFormButton1');
 const resetFormButton2 = document.getElementById('resetFormButton2');
 const loadingIndicator = document.getElementById('loadingIndicator');
+const loadingIndicator2 = document.getElementById('loadingIndicator2');
 const dropdownContentSekte = inputSekte.nextElementSibling; // get the dropdown content element
 const sekteDropdown = inputSekte.nextElementSibling; // define sekteDropdown
 const formRightImg = document.querySelector('.form-right img');
@@ -19,13 +20,19 @@ const form1 = document.getElementById('Formulir1');
 const form2 = document.getElementById('Formulir2');
 const img = document.getElementById('img');
 const nextButton = document.getElementById('nextButton');
-const alert2 = document.getElementById('alert');
-const title = document.getElementById('title');
+const buttonDivs = document.getElementById('button2');
+const alert1 = document.getElementById('alert1');
+const alert2 = document.getElementById('alert2');
+const title1 = document.getElementById('title1');
+const title2 = document.getElementById('title2');
 var url = "https://instagram.com/daisekoi"; // Ganti dengan URL Grup Daisekoi tujuan Anda
 var count = 5; // Waktu hitung mundur dalam detik
 const sekteInput = document.querySelector('#sekte');
 const selectedElement = Array.from(sekteDropdown.children).find(a => a.classList.contains('selected'));
 let sekteValue = selectedElement ? selectedElement.dataset.value : null;
+const urlForm1 = 'https://script.google.com/macros/s/AKfycbyZrfJCK1ST6AK7myOY3p-rIJRFfBCiOTAVa7phmfEjOyJJXDx3igdp6logFYbRg2GxIQ/exec';
+const urlForm2 = 'https://script.google.com/macros/s/AKfycbzkBJFqYO_bMEfl5nkt2dQy4odD0Pa0fOqHetTAMSp2AxJp0dNlYohk35_pBDxME-GufA/exec';
+
 
 //form 2
 const hololive = document.querySelector('.hololive');
@@ -35,6 +42,7 @@ const kritik = document.querySelector('.kritik');
 const anime = document.querySelector('.anime');
 const kpop = document.querySelector('.kpop');
 const tokusatsu = document.querySelector('.tokusatsu');
+const sekteLain = document.querySelector('.sekte-lain');
 
 // Show dropdown on input click or focus
 inputJurusan.addEventListener('click', (e) => {
@@ -118,10 +126,12 @@ dropdownContent.addEventListener('click', (e) => {
       inputSekte.blur();
   
       // Hide all sections and remove required attribute
-      [hololive, jkt48, game, anime, kritik, tokusatsu, kpop].forEach((section) => {
+      [hololive, jkt48, game, anime, kritik, tokusatsu, kpop, sekteLain].forEach((section) => {
         section.style.display = 'none';
         section.querySelectorAll('input').forEach((input) => {
           input.removeAttribute('required');
+          input.value = ''; // Reset input value
+          localStorage.removeItem('form2Data');
         });
       });
   
@@ -149,6 +159,9 @@ dropdownContent.addEventListener('click', (e) => {
         case 'Kritik':
           selectedSection = kritik;
           break;
+        case 'Sekte Lain':
+            selectedSection = sekteLain;
+            break;
         default:
           selectedSection = null;
       }
@@ -176,47 +189,55 @@ dropdownContent.addEventListener('click', (e) => {
     }
   });
 
-// Handle form reset form 1
-resetFormButton1.addEventListener('click', () => {
-  // Clear the dropdown input field
-  inputJurusan.value = '';
-  inputnim.value = '';
-  inputnama.value = '';
-  dropdownContent.style.display = 'none';
-  localStorage.removeItem('form1Data');
-  localStorage.removeItem('form2Data');
 
-  // Remove data-value attribute from selected option
-  const selectedOption = dropdownContent.querySelector('a[selected]');
-  if (selectedOption) {
-    selectedOption.removeAttribute('data-value');
-    selectedOption.removeAttribute('selected');
-  }
-});
+//Reset form
+    function resetForm(form) {
+      form.reset();
+      dropdownContentSekte.style.display = 'none';
+      const selectedOptionSekte = dropdownContentSekte.querySelector('a[selected]');
+      if (selectedOptionSekte) {
+        selectedOptionSekte.removeAttribute('data-value');
+        selectedOptionSekte.classList.remove('selected'); // remove the selected class
+      }
+      form.querySelectorAll('input, select, textarea').forEach(input => {
+        input.value = '';
+        input.removeAttribute('required');
+      });
+      [hololive, jkt48, game, anime, kritik, tokusatsu, kpop, sekteLain].forEach((section) => {
+        section.style.display = 'none';
+        section.querySelectorAll('input').forEach((input) => {
+          input.removeAttribute('required');
+        });
+      });      
+    }
 
-// Handle form reset form 2
-resetFormButton2.addEventListener('click', () => {
-  // Clear the dropdown input field
-  inputSekte.value = '';
-  dropdownContentSekte.style.display = 'none';
-  localStorage.removeItem('form1Data');
-  localStorage.removeItem('form2Data');
-
-  // Remove data-value attribute from selected option
-  const selectedOptionSekte = dropdownContentSekte.querySelector('a[selected]');
-  if (selectedOptionSekte) {
-    selectedOptionSekte.removeAttribute('data-value');
-    selectedOptionSekte.classList.remove('selected'); // remove the selected class
-  }
-
-  // Reset the displayed section below the dropdown
-  [hololive, jkt48, game, anime, kritik, tokusatsu, kpop].forEach((section) => {
-    section.style.display = 'none';
-    section.querySelectorAll('input').forEach((input) => {
-      input.removeAttribute('required');
+    resetFormButton1.addEventListener('click', () => {
+      resetForm(form1);
+      localStorage.removeItem('form1Data');
     });
-  });
-});
+
+    resetFormButton2.addEventListener('click', () => {
+      resetForm(form2);
+      localStorage.removeItem('form2Data');
+    });
+
+
+
+// ...
+
+function handleError(error) {
+  const errorElement = document.getElementById('error-message');
+  errorElement.style.display = 'flex';
+  errorElement.textContent = 'Website Error: ' + error.message;
+  form1.style.display = 'none';
+  form2.style.display = 'none';
+}
+
+
+
+window.onerror = function(error) {
+  handleError(error);
+};
 
 const textContainer = document.getElementById('text-container');
 const texts = ['Selamat datang di UKM Daisekoi', 'Form Pendaftaran anggota Daisekoi'];
@@ -245,7 +266,11 @@ function typeText() {
 currentText = texts[currentIndex];
 typeText();
 
-
+document.querySelectorAll('.btn-submit, .form-left-title .btn-submit, .btn-reset').forEach(button => {
+  button.addEventListener('click', () => {
+    button.classList.toggle('clicked');
+  });
+});
 //submit
 // Form 1 (Formulir1)
 // Initialize the forms
@@ -253,13 +278,12 @@ progressBar2.style.transition = 'width 3s ease-in-out';
 progressBar2.style.width = "20%";
 form1.classList.add('show');
 img.classList.add('show');
-form2.classList.remove('show');
 window.addEventListener('beforeunload', () => {
   localStorage.removeItem('form1Data');
   localStorage.removeItem('form2Data');
 });
 
-
+try {
 nextButton.addEventListener('click', e => {
   e.preventDefault();
   // Get form 1 data
@@ -270,59 +294,81 @@ nextButton.addEventListener('click', e => {
     alert('Ada yang kosong, silakan di lengkapi');
     return;
   }
-  else {
-    // Show loading indicator
-    loadingIndicator.classList.add('loading-animation');
-    loadingIndicator.style.display = 'block';
-  // Save form 1 data to cache
-  localStorage.setItem('form1Data', JSON.stringify(formData1Entries));
-  // Hide form 1 and show form 2  
-  form1.style.display = 'none';
-  form2.style.display = 'flex';
-  form2.style.flexDirection = 'column';
-  form2.style.alignItems = 'start';
-  form2.style.gap = '20px';
-  progressBar2.style.transition = 'width 3s ease-in-out';
-  progressBar2.style.width = "50%";
-  setTimeout(() => {
-    form2.classList.add('show');
-    img.classList.add('show');
-    loadingIndicator.classList.remove('loading-animation');
-    loadingIndicator.style.display = 'none';// Update the image in .form-right
-  }, 500); // wait for 500ms for the transition to complete
+  else {      
+    localStorage.setItem('form1Data', JSON.stringify(formData1Entries));
+    alert1.style.display = 'block';
+    title1.style.display = 'none';
+    alert1.style.color = '#ec0064';  
+  
+    setTimeout(() => {
+      form1.classList.remove('show');  
+      progressBar2.style.transition = 'width 3s ease-in-out';
+      progressBar2.style.width = "50%";
+      setTimeout(() => { 
+        // Show loading indicator
+        loadingIndicator.classList.add('loading-animation');
+        loadingIndicator.style.display = 'block';
+        setTimeout(() => { 
+          // Hide loading indicator after 2 seconds
+          loadingIndicator.classList.remove('loading-animation');
+          loadingIndicator.style.display = 'none';
+          form1.style.display = 'none';
+          form2.classList.add('show');
+          img.classList.add('show');
+        }, 2000); 
+      }, 500); 
+        
+      setTimeout(() => {    
+        alert1.style.display = 'none';
+        title1.style.display = 'block';
+        form2.style.display = 'flex';
+        form2.style.flexDirection = 'column';
+        form2.style.alignItems = 'start';
+        form2.style.gap = '20px';
+      }, 2500); 
+    }, 1000);
   }
    
 });
+} catch (error) {
+  handleError(error);
+}
+
 
 
 
 backButton.addEventListener('click', e => {
-  e.preventDefault();
-  setTimeout(() => {
-      // Show loading indicator
-    loadingIndicator.classList.add('loading-animation');
-    loadingIndicator.style.display = 'block';
-    form2.classList.remove('show');
-    form2.classList.remove('hide');
-    form1.classList.add('show');
-    img.classList.add('show');// Update the image in.form-right
-  }, 500); // wait for 500ms for the transition to complete
-  // Hide form 2 and show form 1
-  setTimeout(() => {
-    loadingIndicator.classList.remove('loading-animation');
-    loadingIndicator.style.display = 'none';
-    form2.style.display = 'none';
-    form1.style.display = 'flex';
-    form1.style.flexDirection = 'column';
-    form1.style.alignItems = 'tart';
-    form1.style.gap = '20px';
-  }, 500); // wait for 500ms for the transition to complete
+  e.preventDefault();  
+    setTimeout(() => {
+      form2.classList.remove('show');
+      setTimeout(() => { 
+        // Show loading indicator
+        loadingIndicator.classList.add('loading-animation');
+        loadingIndicator.style.display = 'block';
+        setTimeout(() => { 
+          // Hide loading indicator after 2 seconds
+          loadingIndicator.classList.remove('loading-animation');
+          loadingIndicator.style.display = 'none';
+          form2.style.display = 'none';
+          form1.classList.add('show');
+          img.classList.add('show');
+        }, 2000); 
+      }, 500); 
+        
+      setTimeout(() => {    
+        alert1.style.display = 'none';
+        title1.style.display = 'block';
+        form1.style.display = 'flex';
+        form1.style.flexDirection = 'column';
+        form1.style.alignItems = 'start';
+        form1.style.gap = '20px';
+      }, 2500); 
+    }, 1000);
+  
 });
 
 // Form 2 (Formulir2)
 const submitButton = document.getElementById('submitButton');
-const urlForm1 = 'https://script.google.com/macros/s/AKfycbyZrfJCK1ST6AK7myOY3p-rIJRFfBCiOTAVa7phmfEjOyJJXDx3igdp6logFYbRg2GxIQ/exec';
-const urlForm2 = 'https://script.google.com/macros/s/AKfycbzkBJFqYO_bMEfl5nkt2dQy4odD0Pa0fOqHetTAMSp2AxJp0dNlYohk35_pBDxME-GufA/exec';
 
 // Get all form 2 input elements
 const form2Inputs = document.querySelectorAll('#Formulir2 input');
@@ -330,10 +376,10 @@ const form2Inputs = document.querySelectorAll('#Formulir2 input');
 // Function to save form data to local storage
 function saveFormData() {
   // Get form data
-  const formData = new FormData(form2);
+  const formData2 = new FormData(form2);
 
   // Convert FormData object to an object
-  const formDataObj = Object.fromEntries(formData.entries());
+  const formDataObj = Object.fromEntries(formData2.entries());
 
   // Save form data to local storage
   localStorage.setItem('form2Data', JSON.stringify(formDataObj));
@@ -358,113 +404,7 @@ submitButton.addEventListener('click', e => {
   }
   const sekteValue = formData2.sekte;
    // ...
-let filteredData = {}; // Define filteredData here
-// Handle dropdown option click
-inputSekte.nextElementSibling.addEventListener('click', (e) => {
-  if (e.target.tagName === 'A') {
-    const value = e.target.textContent;
-    inputSekte.value = value;
-    inputSekte.nextElementSibling.style.display = 'none';
 
-    // Hide all input fields
-    inputFields.forEach((inputField) => {
-      inputField.style.display = 'none';
-      inputField.querySelectorAll('input').forEach((input) => {
-        input.removeAttribute('required');
-      });
-    });
-
-    // Show input field based on sekte value
-    switch (sekteValue) {
-      case 'Hololive':
-        filteredData = {
-          oshi_hololive: formData2.oshi_hololive,
-          alasan: formData2.alasan
-        };
-        // Reset input fields after sekte
-        inputFields.forEach((inputField) => {
-          if (!inputField.classList.contains('hololive') && !inputField.classList.contains('alasan-form')) {
-            inputField.querySelector('input').value = '';
-          }
-        });
-        break;
-      case 'JKT48':
-        filteredData = {
-          oshi_jkt48: formData2.oshi_jkt48,
-          alasan: formData2.alasan
-        };
-        // Reset input fields after sekte
-        inputFields.forEach((inputField) => {
-          if (!inputField.classList.contains('jkt48') && !inputField.classList.contains('alasan-form')) {
-            inputField.querySelector('input').value = '';
-          }
-        });
-        break;
-      case 'KPOP':
-        filteredData = {
-          group_kpop: formData2.group_kpop,
-          bias_kpop: formData2.bias_kpop,
-          alasan: formData2.alasan
-        };
-        // Reset input fields after sekte
-        inputFields.forEach((inputField) => {
-          if (!inputField.classList.contains('KPOP') && !inputField.classList.contains('alasan-form')) {
-            inputField.querySelector('input').value = '';
-          }
-        });
-        break;
-      case 'Tokusatsu':
-        filteredData = {
-          tokusatsu: formData2.tokusatsu,
-          alasan: formData2.alasan
-        };
-        // Reset input fields after sekte
-        inputFields.forEach((inputField) => {
-          if (!inputField.classList.contains('Tokusatsu') && !inputField.classList.contains('alasan-form')) {
-            inputField.querySelector('input').value = '';
-          }
-        });
-        break;
-      case 'Anime':
-        filteredData = {
-          anime: formData2.anime,
-          alasan: formData2.alasan
-        };
-        // Reset input fields after sekte
-        inputFields.forEach((inputField) => {
-          if (!inputField.classList.contains('anime') && !inputField.classList.contains('alasan-form')) {
-            inputField.querySelector('input').value = '';
-          }
-        });
-        break;
-      case 'Game':
-        filteredData = {
-          game: formData2.game,
-          alasan: formData2.alasan
-        };
-        // Reset input fields after sekte
-        inputFields.forEach((inputField) => {
-          if (!inputField.classList.contains('game') && !inputField.classList.contains('alasan-form')) {
-            inputField.querySelector('input').value = '';
-          }
-        });
-        break;
-      case 'Kritik':
-        filteredData = {
-          kritik: formData2.kritik
-        };
-        // Reset input fields after sekte
-        inputFields.forEach((inputField) => {
-          if (!inputField.classList.contains('kritik')) {
-            inputField.querySelector('input').value = '';
-          }
-        });
-        break;
-      default:
-        filteredData = formData2;
-    }
-  }
-});
 
 
 // ...
@@ -506,7 +446,7 @@ inputSekte.nextElementSibling.addEventListener('click', (e) => {
     }
   }
   for (const [key, value] of Object.entries(formData2)) {
-    if (filteredData.hasOwnProperty(key)) {
+    if (formData2.hasOwnProperty(key)) {
       combinedData.append(key, value);
     }
   }
@@ -518,14 +458,18 @@ inputSekte.nextElementSibling.addEventListener('click', (e) => {
     combinedData.append(input.name, input.value);
   });
 
-
   // Simulasi loading (misalnya, fetch data dari server)
   setTimeout(() => {
     progressBar2.style.transition = 'width 3s ease-in-out';
     progressBar2.style.width = "100%";
     alert2.style.display = 'block';
-    title.style.display = 'none';
-    alert2.style.color = '#ec0064';
+    title2.style.display = 'none';
+    alert2.style.color = '#ec0064';  
+    buttonDivs.style.display = 'none';
+    // Show loading indicator
+    loadingIndicator2.classList.add('loading-animation');
+    loadingIndicator2.style.display = 'block';
+    
     setTimeout(() => {
     }, 500); // Setelah 3 detik, sembunyikan progress bar
   }, 500); // Setelah 1 detik, perbarui progress bar ke 100%

@@ -12,6 +12,21 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+#error-message {
+  display: none; 
+  color: red;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 10vh;
+
+}
+
 html {
     min-height: -80vh;
 }
@@ -91,7 +106,13 @@ input ::placeholder {
     opacity: 1;
     transform: translateY(0);
   }
- 
+
+
+#Formulir1.show, #Formulir2.show {
+
+  opacity: 1;
+  transform: translateY(0);
+}
   
 
 
@@ -108,86 +129,56 @@ input ::placeholder {
 }
 
 
-#loading-animation path {
-    animation: fade 2s ease-in-out infinite;
-  }
-  
-  @keyframes fade {
-    0% {
-      opacity: 0.5;
-    }
-    50% {
-      opacity: 0.7;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+#loadingIndicator, #loadingIndicator2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
 
-.loading-animation {
-    animation: spin 1s linear infinite;
+#loadingIndicator svg, #loadingIndicator2 svg {
+  width: 150px; /* updated width and height */
+  height: 150px;
+  position: relative; /* added position: relative */
+  animation: rotate 2s linear infinite; /* added animation */
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-      opacity: 0.5; /* fade in */
-    }
-    100% {
-      transform: rotate(360deg);
-      opacity: 1; /* fade out */
-    }
+  100% {
+    transform: rotate(360deg);
   }
-  
-  #loadingIndicator {
-    display: none;
-    position: relative;
+}
+
+#loadingIndicator svg circle, #loadingIndicator2 svg circle {
+  width: 92px;
+  height: 92px;
+  cx: 70; /* updated cx and cy */
+  cy: 70;
+  r: 70; /* updated radius */
+  fill: none;
+  stroke-width: 10;
+  stroke: #015eea; /* updated stroke color */
+  stroke-linecap: round;
+  transform: translate(5px, 5px); /* added transform */
+  stroke-dasharray: 400; /* added stroke-dasharray */
+  stroke-dashoffset: 400; /* added stroke-dashoffset */
+  animation: animate 4s linear infinite; /* added animation */
+}
+
+@keyframes animate {
+  0%, 100% {
+    stroke-dashoffset: 440;
   }
-  
-  #loadingIndicator svg {
-    width: 92px;
-    height: 92px;
-    fill: #003e80; /* blue color */
-    opacity: 0.5; /* initial opacity */
-  }
-  
-  #loadingIndicator svg path {
-    animation: fade 2s ease-in-out infinite;
-  }
-  
-  @keyframes fade {
-    0% {
-      opacity: 0.5; /* fade in */
-    }
-    50% {
-      opacity: 1; /* fade out */
-    }
-    100% {
-      opacity: 1; /* fade in */
-    }
-    
-  }
-  
-  #loadingIndicator svg circle {
-    cx: 46;
-    cy: 46;
-    r: 40;
-    fill: none;
-    stroke: #070707;
-    stroke-width: 10;
-    stroke-dasharray: 200;
+  50% {
     stroke-dashoffset: 0;
-    
   }
-  
-  @keyframes dash {
-    0% {
-      stroke-dashoffset: 0;
-    }
-    100% {
-      stroke-dashoffset: 100;
-    }
+  50.1% {
+    stroke-dashoffset: 880;
   }
+}
 
 .footer {
     display: flex;
@@ -428,11 +419,12 @@ input[type="number"] {
 }
 
 
-.button, .form-left-title .button {
+.buttonID, .form-left-title .buttonID {
+
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    gap: 20px;
+    gap: 1px;
     }
 
 .form-left button, .form-left-title button{
@@ -453,13 +445,18 @@ input[type="number"] {
 }
 
 
+.btn-reset {
+  background:none !important;
+  border-radius: 10px;
+}
+
 .progressBar{
     border: none;
     height: 5px;
     background-color: #4DDDA4;
 }
 
-.btn-submit svg, .form-left-title .btn-submit svg{
+.btn-submit svg, .form-left-title .btn-submit svg, .btn-reset svg{
     width: 1.25rem;
     height: 1.25rem;
     position: relative;
@@ -473,7 +470,7 @@ input[type="number"] {
     left: 10px;
 }
 
-.btn-submit .btn, .form-left-title .btn-submit .btn {
+.btn-submit .btn, .form-left-title .btn-submit .btn, .btn-reset .btn {
     position: absolute;
     top: 50%;
     left: 100%;
@@ -490,26 +487,22 @@ input[type="number"] {
   }
 
 
-.btn-submit, .form-left-title .btn-submit {
+.btn-submit, .form-left-title .btn-submit, .btn-reset{
     overflow: hidden;
 }
 
-.btn-submit svg, .form-left-title .btn-submit svg{
+.btn-submit svg, .form-left-title .btn-submit svg, .btn-reset svg{
     z-index: 99;
     transition: transform .55s
 }
-.btn-submit p, .form-left-title .btn-submit p  {
+.btn-submit p, .form-left-title .btn-submit p, .btn-reset p{
     z-index: 99;
     transition: transform .55s;
     margin: 0;
 }
 
-.btn-reset {
-    font-size: 1rem!important;
-    }
 
-
-.btn-submit::after, .form-left-title .btn-submit::after {
+.btn-submit::after, .form-left-title .btn-submit::after, .btn-reset::after{
     content: '';
     background: #ec00628a; 
     position: absolute;
@@ -522,7 +515,7 @@ input[type="number"] {
     transition: transform .35s;
 }
 
-.btn-submit:hover::after, .form-left-title .btn-submit:hover::after {
+.btn-submit:hover::after, .form-left-title .btn-submit:hover::after, .btn-reset:hover::after{
     transform: scaleX(1);
 }
 
@@ -530,9 +523,21 @@ input[type="number"] {
     transform: scale(1.1);
 }
 
-.btn-submit:hover p, .form-left-title .btn-submit:hover p {
+.btn-submit:hover p, .form-left-title .btn-submit:hover p{
     transform: scale(1.1);
     color: #ffffff;
+}
+
+/* Add this class to reset the styles */
+.btn-submit.clicked, .form-left-title .btn-submit.clicked, .btn-reset.clicked {
+  /* Reset the ::after pseudo-element */
+  &::after {
+    transform: scaleX(0);
+  }
+  /* Reset the SVG and text */
+  svg, p {
+    transform: scale(1);
+  }
 }
 
 .form-left button img, .form-left-title button img {
@@ -642,10 +647,12 @@ input[type="number"] {
     .footer{
     top: 135px;
     }
-    
-    .btn-primary, .btn-reset {
-        font-size: 0.8rem!important;
-        width: auto !important;
+    .btn-submit svg, .form-left-title .btn-submit svg, .btn-reset svg{
+      width: 0.6rem;
+    height: 0.6rem;
+    }
+      .buttonID p {
+        font-size: 0.8rem !important;
         }
     .form-input{
         width:85vw;
@@ -699,6 +706,11 @@ input[type="number"] {
     .dropdown-content {
         width: 300px; /* atur tinggi sesuai kebutuhan Anda */
     }
-    
-    
+    .btn-submit svg, .form-left-title .btn-submit svg, .btn-reset svg{
+      width: 1rem;
+    height: 1rem;
+    }
+    .buttonID p {
+    font-size: 0.8rem;
+    }
 }
