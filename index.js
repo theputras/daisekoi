@@ -11,6 +11,7 @@ const loadingIndicator2 = document.getElementById('loadingIndicator2');
 const dropdownContentSekte = inputSekte.nextElementSibling; // get the dropdown content element
 const sekteDropdown = inputSekte.nextElementSibling; // define sekteDropdown
 const formRightImg = document.querySelector('.form-right img');
+const formRight = document.querySelector('.form-right');
 const backButton = document.getElementById('backButton');
 const inputFields = document.querySelectorAll('.hololive, .jkt48, .KPOP, .Tokusatsu, .anime, .game, .kritik, .alasan-form');
 
@@ -24,6 +25,9 @@ const buttonDivs = document.getElementById('button2');
 const alert1 = document.getElementById('alert1');
 const alert2 = document.getElementById('alert2');
 const alert3 = document.getElementById('alert3');
+const alerthapus1 = document.getElementById('alerthapus1');
+const alerthapus2 = document.getElementById('alerthapus2');
+const alertback = document.getElementById('alertback');
 const title1 = document.getElementById('title1');
 const title2 = document.getElementById('title2');
 var url = "https://instagram.com/daisekoi"; // Ganti dengan URL Grup Daisekoi tujuan Anda
@@ -209,17 +213,29 @@ dropdownContent.addEventListener('click', (e) => {
         section.querySelectorAll('input').forEach((input) => {
           input.removeAttribute('required');
         });
-      });      
+      });
     }
 
     resetFormButton1.addEventListener('click', () => {
       resetForm(form1);
       localStorage.removeItem('form1Data');
+      title1.style.display = 'none';
+      alerthapus1.style.display = 'block';
+      setTimeout(() => {
+        alerthapus1.style.display = 'none';
+        title1.style.display = 'block';
+      }, 2000); // show the alert for 2 seconds
     });
 
     resetFormButton2.addEventListener('click', () => {
       resetForm(form2);
       localStorage.removeItem('form2Data');
+      alerthapus2.style.display = 'block';
+      title2.style.display = 'none';  
+      setTimeout(() => {
+        alerthapus2.style.display = 'none';
+        title2.style.display = 'block';
+      }, 2000); // show the alert for 2 seconds
     });
 
 
@@ -241,7 +257,7 @@ window.onerror = function(error) {
 };
 
 const textContainer = document.getElementById('text-container');
-const texts = ['Selamat datang di UKM Daisekoi', 'Form Pendaftaran anggota Daisekoi'];
+const texts = ['Selamat datang di UKM Daisekoi', 'Form Pendaftaran Anggota Daisekoi'];
 let currentIndex = 0;
 let currentText = '';
 let currentCharIndex = 0;
@@ -297,17 +313,18 @@ nextButton.addEventListener('click', e => {
   }
   else {      
     localStorage.setItem('form1Data', JSON.stringify(formData1Entries));
+    
     alert1.style.display = 'block';
-    title1.style.display = 'none';  
-  
+    title1.style.display = 'none';
+      
     setTimeout(() => {
       form1.classList.remove('show');  
-      progressBar2.style.transition = 'width 3s ease-in-out';
+      img.classList.remove('show');
       progressBar2.style.width = "50%";
       setTimeout(() => { 
         // Show loading indicator
         loadingIndicator.classList.add('loading-animation');
-        loadingIndicator.style.display = 'block';
+        loadingIndicator.style.display = 'flex';
         setTimeout(() => { 
           // Hide loading indicator after 2 seconds
           loadingIndicator.classList.remove('loading-animation');
@@ -322,11 +339,8 @@ nextButton.addEventListener('click', e => {
         alert1.style.display = 'none';
         title1.style.display = 'block';
         form2.style.display = 'flex';
-        form2.style.flexDirection = 'column';
-        form2.style.alignItems = 'start';
-        form2.style.gap = '20px';
       }, 2500); 
-    }, 1000);
+    }, 2000);
   }
    
 });
@@ -339,14 +353,20 @@ nextButton.addEventListener('click', e => {
 
 backButton.addEventListener('click', e => {
   e.preventDefault();  
+  progressBar2.style.width = "1%";
+  alertback.style.display = "block";
+  title2.style.display = 'none';
     setTimeout(() => {
+      img.classList.remove('show');
       form2.classList.remove('show');
       setTimeout(() => { 
         // Show loading indicator
         loadingIndicator.classList.add('loading-animation');
-        loadingIndicator.style.display = 'block';
+        loadingIndicator.style.display = 'flex';
         setTimeout(() => { 
           // Hide loading indicator after 2 seconds
+          alertback.style.display = "none";
+          title2.style.display = 'block';
           loadingIndicator.classList.remove('loading-animation');
           loadingIndicator.style.display = 'none';
           form2.style.display = 'none';
@@ -359,11 +379,8 @@ backButton.addEventListener('click', e => {
         alert1.style.display = 'none';
         title1.style.display = 'block';
         form1.style.display = 'flex';
-        form1.style.flexDirection = 'column';
-        form1.style.alignItems = 'start';
-        form1.style.gap = '20px';
       }, 2500); 
-    }, 1000);
+    }, 2000);
   
 });
 
@@ -469,8 +486,9 @@ submitButton.addEventListener('click', e => {
     title2.style.display = 'none';  
     buttonDivs.style.display = 'none';
     // Show loading indicator
+    img.classList.remove('show');
     loadingIndicator2.classList.add('loading-animation');
-    loadingIndicator2.style.display = 'block';
+    loadingIndicator2.style.display = 'flex';
     fetch(urlForm1, { method: 'POST', body: combinedData })
   .then(response => response.json())
   .then(data => {
@@ -511,6 +529,7 @@ submitButton.addEventListener('click', e => {
   })
   .catch(error => console.error('Error URL 1!', error.message));
     setTimeout(() => { 
+      progressBar2.style.transition = 'width 3s ease-in-out';
     progressBar2.style.display ='none';
     // Submit combined data to both URLs
   

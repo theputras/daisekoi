@@ -12,21 +12,25 @@
 <body>
 
 <div class="container">
+
+ 
   <div id="error-message"></div>
 <section id="form" class="form-container" >
-  
-   <div id="loadingIndicator" style="display: none;">
+  <div id="loadingIndicator" style="display: none;">
     <svg>
-      <circle cx="70" cy="70" r="70"></circle>
+        <circle cx="70" cy="70" r="70"></circle>
     </svg>
-        </div>
+</div>
+  
         <!-- Form 1 -->
     <form id="Formulir1" name="submit-to-form" class="form-left">
+    
         <div class="form-left-title">
           
           <h2 id="text-container"></h2>
           <p id="title1">Silakan mengisi form yang telah disediakan</p>
           <p id="alert1" style="display: none;">Loading......</p>
+          <p id="alerthapus1">Berhasil dihapus.</p>
           <hr id="progressBar">
         </div>
        
@@ -52,6 +56,7 @@
         </div>
       </form>
   
+  
       <!-- Form 2 -->
       <form id="Formulir2" name="submit-to-survey" class="form-left" style="display: none;">
         <a class="back-to-history" id="backButton">
@@ -65,6 +70,7 @@
           <h2>Pilih sektemu di Sini</h2>
           <p id="title2">Silakan mengisi Survey yang telah disediakan</p>
           <p id="alert2" style="display: none;">Loading....</p>
+          <p id="alertback" style="display: none;">Kembali....</p>
           <p id="alert3" style="display: none;">Data kamu berhasil dikirim</p>
           <hr id="progressBar2">
         </div>
@@ -109,20 +115,30 @@
           <input type="text" name="kritik" placeholder="Apa hal yang suka kamu kritik?" class="kritik-form form-input" required>
         </div>
           <input class="alasan-form form-input" style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" required>
-          <div id="loadingIndicator2" style="display: none;">
-            <svg>
-              <circle cx="70" cy="70" r="70"></circle>
-            </svg>
-          </div>
+          
         <div id="button2" class="buttonID">
           <button class="btn btn-primary btn-submit" id="submitButton" type="submit"><p>Kirim</p></button>
           <button class="btn btn-secondary btn-reset" type="button" id="resetFormButton2"><p>Kosongkan Formulir</p></button>
         </div>
       </form>
-        
+      
         <div class="form-right">
             <img id="img" class="logo-header" src="./assets/Logo - Daisekoi.png" alt="png">
+            <div id="loadingIndicator2" style="display: none;">
+              <svg>
+                  <circle cx="70" cy="70" r="70"></circle>
+              </svg>
           </div>
+          </div>
+          <div class=".form-right-load">
+          <div id="loadingIndicator2" style="display: none;">
+              <svg>
+                  <circle cx="70" cy="70" r="70"></circle>
+              </svg>
+          </div>
+          
+          </div>
+          
             
             
         </section>

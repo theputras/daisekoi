@@ -93,10 +93,8 @@ input ::placeholder {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 10vh;
+    gap: 19vh;
+    flex-wrap: nowrap;
    
 }
 
@@ -116,12 +114,13 @@ input ::placeholder {
 
 /* Alert */
 
- #alert1, #alert2, #alert3{
+ #alert1, #alert2, #alert3, #alertback, #alerthapus1, #alerthapus2{
   color:#ec0064;
   display: none;
   
  }
  
+
 
 /* Transition effect */
 .form-left, .form-right img {
@@ -155,13 +154,28 @@ input ::placeholder {
   padding: 1px 1px 1px 1px; /* Reduced padding */
   min-height: calc(1vh - 1px); /* 90px adalah tinggi footer */
 }
-
-
-#loadingIndicator, #loadingIndicator2 {
-  position: relative;
+.form-right-load {
+  position: fixed;
   display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;;
+ }
+
+
+#loadingIndicator,#loadingIndicator2 {
+  position: fixed;
   flex-direction: column;
   align-items: start;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+#loadingIndicator2{
+  position: relative !important;
 }
 
 #loadingIndicator svg, #loadingIndicator2 svg {
@@ -231,7 +245,7 @@ display: none;
  margin: 0;
  text-align: start;
  word-wrap: break-word; /* Ensures long words will wrap */
- font-size: calc(0.5rem + 0.5vw);
+ font-size: calc(0.4rem + 0.5vw);
  color: #fff;
 }
 
@@ -245,7 +259,7 @@ display: none;
 .form-left-title h2 {
     font-weight: 800;
     color: #ffffff;
-    font-size: 40px;
+    font-size: 4vh;
     margin-bottom: 5px;
     word-wrap: break-word; /* Ensures long words will wrap */
 }
@@ -262,7 +276,7 @@ display: none;
 .form-left-title p{
     font-weight: 600;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
@@ -272,7 +286,7 @@ opacity: 100% !important;
 
 .form-left-title hr{
     border: none;
-    width: 120px;
+    width: 5vh;
     height: 5px;
     background-color: #fffb00;
     border-radius: 10px;
@@ -585,18 +599,19 @@ input[type="number"] {
 }
 
 .form-right img{
-    width: 350px;
+    width: 37vh;
 }
 @media (max-width:1500px) {
     .footer p {
         font-size: 0.9rem;
         bottom: auto;
       }
+      
 }
 
 @media (max-width:1420px) {
     .form-right img{
-        width: 250px;
+        width: 26vh;
     }
     #text-container {
       max-width: 65vh;
@@ -608,12 +623,14 @@ input[type="number"] {
     .form-right img{
         width: 250px;
     }
-    
+    .form-right-load{
+      display: none;
+    }
 }
 
 @media (max-width: 889px){
 #text-container {
-      max-width: 60vh !important;
+      max-width: 60vh;
   }
 
 }
@@ -623,24 +640,25 @@ input[type="number"] {
         width:80vw;
     }
     .footer p {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
       }
     .form-left-title h2{
-        font-size: 5vw;
+        font-size: 1.8rem;
     }
     #text-container {
-      max-width: 65vh;
+      max-width: 55vh;
   }
 
     .form-left-title p{
-        font-size: 2.5vw;
-    }
-    .form-left-title hr{
-        width: 20vw;
+        font-size: 0.7rem;
     }
 
-    .form-right {
+    .form-right{
         display: none;
+    }
+    
+    .form-right-load{
+      display: flex;
     }
     .logo-footer {
         display: block;
