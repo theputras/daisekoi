@@ -72,30 +72,46 @@ input ::placeholder {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-.container{
-    display: flex;
-    flex-direction: column;
-    flex: 1; /* Tambahkan ini untuk memastikan container mengambil ruang yang tersedia */
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    min-height: 80vh;
-    
-    padding: 50px 0 15px 15px; /* Reduced padding */
+.container {
+  max-width: 1200px; /* adjust the max-width to your liking */
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 50px; /* add some space between the form container and the footer */
+   min-height: calc(100vh - 100px); /* adjust the value to push the footer down */
 }
 
-.container .form-container, .container .output-container{
-    height: 200vh;
+.container.form-container,.container.output-container {
+  height: 100vh;
+  width: 100%; /* add this to take up full width */
+  max-width: 1200px; /* adjust the max-width to your liking */
+  margin: 0 auto; /* add this to center the elements */
+  padding: 20px; /* add some padding for better layout */
 }
 
-.form-container, .output-container{
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 19vh;
-    flex-wrap: nowrap;
-   
+.form-container, .output-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 51px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* Add Bootstrap classes to center the sections */
+.form-container, .output-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+}
+
+.form-container {
+  background: linear-gradient(-21.11deg, #00c0fa 30%, #015eea);
+}
+
+.output-container {
+  background: linear-gradient(-21.11deg, #015eea 30%,  #00c0fa);
 }
 
 .icon .img-bg {
@@ -151,7 +167,7 @@ input ::placeholder {
   transition: opacity 0.5s; /* add transition effect */
 }
 
-.footer .container {
+/*.footer .container {
     position: relative;
     bottom: 0;
     display: flex;
@@ -159,9 +175,10 @@ input ::placeholder {
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding: 1px 1px 1px 1px; /* Reduced padding */
-  min-height: calc(1vh - 1px); /* 90px adalah tinggi footer */
-}
+  padding: 1px 1px 1px 1px; /* Reduced padding 
+  min-height: calc(1vh - 1px); /* 90px adalah tinggi footer
+} 
+*/
 .form-right-load {
   position: fixed;
   display: flex;
@@ -172,7 +189,15 @@ input ::placeholder {
     align-content: center;;
  }
 
-
+ .form-left, .form-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
 #loadingIndicator,#loadingIndicator2 {
   position: fixed;
   flex-direction: column;
@@ -229,24 +254,53 @@ input ::placeholder {
     stroke-dashoffset: 880;
   }
 }
-
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .footer {
-    display: flex;
-    justify-content: center;
-    justify-content: space-evenly;
-    align-items: center;
-    position: relative;
-    top: 100px;
-    height: 55px;
-    background: #015eea;
-    padding: 10px 0;
-    justify-content: center;
-    margin: 40px 0 0 0; /* Tambahkan ini untuk memastikan footer berada di atas elemen lainnya */
+  display: flex;
+
+  min-height: 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #015eea;
+  padding: 20px 0;
+  text-align: center;
+  color: #fff;
+  
+}
+.form-container, .container {
+  flex: 1;
+}
+footer {
+  display: block;
+  height: 50px; /* adjust the height to your liking */  
+}
+.footer-container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 0;
+  max-width: 1200px; /* adjust the max-width to your liking */
+  margin: 0 auto;
+  padding:0 0 0 20px;
+}
+.logo-footer {
+display: none;
 }
 
 
-.logo-footer {
-display: none;
+
+.footer.logo-footer {
+  display: block;
+  width: 100px;
+  height: auto;
+  margin: 10px;
 }
 
 .footer p {
@@ -280,12 +334,13 @@ display: none;
 color: #ffffff !important;
 }
 .form-left-title {
+  text-align: left;
     margin-bottom: 20px;
     max-width: 100%; /* Ensures the title container doesn't exceed its parent's width */
 }
 
 .form-left-title h2 {
-    font-weight: 800;
+    font-weight: 500;
     color: #ffffff;
     font-size: 4vh;
     margin-bottom: 5px;
@@ -296,6 +351,12 @@ color: #ffffff !important;
     overflow: hidden; /* hide excess text */
     text-overflow: ellipsis; /* add ellipsis at the end */
     max-width: 63vh; /* adjust the width to your liking */
+    font-weight: 800;
+    text-align: center;
+    color: #ffffff;
+    font-size: 4vh;
+    margin: 100px 0 100px 0;
+    word-wrap: break-word; /* Ensures long words will wrap */
   }
 
 
@@ -337,7 +398,7 @@ opacity: 100% !important;
     z-index: 6;    
 }
 .form-input {
-  width: 65vh;
+  width: 70vh;
   height: 50px;
   border: none;
   outline: none;
@@ -424,6 +485,7 @@ input[type="number"] {
 .dropdown {
     position: relative;
     display: inline-block;
+    z-index: 1000;
   }
 
 .dropdown-content {
@@ -432,13 +494,13 @@ input[type="number"] {
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 100;
+    z-index: 1000;
     width: 600px;
     margin-top: 10px;
     border-radius: 10px;
     max-height: 200px;
     overflow-y: auto;
-    
+    z-index: 200000; /* bring the dropdown content to the front */
   }
   
   .dropdown.form-input:focus + .dropdown-content {
@@ -447,6 +509,7 @@ input[type="number"] {
   
   .dropdown-content a {
     padding: 12px 16px;
+    z-index: 1000;
     border-radius: 10px;
     text-decoration: none;
     display: block;
@@ -456,12 +519,14 @@ input[type="number"] {
   
   .dropdown-content a:hover {
     background-color: #f1f1f1;
+    z-index: 1000;
   }
   
 
 
 .dropdown.form-input:focus + .dropdown-content {
   display: block;
+  z-index: 1000;
 }
 
 
@@ -470,9 +535,11 @@ input[type="number"] {
   text-decoration: none;
   display: block;
   color: #436074;
+  z-index: 1000;
 }
 
 .dropdown-content a:hover {
+  z-index: 1000;
   background-color: #f1f1f1;
 }
   
@@ -502,11 +569,12 @@ input[type="number"] {
 
 
 .buttonID, .form-left-title .buttonID {
-
+  position: relative;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    gap: 1px;
+    gap: 20px;
+    z-index: -1;
     }
 
 .form-left button, .form-left-title button{
@@ -626,9 +694,16 @@ input[type="number"] {
     height: 15px;
     color: #ffffff
 }
-
+.img-wrapper {
+  overflow: hidden;
+}
+.logo-header {
+  position: static;
+  pointer-events: none;
+}
 .form-right img{
-    width: 37vh;
+  position: static;
+    width: 30vh;
 }
 @media (max-width:1500px) {
     .footer p {
@@ -652,9 +727,7 @@ input[type="number"] {
     .form-right img{
         width: 250px;
     }
-    .form-right-load{
-      display: none;
-    }
+    
 }
 
 @media (max-width: 889px){
@@ -681,45 +754,40 @@ input[type="number"] {
     .form-left-title p{
         font-size: 0.7rem;
     }
-
-    .form-right{
-        display: none;
-    }
     
     .form-right-load{
       display: flex;
     }
-    .logo-footer {
-        display: block;
-        width: 100px;
-        height: auto;
-        margin: 10px;
-    }
-
-    footer .container {
-        display: flex;
-        position:fixed;
-        flex-wrap: nowrap;
-        align-items: center;
-    }
     .footer {
-        top: 135px;
+      bottom: 0;
+      width: 100%;
     }
-
-    .footer img {
-        width: auto;
-        height: 40px;
-        margin-left: auto;
-        margin-top: 0;
-        margin-bottom: 0;
-        justify-content:flex-end;
+   .footer.container {
+      flex-direction: column;
+      align-items: center;
+    }
+   .footer img {
+      width: 50px;
+      height: auto;
+      margin: 10px;
     }
 
     .form-container, .output-container {
-        display: grid;
-        align-items: center;
-        align-content: space-evenly;
-        justify-items: center;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+    #text-container {
+      text-align: left;
+    }
+    .form-left, .form-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
     }
     .form-container img, .output-container img {
         display: grid;
@@ -734,18 +802,19 @@ input[type="number"] {
     .dropdown-content {
         width: 500px;
     }
-    .container{
-        width: 100% !important;
-        padding-right: 20px !important;
-        padding-left: 20px !important;
-        min-height: 75vh;
+    .container {
+      padding: 10px;
     }
 }
 
 @media (max-width:490px) {
-    .footer{
-    top: 135px;
-    }
+    
+  .logo-header{
+  display: none !important;
+  }
+  .logo-footer {
+  display: block;
+  }
     .form-left-title h2 {
       font-size: 6vw;
   }
@@ -762,24 +831,33 @@ input[type="number"] {
     .form-input{
         width:85vw;
     }
-    .footer p {
-        font-size: 0.8rem;
-      }
-    
-    .footer img {
-        width: auto;
-        height: 30px;
-        margin-left: auto;
-        padding-left: 60px;
+    .footer {
+      padding: 10px 0;
+    }
+   .footer p {
+      font-size: 12px;
+    }
+   .footer img {
+      width: 30px;
+      height: auto;
+      margin: 10px;
     }
 
     .form-container, .output-container {
-        display: grid;
-        align-items: center;
-        align-content: space-evenly;
-        justify-items: center;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
     }
-
+    .form-left, .form-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;      
+      align-items: flex-start;
+      justify-content: center;
+      gap: 5px;
+      padding: 5px;
+    }
     .form-left-title p{
         font-size: 3vw;
     }
@@ -799,6 +877,9 @@ input[type="number"] {
         bottom:10px;
     }
 
+    .container {
+      padding: 5px;
+    }
     .dropdown-content {
         width: 350px;
     }
