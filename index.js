@@ -252,9 +252,11 @@ function handleError(error) {
 }
 
 window.onbeforeunload = function(e) {
-  var message = "Anda yakin ingin meninggalkan halaman ini?";
-  e.returnValue = message;
-  return message;
+  if (localStorage.getItem('form1Data') || localStorage.getItem('form2Data')) {
+    var message = "Anda yakin ingin meninggalkan halaman ini?";
+    e.returnValue = message;
+    return message;
+  }
 };
 
 
@@ -509,11 +511,13 @@ form2Inputs.forEach(input => {
                   //Success Warning
                   alert2.style.display = 'none';
                   alert3.style.display = 'block';
+                  img.classList.add('show');
                     // Hide form 1 and show form 2
                     setTimeout(() => {
                       // Hide form 1 and show form 2
                       form.style.display = 'none';
                       output.style.display = 'flex';
+                      
                       //countdown output
                       function countDown() {
                         if (count > 0) {
@@ -533,10 +537,6 @@ form2Inputs.forEach(input => {
   })
   .catch(error => console.error('Error URL 1!', error.message));
     setTimeout(() => { 
-    // Make input fields of Form 2 readonly
-  form2Inputs.forEach(input => {
-    input.disabled = false;
-  });
       progressBar2.style.transition = 'width 3s ease-in-out';
     progressBar2.style.display ='none';
     // Submit combined data to both URLs
