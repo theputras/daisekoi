@@ -228,7 +228,8 @@ function cekKhodam(event) {
             'City Pop',
             'Joni',
             'Kakek Sugiono',
-            'Pak tua Jenkins'
+            'Pak tua Jenkins',
+            'Naga Bonar'
             
             
         ];
