@@ -225,7 +225,8 @@ function cekKhodam(event) {
             'Anas Hisyam',
             'Knalpot Mberr',
             'Kosong',
-            'City Pop'
+            'City Pop',
+            'Joni'
             
             
         ];
