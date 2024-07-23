@@ -226,7 +226,9 @@ function cekKhodam(event) {
             'Knalpot Mberr',
             'Kosong',
             'City Pop',
-            'Joni'
+            'Joni',
+            'Kakek Sugiono',
+            'Pak tua Jenkins'
             
             
         ];
