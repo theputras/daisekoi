@@ -123,7 +123,7 @@ submitButton.addEventListener('click', e => {
   } else {
   progressBar.style.width = "0%";  
   // Simulasi loading (misalnya, fetch data dari server)
-  form2Inputs.forEach(input => {
+  khodamInputs.forEach(input => {
     input.disabled = true;
   });
   setTimeout(() => {
@@ -174,23 +174,60 @@ function cekKhodam(event) {
     alert('Masukkan nama terlebih dahulu!');
   } else {
     let status = [
-        'isi',
-        'kosong',
+    'kosong',
+    
     ]
     const randomStatus = Math.floor(Math.random() * status.length);
+    
     if (randomStatus === 0) {
         let khodam = [
-            'Jinn',
-            'Syaitan',
-            'Malaikat',
-            'Peri',
-            'Naga',
-            'Setan',
-            'Hantu',
-            'Jin',
-            'Iblis',
-            'Kuntilanak',
-            'Pocong', 'Keyboard Mechanical'
+            'Keyboard Mechanical',
+            'Harimau Sunda', 
+            'Ular Piton', 
+            'Ikan Mas',
+            'Iwak Lele', 
+            'Iwak Gatul',
+            'Kucing Garong',
+            'Ayam Jago',
+            'Bebek Peking',
+            'Kambing Hitam',
+            'Kelinci Loncat',
+            'Burung Hantu',
+            'Lebah Suka',
+            'Panda Raksasa',
+            'Merak Kalem',
+            'Kijang Kejang',
+            'Kijang Innova',
+            'Avanza',
+            'Panther',
+            'Kucing Lincah',
+            'Ikan Pari',
+            'Lemper Jawa',
+            'Manchester United',
+            'Oli Samping', 
+            'Manusia Silver',
+            'Tikus Berdasi',
+            'Banteng Merah',
+            'Sekop',
+            'Presiden Konoha',
+            'Tang Handy Many',
+            'Lebah Ganteng',
+            'Roger Sumatera',
+            'Semut Bersepatu',
+            'Ular Berkacamata',
+            'Cacing Kepanasan',
+            'Kecoa Manis',
+            'Buwung Puyuh',
+            'Bjirr',
+            'Beliau',
+            'Komodo Galau',
+            'Kosong',
+            'Anas Hisyam',
+            'Knalpot Mberr',
+            'Kosong',
+            'City Pop'
+            
+            
         ];
         const random = Math.floor(Math.random() * khodam.length);
         
