@@ -89,7 +89,7 @@ input ::placeholder {
   padding: 20px; /* add some padding for better layout */
 }
 
-.form-container, .output-container {
+.form-container, .output-container, #error-message {
   display: flex;
   flex-direction: column;
   align-items: center;

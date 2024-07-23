@@ -88,7 +88,7 @@ input ::placeholder {
   padding: 20px; /* add some padding for better layout */
 }
 
-.form-container, .output-container {
+.form-container, .output-container, #error-message {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -139,13 +139,13 @@ input ::placeholder {
 
 
 /* Transition effect */
-.form-left, .form-right img {
+.form-left, .form-right img, .output-container {
     opacity: 0;
     transform: translateY(50%);
     transition: opacity 0.5s, transform 0.5s;
   }
   
-  .form-left.show, .form-right img.show {
+  .form-left.show, .form-right img.show, .output-container.show {
     opacity: 1;
     transform: translateY(0);
   }
@@ -198,8 +198,8 @@ input ::placeholder {
   gap: 20px;
   padding: 20px;
 }
-#loadingIndicator,#loadingIndicator2 {
-  position: fixed;
+#loadingIndicator {
+  position: relative;
   flex-direction: column;
   align-items: start;
   flex-wrap: wrap;
@@ -207,9 +207,6 @@ input ::placeholder {
   align-content: center;
 }
 
-#loadingIndicator2{
-  position: relative !important;
-}
 
 #loadingIndicator svg, #loadingIndicator2 svg {
   width: 150px; /* updated width and height */

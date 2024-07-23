@@ -14,12 +14,9 @@
   <div class="container">
 
     <div class="row justify-content-center">
+      <div id="error-message" style="display: none;"></div>
       <section id="form" class="form-container" >
-        <div id="loadingIndicator" style="display: none;">
-          <svg>
-              <circle cx="70" cy="70" r="70"></circle>
-          </svg>
-      </div>
+        
         
               <!-- Form 1 -->
           <form id="Formulir1" name="submit-to-form" class="form-left">
@@ -125,21 +122,13 @@
               <div class="form-right">
                 <div class="img-wrapper">
                   <img id="img" class="logo-header" src="./assets/Logo - Daisekoi.png" alt="png">
-                  <div id="loadingIndicator2" style="display: none;">
+                  <div id="loadingIndicator" style="display: none;">
                     <svg>
                         <circle cx="70" cy="70" r="70"></circle>
                     </svg>
                 </div>
                 </div>
                   
-                </div>
-                <div class=".form-right-load">
-                <div id="loadingIndicator2" style="display: none;">
-                    <svg>
-                        <circle cx="70" cy="70" r="70"></circle>
-                    </svg>
-                </div>
-                
                 </div>
                 
                   
@@ -149,13 +138,13 @@
               <div class="form-left-title">
                 <h2>Kamu akan diarahkan ke Grup Whatsapp Daisekoi, silakan join ya</h2>
                 <p>Halaman ini akan berubah dalam hitungan  <span id="msg"></span></p>
-                <button class="btn-submit btn"  type="submit"> <p>Atau Tekan Tombol ini</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="#FFFFFF"/></svg> </button>
+                <button id="redirect" class="btn-submit btn"  type="submit"> <p>Atau Tekan Tombol ini</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="#FFFFFF"/></svg> </button>
             </div>
             
       
             <div class="form-right">
               <div class="img-wrapper">
-                <img id="img" class="logo-header" src="./assets/Logo - Daisekoi.png" alt="png">
+                <img id="img2" class="logo-header" src="./assets/Logo - Daisekoi.png" alt="png">
                 
               </div>
                 
@@ -163,7 +152,7 @@
             
             </section>
     </div>
-    <div id="error-message"></div>
+    
  
       </div>
 
@@ -175,7 +164,7 @@
     
     <footer class="footer py-3"> 
     <div class="footer-container">
-    <p>Website created by <a href="https://theputras.github.io/">THE PUTRAS</a> Beta Version 2.5</p>
+    <p>Website created by <a href="https://theputras.github.io/">THE PUTRAS</a> Beta Version 2.6</p>
     <img src="./assets/Logo - Daisekoi.png" alt="png" class="logo-footer">
     </div>
 </footer>

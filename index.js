@@ -12,6 +12,8 @@ const dropdownContentSekte = inputSekte.nextElementSibling; // get the dropdown 
 const sekteDropdown = inputSekte.nextElementSibling; // define sekteDropdown
 const formRightImg = document.querySelector('.form-right img');
 const formRight = document.querySelector('.form-right');
+const output = document.querySelector('.output-container');
+const form = document.querySelector('.form-container');
 const backButton = document.getElementById('backButton');
 const inputFields = document.querySelectorAll('.hololive, .jkt48, .KPOP, .Tokusatsu, .anime, .game, .kritik, .alasan-form');
 
@@ -21,6 +23,7 @@ const form1 = document.getElementById('Formulir1');
 const form2 = document.getElementById('Formulir2');
 const footer = document.querySelector('.footer');
 const img = document.getElementById('img');
+const img2 = document.getElementById('img2');
 const nextButton = document.getElementById('nextButton');
 const buttonDivs = document.getElementById('button2');
 const alert1 = document.getElementById('alert1');
@@ -250,21 +253,20 @@ function handleError(error) {
   const errorElement = document.getElementById('error-message');
   errorElement.style.display = 'flex';
   errorElement.textContent = 'Website Error: ' + error.message;
-  form1.style.display = 'none';
-  form2.style.display = 'none';
+  form.style.display = 'none';
 }
-
-window.onbeforeunload = function(e) {
-  var message = "Anda yakin ingin meninggalkan halaman ini?";
-  e.returnValue = message;
-  return message;
-};
-
-
-
 window.onerror = function(error) {
   handleError(error);
 };
+
+
+let formDataSubmitted = false;
+
+// ...
+
+
+
+
 
 const textContainer = document.getElementById('text-container');
 const texts = ['Selamat datang di UKM Daisekoi', 'Form Pendaftaran Anggota Daisekoi'];
@@ -331,6 +333,7 @@ nextButton.addEventListener('click', e => {
     setTimeout(() => {
       form1.classList.remove('show');  
       img.classList.remove('show');
+      form1.style.display = 'none';
       progressBar2.style.width = "50%";
       setTimeout(() => { 
         // Show loading indicator
@@ -350,6 +353,7 @@ nextButton.addEventListener('click', e => {
         alert1.style.display = 'none';
         title1.style.display = 'block';
         form2.style.display = 'flex';
+        form2.style.alignItems = 'flex-start';
       }, 2500); 
     }, 2000);
   }
@@ -364,6 +368,7 @@ nextButton.addEventListener('click', e => {
 
 backButton.addEventListener('click', e => {
   e.preventDefault();  
+  form1.style.display = 'none';
   progressBar2.style.width = "1%";
   alertback.style.display = "block";
   title2.style.display = 'none';
@@ -500,12 +505,13 @@ form2Inputs.forEach(input => {
     buttonDivs.style.display = 'none';
     // Show loading indicator
     img.classList.remove('show');
-    loadingIndicator2.classList.add('loading-animation');
-    loadingIndicator2.style.display = 'flex';
+    loadingIndicator.classList.add('loading-animation');
+    loadingIndicator.style.display = 'flex';
     fetch(urlForm, { method: 'POST', body: combinedData })
   .then(response => response.json())
   .then(data => {
     console.log('Response from URL Form:', data);
+    formDataSubmitted = true;
                   // Clear cache data
                   localStorage.removeItem('form1Data');
                   localStorage.removeItem('form2Data');
@@ -516,6 +522,8 @@ form2Inputs.forEach(input => {
                     setTimeout(() => {
                       // Hide form 1 and show form 2
                       form.style.display = 'none';
+                      img2.classList.add('show');
+                      output.classList.add('show');
                       output.style.display = 'flex';
                       //countdown output
                       function countDown() {
@@ -536,10 +544,6 @@ form2Inputs.forEach(input => {
   })
   .catch(error => console.error('Error URL 1!', error.message));
     setTimeout(() => { 
-    // Make input fields of Form 2 readonly
-  form2Inputs.forEach(input => {
-    input.disabled = false;
-  });
       progressBar2.style.transition = 'width 3s ease-in-out';
     progressBar2.style.display ='none';
     // Submit combined data to both URLs
@@ -550,6 +554,19 @@ form2Inputs.forEach(input => {
   
 });
 
-redirectButton.addEventListener('click', () => {
-  window.location.replace(url);
-});
+window.onload = function() {
+  const redirectButton = document.getElementById('redirect');
+  redirectButton.addEventListener('click', () => {
+    window.location.replace(url);
+  });
+}
+
+// When the user tries to close the tab, check if formDataSubmitted is false
+// When the user tries to close the tab, check if formDataSubmitted is false
+window.onbeforeunload = function(e) {
+  if (!formDataSubmitted) {
+    var message = "Anda yakin ingin meninggalkan halaman ini? Data belum dikirim!";
+    return message;
+  }
+};
+

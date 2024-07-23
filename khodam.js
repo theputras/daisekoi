@@ -1,10 +1,10 @@
-const inputnama = document.getElementById('nama');
 const resetFormButton = document.getElementById('resetFormButton');
 const loadingIndicator = document.getElementById('loadingIndicator');
-const formRightImg = document.querySelector('.form-right img');
-const formRight = document.querySelector('.form-right');
 const searchInput = document.getElementById('search');
+const khodamInputs = document.querySelectorAll('#khodam input');
 //submit
+const output = document.querySelector('.output-container');
+const khodamContainer = document.querySelector('.form-container');
 const khodam = document.getElementById('khodam');
 const resetButton = document.getElementById('resetButton');
 const result = document.getElementById('hasil-khodam');
@@ -14,17 +14,8 @@ const img = document.getElementById('img');
 const nextButton = document.getElementById('nextButton');
 const buttonDivs = document.getElementById('button');
 const alert1 = document.getElementById('alert1');
-const alert2 = document.getElementById('alert2');
-const alert3 = document.getElementById('alert3');
 const alerthapus1 = document.getElementById('alerthapus1');
-const alerthapus2 = document.getElementById('alerthapus2');
-const alertback = document.getElementById('alertback');
 const title1 = document.getElementById('title1');
-const title2 = document.getElementById('title2');
-var url = "https://instagram.com/daisekoi"; // Ganti dengan URL Grup Daisekoi tujuan Anda
-var count = 5; // Waktu hitung mundur dalam detik
-var scriptUrl = 'https://script.google.com/a/macros/dinamika.ac.id/s/AKfycbzLO7LNFO1RClCEh-lj_crqztFNgjPKepf0XNtslOC9NyjUkgSLO9Uf0bbHUElMUhmN/exec';
-
 
 
 
@@ -57,17 +48,8 @@ function handleError(error) {
   
   errorElement.style.display = 'flex';
   errorElement.textContent = 'Website Error: ' + error.message;
-  khodam.style.display = 'none';
+  khodamContainer.style.display = 'none';
 }
-
-window.onbeforeunload = function(e) {
-  if (localStorage.getItem('form1Data') || localStorage.getItem('form2Data')) {
-    var message = "Anda yakin ingin meninggalkan halaman ini?";
-    e.returnValue = message;
-    return message;
-  }
-};
-
 
 
 window.onerror = function(error) {
@@ -141,6 +123,9 @@ submitButton.addEventListener('click', e => {
   } else {
   progressBar.style.width = "0%";  
   // Simulasi loading (misalnya, fetch data dari server)
+  form2Inputs.forEach(input => {
+    input.disabled = true;
+  });
   setTimeout(() => {
     progressBar.style.transition = 'width 3s ease-in-out';
    progressBar.style.width = "100%";   
@@ -160,6 +145,7 @@ submitButton.addEventListener('click', e => {
                     setTimeout(() => {
                       loadingIndicator.classList.remove('loading-animation');
                       loadingIndicator.style.display = 'none';
+                      
                       // Hide form 1 and show form 2
                       khodam.classList.remove('show');
                       khodam.style.display = 'none';
@@ -174,7 +160,7 @@ submitButton.addEventListener('click', e => {
     // Submit combined data to both URLs
   
     }, 3000); // Setelah 3 detik, sembunyikan progress bar
-  }, 500); // Setelah 1 detik, perbarui progress bar ke 100%
+  }, 500  ); // Setelah 1 detik, perbarui progress bar ke 100%
   }
   
 
