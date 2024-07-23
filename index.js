@@ -31,6 +31,7 @@ const alerthapus2 = document.getElementById('alerthapus2');
 const alertback = document.getElementById('alertback');
 const title1 = document.getElementById('title1');
 const title2 = document.getElementById('title2');
+const redirectButton = document.getElementById('redirectButton');
 var url = "https://instagram.com/daisekoi"; // Ganti dengan URL Grup Daisekoi tujuan Anda
 var count = 5; // Waktu hitung mundur dalam detik
 const sekteInput = document.querySelector('#sekte');
@@ -547,4 +548,8 @@ form2Inputs.forEach(input => {
   }, 500); // Setelah 1 detik, perbarui progress bar ke 100%
 
   
+});
+
+redirectButton.addEventListener('click', () => {
+  window.location.replace(url);
 });

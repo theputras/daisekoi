@@ -1,10 +1,14 @@
 const inputnama = document.getElementById('nama');
-const resetFormButton1 = document.getElementById('resetFormButton1');
+const resetFormButton = document.getElementById('resetFormButton');
 const loadingIndicator = document.getElementById('loadingIndicator');
 const formRightImg = document.querySelector('.form-right img');
 const formRight = document.querySelector('.form-right');
+const searchInput = document.getElementById('search');
 //submit
-const form1 = document.getElementById('Formulir1');
+const khodam = document.getElementById('khodam');
+const resetButton = document.getElementById('resetButton');
+const result = document.getElementById('hasil-khodam');
+const resultKhodam = document.getElementById('result');
 const footer = document.querySelector('.footer');
 const img = document.getElementById('img');
 const nextButton = document.getElementById('nextButton');
@@ -28,26 +32,14 @@ var scriptUrl = 'https://script.google.com/a/macros/dinamika.ac.id/s/AKfycbzLO7L
 //Reset form
     function resetForm(form) {
       form.reset();
-      dropdownContentSekte.style.display = 'none';
-      const selectedOptionSekte = dropdownContentSekte.querySelector('a[selected]');
-      if (selectedOptionSekte) {
-        selectedOptionSekte.removeAttribute('data-value');
-        selectedOptionSekte.classList.remove('selected'); // remove the selected class
-      }
       form.querySelectorAll('input, select, textarea').forEach(input => {
         input.value = '';
         input.removeAttribute('required');
       });
-      [hololive, jkt48, game, anime, kritik, tokusatsu, kpop, sekteLain].forEach((section) => {
-        section.style.display = 'none';
-        section.querySelectorAll('input').forEach((input) => {
-          input.removeAttribute('required');
-        });
-      });
     }
 
-    resetFormButton1.addEventListener('click', () => {
-      resetForm(form1);
+    resetFormButton.addEventListener('click', () => {
+      resetForm(khodam);
       localStorage.removeItem('form1Data');
       title1.style.display = 'none';
       alerthapus1.style.display = 'block';
@@ -65,7 +57,7 @@ function handleError(error) {
   
   errorElement.style.display = 'flex';
   errorElement.textContent = 'Website Error: ' + error.message;
-  form1.style.display = 'none';
+  khodam.style.display = 'none';
 }
 
 window.onbeforeunload = function(e) {
@@ -117,7 +109,7 @@ document.querySelectorAll('.btn-submit, .form-left-title .btn-submit, .btn-reset
 //submit
 // Form 1 (Formulir1)
 // Initialize the forms
-form1.classList.add('show');
+khodam.classList.add('show');
 footer.classList.add('show');
 window.addEventListener('beforeunload', () => {
   localStorage.removeItem('form1Data');
@@ -126,17 +118,27 @@ window.addEventListener('beforeunload', () => {
 
 
 
+resetButton.addEventListener('click', () => {
+  location.reload();
+});
 
 
 // Form 2 (Formulir2)
 const submitButton = document.getElementById('submitButton');
 
-
+searchInput.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    submitButton.click();
+  }
+});
 
 
 submitButton.addEventListener('click', e => {
   e.preventDefault();
- 
+  let nama = $('#search').val();
+  if (nama === '') {
+    alert('Masukkan nama terlebih dahulu!');
+  } else {
   progressBar.style.width = "0%";  
   // Simulasi loading (misalnya, fetch data dari server)
   setTimeout(() => {
@@ -144,33 +146,76 @@ submitButton.addEventListener('click', e => {
    progressBar.style.width = "100%";   
     alert1.style.display = 'block';
     title1.style.display = 'none';  
+    textContainer.style.display = 'none';  
     buttonDivs.style.display = 'none';
+    // Show loading indicator
     loadingIndicator.classList.add('loading-animation');
     loadingIndicator.style.display = 'flex';
-    
-    fetch(scriptUrl)
-  .then(response => response.json())
-  .then(data => {
-   
-                 
+     // Run the cekKhodam function
+     cekKhodam(e);
+                  //Success Warning
+                  alert1.style.display = 'none';
+                  alert1.style.display = 'block';
                     // Hide form 1 and show form 2
-                    setTimeout(() => { 
-                    console.log('Response from URL Form:', data);
-    var randomIndex = Math.floor(Math.random() * words.length); 
-    document.getElementById('random-word').innerHTML = randomWord;
-        var randomWord = words[randomIndex][0];
+                    setTimeout(() => {
+                      loadingIndicator.classList.remove('loading-animation');
+                      loadingIndicator.style.display = 'none';
+                      // Hide form 1 and show form 2
+                      khodam.classList.remove('show');
+                      khodam.style.display = 'none';
+                      result.classList.add('show');                      
                     }, 1000); // Setelah 1 detik, tampilkan output
         
      
-  })
-  .catch(error => console.error('Error URL 1!', error.message));
-    setTimeout(() => { 
+
+    setTimeout(() => {
       progressBar.style.transition = 'width 3s ease-in-out';
     progressBar.style.display ='none';
     // Submit combined data to both URLs
   
     }, 3000); // Setelah 3 detik, sembunyikan progress bar
   }, 500); // Setelah 1 detik, perbarui progress bar ke 100%
+  }
+  
 
   
 });
+
+function cekKhodam(event) {
+  event.preventDefault();
+  let nama = $('#search').val();
+  if (nama === '') {
+    alert('Masukkan nama terlebih dahulu!');
+  } else {
+    let status = [
+        'isi',
+        'kosong',
+    ]
+    const randomStatus = Math.floor(Math.random() * status.length);
+    if (randomStatus === 0) {
+        let khodam = [
+            'Jinn',
+            'Syaitan',
+            'Malaikat',
+            'Peri',
+            'Naga',
+            'Setan',
+            'Hantu',
+            'Jin',
+            'Iblis',
+            'Kuntilanak',
+            'Pocong', 'Keyboard Mechanical'
+        ];
+        const random = Math.floor(Math.random() * khodam.length);
+        
+        $(resultKhodam).html(`${nama.toUpperCase()} - Khodam Kamu (<span id="resultKhodam">${khodam[random]}</span>)`);
+        $('#search').val('');
+    }
+    else {
+        $(resultKhodam).html(`${nama.toUpperCase()} - KOSONG`);
+        $('#search').val('');
+    }
+  }
+}
+
+
