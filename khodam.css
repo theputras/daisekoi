@@ -281,7 +281,7 @@ footer {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-
+  color: #b4b4b4;
   min-height: 0;
   max-width: 1200px; /* adjust the max-width to your liking */
   margin: 0 auto;

@@ -97,6 +97,7 @@ input ::placeholder {
   gap: 51px;
   padding: 20px;
 }
+
 /* Add Bootstrap classes to center the sections */
 .form-container, .output-container {
   display: flex;
@@ -113,6 +114,9 @@ input ::placeholder {
 
 .output-container {
   background: linear-gradient(-21.11deg, #015eea 30%,  #00c0fa);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px !important;
 }
 
 .icon .img-bg {
@@ -695,7 +699,7 @@ input[type="number"] {
 .img-wrapper {
   overflow: hidden;
 }
-.logo-header {
+.logo-header, .logo-output {
   position: static;
   pointer-events: none;
 }
@@ -807,8 +811,11 @@ input[type="number"] {
 
 @media (max-width:490px) {
     
-  .logo-header{
+  .logo-header, .logo-output{
   display: none !important;
+  }
+  .output-container > .form-right {
+    display: none;
   }
   .logo-footer {
   display: block;
@@ -841,11 +848,17 @@ input[type="number"] {
       margin: 10px;
     }
 
-    .form-container, .output-container {
+    .form-container {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 5px;
+      padding: 15px;
+    }
+    
+    .output-container{
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
     }
     .form-left, .form-right {
       flex: 1;
