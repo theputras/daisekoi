@@ -642,7 +642,7 @@ input[type="number"] {
     z-index: 99;
     transition: transform .55s
 }
-.btn-submit p, .form-left-title .btn-submit p, .btn-reset p{
+.btn-submit p, .form-left-title .btn-submit p, .btn-reset p, .back-to-history{
     z-index: 99;
     transition: transform .55s;
     margin: 0;
@@ -670,7 +670,7 @@ input[type="number"] {
     transform: scale(1.1);
 }
 
-.btn-submit:hover p, .form-left-title .btn-submit:hover p{
+.btn-submit:hover p, .form-left-title .btn-submit:hover p, .back-to-history:hover{
     transform: scale(1.1);
     color: #ffffff;
 }
