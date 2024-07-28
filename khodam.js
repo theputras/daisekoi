@@ -92,7 +92,7 @@ document.querySelectorAll('.btn-submit, .form-left-title .btn-submit, .btn-reset
 // Form 1 (Formulir1)
 // Initialize the forms
 khodam.classList.add('show');
-footer.classList.add('show');
+//footer.classList.add('show');
 window.addEventListener('beforeunload', () => {
   localStorage.removeItem('form1Data');
   localStorage.removeItem('form2Data');

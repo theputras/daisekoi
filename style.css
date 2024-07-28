@@ -347,7 +347,7 @@ color: #ffffff !important;
 #text-container {
     overflow: hidden; /* hide excess text */
     text-overflow: ellipsis; /* add ellipsis at the end */
-    max-width: 63vh; /* adjust the width to your liking */
+    max-width: 100vh; /* adjust the width to your liking */
     font-weight: 800;
     text-align: center;
     color: #ffffff;

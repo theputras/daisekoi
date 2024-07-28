@@ -34,7 +34,7 @@ html {
 }
 body{
     font-family: 'Montserrat' !important;   
-    background: linear-gradient(-21.11deg, #00c0fa 30%, #015eea);
+    background: linear-gradient(-21.11deg, #1B1A55 30%, #070F2B);
     background-size: 100% 100vh;
     background-attachment: fixed; /* add this line */
     height: 100vh;
@@ -109,13 +109,6 @@ input ::placeholder {
 
 #resultKhodam {
   color: red; /* Ganti dengan warna yang Anda inginkan */
-}
-.form-container {
-  background: linear-gradient(-21.11deg, #00c0fa 30%, #015eea);
-}
-
-.output-container {
-  background: linear-gradient(-21.11deg, #015eea 30%,  #00c0fa);
 }
 
 .icon .img-bg {
@@ -363,7 +356,7 @@ color: #ffffff !important;
 #text-container {
     overflow: hidden; /* hide excess text */
     text-overflow: ellipsis; /* add ellipsis at the end */
-    max-width: 63vh; /* adjust the width to your liking */
+    max-width: 100vh; /* adjust the width to your liking */
     font-weight: 800;
     text-align: center;
     color: #ffffff;
@@ -604,7 +597,7 @@ input[type="number"] {
     gap: 10px;
     border: none;
     border-radius: 50px;
-    background: linear-gradient(270deg, #2c4091, #3A85C6);
+    background: linear-gradient(270deg, #535C91, #9290C3);
     cursor: pointer;
     position: relative;
     z-index: 6;
@@ -670,7 +663,7 @@ input[type="number"] {
 
 .btn-submit::after, .form-left-title .btn-submit::after, .btn-reset::after{
     content: '';
-    background: #ec00628a; 
+    background: #C8ACD68a; 
     position: absolute;
     top: 0;
     left: 0;
