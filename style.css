@@ -95,8 +95,6 @@ input ::placeholder {
   justify-content: center;
   gap: 51px;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 /* Add Bootstrap classes to center the sections */
 .form-container, .output-container {
@@ -106,8 +104,10 @@ input ::placeholder {
   flex-direction: column-reverse;
 }
 
-.form-container {
+#Formulir1, #Formulir2 {
   background: linear-gradient(-21.11deg, #00c0fa 30%, #015eea);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .output-container {
@@ -722,7 +722,7 @@ input[type="number"] {
 
 @media (max-width:1020px) {
     .form-right img{
-        width: 250px;
+        width: 20vh;
     }
     
 }
