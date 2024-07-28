@@ -221,15 +221,15 @@ function cekKhodam(event) {
             'Bjirr',
             'Beliau',
             'Komodo Galau',
-            'Kosong',
             'Anas Hisyam',
             'Knalpot Mberr',
-            'Kosong',
             'City Pop',
             'Joni',
             'Kakek Sugiono',
             'Pak tua Jenkins',
-            'Naga Bonar'
+            'Naga Bonar',
+            'Squirdward Mantu',
+            'Kucing Berotot'
             
             
         ];
