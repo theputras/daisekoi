@@ -56,13 +56,7 @@
         
             <!-- Form 2 -->
             <form id="Formulir2" name="submit-to-survey" class="form-left" style="display: none;">
-              <a class="back-to-history" id="backButton">
-                <svg _ngcontent-xie-c18="" version="1.1" viewBox="0 0 31.494 31.494" x="0px" y="0px">
-                  <path _ngcontent-xie-c18=""d="M10.273,5.009c0.444-0.444,1.143-0.444,1.587,0c0.429,0.429,0.429,1.143,0,1.571l-8.047,8.047h26.554 c0.619,0,1.127,0.492,1.127,1.111c0,0.619-0.508,1.127-1.127,1.127H3.813l8.047,8.032c0.429,0.444,0.429,1.159,0,1.587 c-0.444,0.444-1.143,0.444-1.587,0l-9.952-9.952c-0.429-0.429-0.429-1.143,0-1.571L10.273,5.009z">
-                  </path>
-                </svg>
-                <span _ngcontent-xie-c18="">Back</span>
-            </a>
+              
               <div class="form-left-title">
                 <h2 class="fs-2">Pilih sektemu di Sini</h2>
                 <p class="fs-16" id="title2">Silakan mengisi Survey yang telah disediakan</p>
@@ -115,8 +109,14 @@
                 <input class="alasan-form form-input" style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" required>
                 
               <div id="button2" class="buttonID">
+              <div class="button-left">
+              <button class="btn btn-primary btn-back" id="backButton" type="submit"><p>Kembali</p></button>
                 <button class="btn btn-primary btn-submit" id="submitButton" type="submit"><p>Kirim</p></button>
+              </div>
+              <div class="button-right">
                 <button class="btn btn-secondary btn-reset" type="button" id="resetFormButton2"><p>Kosongkan Formulir</p></button>
+              </div>
+                
               </div>
             </form>
             
@@ -139,7 +139,7 @@
               <div class="form-left-title">
                 <h2>Kamu akan diarahkan ke Grup Whatsapp Daisekoi, silakan join ya</h2>
                 <p>Halaman ini akan berubah dalam hitungan  <span id="msg"></span></p>
-                <button id="redirect" class="btn-submit btn"  type="submit"> <p>Klik disini</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="#FFFFFF"/></svg> </button>
+                <button id="redirect" class="btn-submit btn"  type="submit"> <p>Klik disini</p><svg style="fill: #ffff;" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g data-name="Layer 2" id="Layer_2"><path d="M18,11a1,1,0,0,1-1,1,5,5,0,0,0-5,5,1,1,0,0,1-2,0,5,5,0,0,0-5-5,1,1,0,0,1,0-2,5,5,0,0,0,5-5,1,1,0,0,1,2,0,5,5,0,0,0,5,5A1,1,0,0,1,18,11Z"></path><path d="M19,24a1,1,0,0,1-1,1,2,2,0,0,0-2,2,1,1,0,0,1-2,0,2,2,0,0,0-2-2,1,1,0,0,1,0-2,2,2,0,0,0,2-2,1,1,0,0,1,2,0,2,2,0,0,0,2,2A1,1,0,0,1,19,24Z"></path><path d="M28,17a1,1,0,0,1-1,1,4,4,0,0,0-4,4,1,1,0,0,1-2,0,4,4,0,0,0-4-4,1,1,0,0,1,0-2,4,4,0,0,0,4-4,1,1,0,0,1,2,0,4,4,0,0,0,4,4A1,1,0,0,1,28,17Z"></path></g></svg></button>
             </div>
             
       
@@ -165,7 +165,7 @@
     
     <footer class="footer py-3"> 
     <div class="footer-container">
-    <p>Website created by <a href="https://theputras.github.io/">THE PUTRAS</a> Beta Version 2.6</p>
+    <p>Website created by <a href="https://theputras.github.io/">THE PUTRAS</a> Beta Version 2.7</p>
     <img src="./assets/Logo - Daisekoi.png" alt="png" class="logo-footer">
     </div>
 </footer>

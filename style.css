@@ -131,7 +131,6 @@ input ::placeholder {
     align-items: start;
     gap: 20px;
 }
-
 /* Alert */
 
  #alert1, #alert2, #alert3, #alertback, #alerthapus1, #alerthapus2{
@@ -213,10 +212,10 @@ input ::placeholder {
 
 
 #loadingIndicator svg, #loadingIndicator2 svg {
-  width: 150px; /* updated width and height */
-  height: 150px;
-  position: relative; /* added position: relative */
-  animation: rotate 2s linear infinite; /* added animation */
+  width: 80px;
+  height: 80px;
+  position: relative;
+  animation: rotate 2s linear infinite;
 }
 
 @keyframes rotate {
@@ -229,30 +228,30 @@ input ::placeholder {
 }
 
 #loadingIndicator svg circle, #loadingIndicator2 svg circle {
-  width: 92px;
-  height: 92px;
-  cx: 70; /* updated cx and cy */
-  cy: 70;
-  r: 70; /* updated radius */
+  width: 80px;
+  height: 80px;
+  cx: 40;
+  cy: 40;
+  r: 35;
   fill: none;
-  stroke-width: 10;
-  stroke: #015eea; /* updated stroke color */
+  stroke-width: 6;
+  stroke: #015eea;
   stroke-linecap: round;
-  transform: translate(5px, 5px); /* added transform */
-  stroke-dasharray: 400; /* added stroke-dasharray */
-  stroke-dashoffset: 400; /* added stroke-dashoffset */
-  animation: animate 4s linear infinite; /* added animation */
+  transform: translate(0, 0); /* removed translate */
+  stroke-dasharray: 240; /* updated stroke-dasharray */
+  stroke-dashoffset: 240; /* updated stroke-dashoffset */
+  animation: animate 4s linear infinite;
 }
 
 @keyframes animate {
   0%, 100% {
-    stroke-dashoffset: 440;
+    stroke-dashoffset: 360;
   }
   50% {
     stroke-dashoffset: 0;
   }
   50.1% {
-    stroke-dashoffset: 880;
+    stroke-dashoffset: 720;
   }
 }
 .main-container {
@@ -568,6 +567,13 @@ input[type="number"] {
     border-radius: 20px;
 }
 
+.button-left, .button-right{
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: start;
+  gap: 20px;
+}
 
 .buttonID, .form-left-title .buttonID {
   position: relative;
@@ -576,6 +582,9 @@ input[type="number"] {
     justify-content: space-evenly;
     gap: 20px;
     z-index: -1;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
     }
 
 .form-left button, .form-left-title button{
@@ -607,21 +616,14 @@ input[type="number"] {
     background-color: #4DDDA4;
 }
 
-.btn-submit svg, .form-left-title .btn-submit svg, .btn-reset svg{
+.btn-submit svg, .form-left-title .btn-submit svg, .btn-reset svg, .btn-back svg{
     width: 1.25rem;
     height: 1.25rem;
     position: relative;
 }
 
 
-.form-left-title .btn-submit svg {
-    width: 1.25rem;
-    height: 1.25rem;
-    position: relative;
-    left: 10px;
-}
-
-.btn-submit .btn, .form-left-title .btn-submit .btn, .btn-reset .btn {
+.btn-submit .btn, .form-left-title .btn-submit .btn, .btn-reset .btn, .btn-back .btn {
     position: absolute;
     top: 50%;
     left: 100%;
@@ -638,22 +640,22 @@ input[type="number"] {
   }
 
 
-.btn-submit, .form-left-title .btn-submit, .btn-reset{
+.btn-submit, .form-left-title .btn-submit, .btn-reset, .btn-back{
     overflow: hidden;
 }
 
-.btn-submit svg, .form-left-title .btn-submit svg, .btn-reset svg{
+.btn-submit svg, .form-left-title .btn-submit svg, .btn-reset svg, .btn-back svg{
     z-index: 99;
     transition: transform .55s
 }
-.btn-submit p, .form-left-title .btn-submit p, .btn-reset p, .back-to-history{
+.btn-submit p, .form-left-title .btn-submit p, .btn-reset p, .btn-back p{
     z-index: 99;
     transition: transform .55s;
     margin: 0;
 }
 
 
-.btn-submit::after, .form-left-title .btn-submit::after, .btn-reset::after{
+.btn-submit::after, .form-left-title .btn-submit::after, .btn-reset::after, .btn-back::after{
     content: '';
     background: #ec00628a; 
     position: absolute;
@@ -666,15 +668,15 @@ input[type="number"] {
     transition: transform .35s;
 }
 
-.btn-submit:hover::after, .form-left-title .btn-submit:hover::after, .btn-reset:hover::after{
+.btn-submit:hover::after, .form-left-title .btn-submit:hover::after, .btn-reset:hover::after, .btn-back:hover::after{
     transform: scaleX(1);
 }
 
-.btn-submit:hover svg, .form-left-title .btn-submit:hover svg{
+.btn-submit:hover svg, .form-left-title .btn-submit:hover svg, .btn-back:hover svg{
     transform: scale(1.1);
 }
 
-.btn-submit:hover p, .form-left-title .btn-submit:hover p, .back-to-history:hover{
+.btn-submit:hover p, .form-left-title .btn-submit:hover p, .btn-back:hover p{
     transform: scale(1.1);
     color: #ffffff;
 }
@@ -865,7 +867,6 @@ input[type="number"] {
       flex-direction: column;      
       align-items: flex-start;
       justify-content: center;
-      gap: 5px;
       padding: 20px;
     }
     .form-left-title p{
@@ -911,5 +912,12 @@ input[type="number"] {
     }
     .buttonID p {
     font-size: 0.8rem;
+    }
+    
+    .buttonID, .form-left-title .buttonID {
+      flex-wrap: wrap;
+    }
+    .button-left, .button-right{
+      justify-content: center;
     }
 }

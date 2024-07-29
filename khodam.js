@@ -117,6 +117,7 @@ searchInput.addEventListener('keydown', function(event) {
 
 submitButton.addEventListener('click', e => {
   e.preventDefault();
+  
   let nama = $('#search').val();
   if (nama === '') {
     alert('Masukkan nama terlebih dahulu!');
@@ -235,7 +236,7 @@ function cekKhodam(event) {
         ];
         const random = Math.floor(Math.random() * khodam.length);
         
-        $(resultKhodam).html(`${nama.toUpperCase()} - Khodam Kamu (<span id="resultKhodam">${khodam[random]}</span>)`);
+        $(resultKhodam).html(`${nama.toUpperCase()} - Khodam Kamu <span id="resultKhodam">${khodam[random]}</span>`);
         $('#search').val('');
     }
     else {
