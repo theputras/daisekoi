@@ -678,7 +678,7 @@ input[type="number"] {
 
 .btn-submit:hover p, .form-left-title .btn-submit:hover p, .btn-back:hover p{
     transform: scale(1.1);
-    color: #ffffff;
+    color: #ffffff;   
 }
 
 /* Add this class to reset the styles */

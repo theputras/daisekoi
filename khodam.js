@@ -230,7 +230,8 @@ function cekKhodam(event) {
             'Pak tua Jenkins',
             'Naga Bonar',
             'Squirdward Mantu',
-            'Kucing Berotot'
+            'Kucing Berotot',
+            'Kelinci Sunda'
             
             
         ];

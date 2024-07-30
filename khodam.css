@@ -695,7 +695,7 @@ input[type="number"] {
     transform: rotate(90deg);
 }
 
-.btn-submit:hover p, .form-left-title .btn-submit:hover p{
+.btn-submit:hover p, .form-left-title .btn-submit:hover p, .btn-reset:hover p{
     transform: scale(1.1);
     color: #ffffff;
 }
