@@ -1,0 +1,79 @@
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Website Cek Khodam</title>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="shortcut icon" href="./assets/daisekoi logo 2023.png" style="border-radius: 100%;" type="image/jpg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<body >
+<style>
+.input-container {
+    opacity: 0;
+    transform: translateY(50%);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  
+  .input-container.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+<div class="main-container">
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div id="error-message" style="display: none;"></div>
+      <section id="form" class="form-container">
+        <h3 class="fs-1">Redirect.... <span id="msg"></span></h3>
+      
+                  
+              </section>
+            
+    </div>
+ 
+      </div>
+
+
+</div>
+
+
+    
+    <!-- <footer class="footer py-3"> 
+    <div class="footer-container">
+    <p>Website created by <a href="https://theputras.github.io/">THE PUTRAS</a></p>
+    <img src="./assets/Logo - Daisekoi.png" alt="png" class="logo-footer">
+    </div>
+</footer>-->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    
+    <script>
+    const form1 = document.querySelector('.form-container');
+    form1.classList.add('show');
+    var url = "https://khodam.theputras.my.id"; // Ganti dengan URL tujuan Anda
+        var count = 3; // Waktu hitung mundur dalam detik
+        function countDown() {
+            if (count > 0) {
+                count--;
+                var waktu = count + 1;
+                document.getElementById('msg').innerHTML =  waktu;
+                setTimeout(countDown, 1000); // Memanggil fungsi ini setiap 1 detik
+            } else {
+                window.location.replace(url); // Mengarahkan pengguna setelah hitung mundur selesai
+            }
+        }
+    
+        // Memulai hitung mundur saat halaman dimuat
+        countDown();
+    </script>
+</body>
+
+
+</html>
+
