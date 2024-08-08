@@ -275,6 +275,11 @@ input ::placeholder {
 .form-container, .container {
   flex: 1;
 }
+
+#form, #output {
+min-height: 600px;
+
+}
 footer {
   display: block;
   height: 50px; /* adjust the height to your liking */  
@@ -396,7 +401,7 @@ opacity: 100% !important;
 }
 .form-input {
   width: 70vh;
-  height: 50px;
+  height: 55px;
   border: none;
   outline: none;
   padding-left: 25px;
@@ -783,6 +788,10 @@ input[type="number"] {
       justify-content: center;
       padding: 10px;
     }
+    
+    .justify-content-center{
+      padding: 15px;
+     }
     #text-container {
       text-align: left;
     }
@@ -858,6 +867,9 @@ input[type="number"] {
       justify-content: center;
       padding: 15px;
     }
+    .justify-content-center{
+      padding: 15px;
+     }
     
     .output-container{
       align-items: center;
