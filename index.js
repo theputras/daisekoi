@@ -160,9 +160,9 @@ inputSekte.addEventListener('input', (e) => {
   const sekteLainOption = dropdownContentSekte.querySelector('a[data-value="Sekte Lain"]');
   if (noOptionsAvailable) {
     sekteLainOption.style.display = 'block';
-  } else {
-    sekteLainOption.style.display = 'none';
-  }
+  } 
+  
+    sekteLainOption.style.display = 'block';
 });
 
 
