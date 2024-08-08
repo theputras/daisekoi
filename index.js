@@ -104,22 +104,32 @@ inputJurusan.addEventListener('input', (e) => {
     option.style.display = optionValue.includes(inputValue) ? 'block' : 'none';
   });
 
-  // Create new options based on user input
-  const newOptions = inputValue.split(' ').map((word) => {
-    const option = document.createElement('a');
-    option.textContent = word;
-    option.setAttribute('data-value', word);
-    return option;
+  // Remove new options created based on user input
+  const newOptions = dropdownContent.querySelectorAll('a[data-value][data-generated]');
+  newOptions.forEach((option) => {
+    option.remove();
   });
 
-  // Add new options to the dropdown content
-  newOptions.forEach((option) => {
-    dropdownContent.appendChild(option);
-  });
+  // Create new options based on user input
+  if (inputValue) {
+    const newOptions = inputValue.split(' ').map((word) => {
+      const option = document.createElement('a');
+      option.textContent = word;
+      option.setAttribute('data-value', word);
+      option.setAttribute('data-generated', true); // Add this attribute to mark as generated
+      return option;
+    });
+
+    // Add new options to the dropdown content
+    newOptions.forEach((option) => {
+      dropdownContent.appendChild(option);
+    });
+  }
 
   // Show the dropdown content
   dropdownContent.style.display = 'block';
 });
+
 
 dropdownContent.addEventListener('click', (e) => {
   e.preventDefault(); // Add this line to prevent the default behavior
@@ -142,6 +152,17 @@ inputSekte.addEventListener('input', (e) => {
     const optionValue = option.textContent.toLowerCase();
     option.style.display = optionValue.includes(inputValue) ? 'block' : 'none';
   });
+
+  // Check if no options are available
+  const noOptionsAvailable = !Array.from(options).some((option) => option.style.display === 'block');
+  
+  // Show "Sekte Lain" option if no other options match
+  const sekteLainOption = dropdownContentSekte.querySelector('a[data-value="Sekte Lain"]');
+  if (noOptionsAvailable) {
+    sekteLainOption.style.display = 'block';
+  } else {
+    sekteLainOption.style.display = 'none';
+  }
 });
 
 
