@@ -311,9 +311,6 @@ display: none;
  color: #fff;
 }
 
-.input-group {
-  width: 65vh !important;
-}
 
 .input-group-text {
   display: flex !important;
@@ -577,15 +574,17 @@ input[type="number"] {
 
 .buttonID, .form-left-title .buttonID {
   position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 20px;
-    z-index: -1;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 2%; /* Menggunakan persentase sebagai pengganti px */
+  z-index: -1;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  width: 80vw; /* Menggunakan vw sebagai pengganti vh */
+  max-width: 600px; /* Menambahkan max-width untuk mencegah lebar yang terlalu besar */
+}
 
 .form-left button, .form-left-title button{
     display: flex;
@@ -604,6 +603,10 @@ input[type="number"] {
     z-index: 6;
 }
 
+
+#backButton {
+  background: linear-gradient(270deg, #5B99C2, #1A4870);
+}
 
 .btn-reset {
   background:none !important;

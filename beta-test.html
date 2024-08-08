@@ -30,22 +30,37 @@
                 <p class="fs-16" id="alerthapus1">Berhasil dihapus.</p>
                 <hr id="progressBar">
               </div>
-             
-              <input type="text" id="nama" name="nama" placeholder="Nama kamu" class="form-input" required>
-              <div class="dropdown">
-                <input type="text" id="jurusan" name="jurusan" placeholder="Jurusan" class="form-input" required>
-                <div class="dropdown-content">
-                  <a href="#" data-value="S1 Sistem Informasi">S1 Sistem Informasi</a>
-                  <a href="#" data-value="S1 Teknik Komputer">S1 Teknik Komputer</a>
-                  <a href="#" data-value="DIII Sistem Informasi">DIII Sistem Informasi</a>
-                  <a href="#" data-value="S1 Sistem Manajemen">S1 Sistem Manajemen</a>
-                  <a href="#" data-value="S1 Akuntansi">S1 Akuntansi</a>
-                  <a href="#" data-value="S1 Desain Komunikasi Visual">S1 Desain Komunikasi Visual</a>
-                  <a href="#" data-value="S1 Desain Produk">S1 Desain Produk</a>
-                  <a href="#" data-value="DIV Produksi Film dan Televisi">DIV Produksi Film dan Televisi</a>
+              
+              <div class="mb-3">
+                <div class="input-group">
+                  <input type="text" id="nama" name="nama" placeholder="Nama kamu" class="form-input" required>
                 </div>
+                <div class="form-text" id="basic-addon4">Masukkan Nama lengkap kamu</div>
+              </div>              
+                
+                  <div class="dropdown mb-3">
+                    <input type="text" id="jurusan" name="jurusan" placeholder="Jurusan" class="form-input" required>
+                    <div class="dropdown-content">
+                      <a href="#" data-value="S1 Sistem Informasi">S1 Sistem Informasi</a>
+                      <a href="#" data-value="S1 Teknik Komputer">S1 Teknik Komputer</a>
+                      <a href="#" data-value="DIII Sistem Informasi">DIII Sistem Informasi</a>
+                      <a href="#" data-value="S1 Sistem Manajemen">S1 Sistem Manajemen</a>
+                      <a href="#" data-value="S1 Akuntansi">S1 Akuntansi</a>
+                      <a href="#" data-value="S1 Desain Komunikasi Visual">S1 Desain Komunikasi Visual</a>
+                      <a href="#" data-value="S1 Desain Produk">S1 Desain Produk</a>
+                      <a href="#" data-value="DIV Produksi Film dan Televisi">DIV Produksi Film dan Televisi</a>
+                    </div>
+                    <div class="form-text" id="basic-addon4">Masukkan Jurusan atau Prodi (Program Studi) kamu</div>
+                  </div>
+              
+              
+              <div class="mb-3">
+                <div class="input-group">
+                  <input id="nim" type="number" name="nim" placeholder="NIM kamu" class="nim-form form-input" required>
+                </div>
+                <div class="form-text" id="basic-addon4">Masukkan NIM kamu</div>
               </div>
-              <input id="nim" type="number" name="nim" placeholder="NIM kamu" class="nim-form form-input" required>
+              
               
               <div class="buttonID">
                 <button class="btn btn-primary btn-submit" id="nextButton" type="button"><p>Lanjut</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="#FFFFFF"/></svg> </button>
@@ -66,47 +81,122 @@
                 <p class="fs-16" id="alerthapus2">Berhasil dihapus.</p>
                 <hr id="progressBar2">
               </div>
+              <div class="mb-3">
+                <div class="input-group">
+                  <div class="dropdown">
+                    <input type="text" id="sekte" name="sekte" class="sekte-form form-input" placeholder="Pilih Sektemu">
+                    <div class="dropdown-content">
+                      <a href="#" data-value="Hololive">Hololive</a>
+                      <a href="#" data-value="JKT48">JKT48</a>
+                      <a href="#" data-value="Game">Game</a>
+                      <a href="#" data-value="Anime">Anime</a>
+                      <a href="#" data-value="Tokusatsu">Tokusatsu</a>
+                      <a href="#" data-value="KPOP">KPOP</a>
+                      <a href="#" data-value="Kritik">Kritik</a>
+                      <a href="#" data-value="Sekte Lain">Sekte Lain</a>
+                      <a href="#" data-value="Skip">Skip</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-text" id="basic-addon4">Pilih sekte yang kamu mau, ada pilihan skip jika tidak ada</div>
+              </div>
               
-              <div class="dropdown">
-                <input type="text" id="sekte" name="sekte" class="sekte-form form-input" placeholder="Pilih Sektemu">
-                <div class="dropdown-content">
-                  <a href="#" data-value="Hololive">Hololive</a>
-                  <a href="#" data-value="JKT48">JKT48</a>
-                  <a href="#" data-value="Game">Game</a>
-                  <a href="#" data-value="Anime">Anime</a>
-                  <a href="#" data-value="Tokusatsu">Tokusatsu</a>
-                  <a href="#" data-value="KPOP">KPOP</a>
-                  <a href="#" data-value="Kritik">Kritik</a>
-                  <a href="#" data-value="Sekte Lain">Sekte Lain</a>
-                  <a href="#" data-value="Skip">Skip</a>
+              <div class="hololive" style="display: none;">
+                <div class="mb-3">
+                  <div class="input-group">
+                    <input type="text" name="oshi_hololive" placeholder="Siapa Oshimu di Hololive?" class="oshi-form form-input" required>
+                  </div>
+                  <div class="form-text" id="basic-addon4">Wihh suka Vtuber juga?? Siapa oshimu nihhh?</div>
                 </div>
               </div>
-              <div class="hololive" style="display: none;">
-                <input type="text" name="oshi_hololive" placeholder="Siapa Oshimu di Hololive?" class="oshi-form form-input" required>
+              
+              
+              <div class="jkt48" style="display: none;">              
+                <div class="mb-3">
+                  <div class="input-group">
+                    <input type="text" name="oshi_jkt48" placeholder="Siapa Oshimu di JKT48?" class="oshi-form form-input" required>
+                  </div>
+                  <div class="form-text" id="basic-addon4">Wota banh?? Sapa Oshimu di JKT48??</div>
+                </div>
               </div>
-              <div class="jkt48" style="display: none;">
-                <input type="text" name="oshi_jkt48" placeholder="Siapa Oshimu di JKT48?" class="oshi-form form-input" required>
-              </div>
+              
+              
               <div class="KPOP" style="display: none;">
-                <input type="text" name="group_kpop" placeholder="Siapa Group KPOP favoritmu?" class="group-kpop-form form-input" required>
-                <input type="text" name="bias_kpop" placeholder="Siapa bias favoritmu?" class="bias-kpop-form form-input" required>
+                <div class="mb-3">
+                  <div class="input-group">
+                    <input type="text" name="group_kpop" placeholder="Siapa Group KPOP favoritmu?" class="group-kpop-form form-input" required>
+                  </div>
+                  <div class="form-text" id="basic-addon4">Spill dong Grup KPOP Favoritmu</div>
+                </div>
+                <div class="mb-3">
+                  <div class="input-group">
+                    <input type="text" name="bias_kpop" placeholder="Siapa bias favoritmu?" class="bias-kpop-form form-input" required>
+                  </div>
+                  <div class="form-text" id="basic-addon4">Jadi penasarun, siapa nihhh??</div>
+                </div>
+                
               </div>
+              
+              
               <div class="Tokusatsu" style="display: none;">
-                <input type="text" name="tokusatsu" placeholder="Apa tokusatsu favoritmu?" class="tokusatsu-form form-input" required>
+                <div class="mb-3">
+                  <div class="input-group">
+                    <input type="text" name="tokusatsu" placeholder="Apa Tokusatsu favoritmu?" class="tokusatsu-form form-input" required>
+                  </div>
+                  <div class="form-text" id="basic-addon4">Team Tokusatsu mana nihhh???</div>
+                </div>                
               </div>
+              
+              
               <div class="anime" style="display: none;">
-                <input type="text" name="anime" placeholder="Apa judul anime yang kamu tonton?" class="game-form form-input" required>
+                <div class="mb-3">
+                  <div class="input-group">
+                    <input type="text" name="anime" placeholder="Apa judul anime yang kamu tonton?" class="game-form form-input" required>
+                  </div>
+                  <div class="form-text" id="basic-addon4">Sering nonton anime?? Siapa nihh anime yang sering ditonton?</div>
+                </div>
               </div>
+              
+              
               <div class="game" style="display: none;">
-                <input type="text" name="game" placeholder="Apa Game favoritmu?" class="game-form form-input" required>
+                <div class="mb-3">
+                  <div class="input-group">
+                    <input type="text" name="game" placeholder="Apa Game favoritmu?" class="game-form form-input" required>
+                  </div>
+                  <div class="form-text" id="basic-addon4">Game apa yang sering kamu mainkan atau favorit kamu</div>
+                </div>
               </div>
+              
+              
               <div class="sekte-lain" style="display: none;">
-                <input type="text" name="sekte-lain" placeholder="Tuliskan disini" class="sektelain-form form-input" required>
+                <div class="mb-3">
+                  <div class="input-group">
+                    <input type="text" name="sekte-lain" placeholder="Tuliskan disini" class="sektelain-form form-input" required>
+                  </div>
+                  <div class="form-text" id="basic-addon4">Sekte Lain?? Sekte apa nihhh</div>
+                </div>                
               </div>
+              
+              
               <div class="kritik" style="display: none;" id="kritik">
-                <input type="text" name="kritik" placeholder="Apa hal yang suka kamu kritik?" class="kritik-form form-input" required>
+                <div class="mb-3">
+                  <div class="input-group">
+                    <input type="text" name="kritik" placeholder="Apa hal yang suka kamu kritik?" class="kritik-form form-input" required>
+                  </div>
+                  <div class="form-text" id="basic-addon4">Wahhh, ceritain dong</div>
+                </div>
+                
               </div>
-                <input class="alasan-form form-input" style="display: none;" type="text" name="alasan" placeholder="Apa Alasannya?" required>
+              
+              <div id="alasan" style="display: none;">
+                <div class="mb-3">
+                  <div class="input-group">
+                    <input class="alasan-form form-input"  type="text" name="alasan" placeholder="Apa Alasannya?" required>
+                  </div>
+                  <div class="form-text" id="basic-addon4">Apa Alasannya?</div>
+                </div>                
+              </div>
+                
                 
               <div id="button2" class="buttonID">
               <div class="button-left">
