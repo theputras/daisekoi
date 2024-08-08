@@ -93,19 +93,47 @@ inputSekte.addEventListener('blur', (e) => {
   }
 });
 
-// Filter dropdown options based on input value
+// Handle dropdown option click Jurusan
 inputJurusan.addEventListener('input', (e) => {
   const inputValue = e.target.value.toLowerCase();
   const options = dropdownContent.querySelectorAll('a');
 
+  // Filter existing options
   options.forEach((option) => {
     const optionValue = option.textContent.toLowerCase();
-    option.style.display = optionValue.includes(inputValue)? 'block' : 'none';
+    option.style.display = optionValue.includes(inputValue) ? 'block' : 'none';
   });
+
+  // Create new options based on user input
+  const newOptions = inputValue.split(' ').map((word) => {
+    const option = document.createElement('a');
+    option.textContent = word;
+    option.setAttribute('data-value', word);
+    return option;
+  });
+
+  // Add new options to the dropdown content
+  newOptions.forEach((option) => {
+    dropdownContent.appendChild(option);
+  });
+
+  // Show the dropdown content
+  dropdownContent.style.display = 'block';
+});
+
+dropdownContent.addEventListener('click', (e) => {
+  e.preventDefault(); // Add this line to prevent the default behavior
+  if (e.target.tagName === 'A') {
+    const value = e.target.getAttribute('data-value');
+    inputJurusan.value = value;
+    dropdownContent.style.display = 'none';
+    inputJurusan.blur();
+  }
 });
 
 
 
+// Handle dropdown option click Sekte
 inputSekte.addEventListener('input', (e) => {
   const inputValue = e.target.value.toLowerCase();
   const options = dropdownContentSekte.querySelectorAll('a');
@@ -117,16 +145,8 @@ inputSekte.addEventListener('input', (e) => {
 });
 
 
-// Handle dropdown option click Jurusan
-dropdownContent.addEventListener('click', (e) => {
-  e.preventDefault(); // Add this line to prevent the default behavior
-  if (e.target.tagName === 'A') {
-    const value = e.target.getAttribute('data-value');
-    inputJurusan.value = value;
-    dropdownContent.style.display = 'none';
-    inputJurusan.blur();
-  }
-  });
+
+
   
   dropdownContentSekte.addEventListener('click', (e) => {
     e.preventDefault(); // Add this line to prevent the default behavior
@@ -252,7 +272,7 @@ dropdownContent.addEventListener('click', (e) => {
 function handleError(error) {
   const errorElement = document.getElementById('error-message');
   errorElement.style.display = 'flex';
-  errorElement.textContent = 'Website Error: ' + error.message;
+  errorElement.textContent = 'Website Error: ' + error.message + " Cek konsol";
   form.style.display = 'none';
 }
 window.onerror = function(error) {
