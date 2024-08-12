@@ -594,7 +594,7 @@ form2Inputs.forEach(input => {
                       countDown();
                     }, 1000); // Setelah 1 detik, tampilkan output
         
-     
+  
   })
   .catch(error => console.error('Error URL 1!', error.message));
     setTimeout(() => { 
@@ -615,7 +615,7 @@ window.onload = function() {
   });
 }
 
-// When the user tries to close the tab, check if formDataSubmitted is false
+
 // When the user tries to close the tab, check if formDataSubmitted is false
 window.onbeforeunload = function(e) {
   if (!formDataSubmitted) {
