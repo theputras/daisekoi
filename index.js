@@ -51,9 +51,11 @@ const kritik = document.querySelector('.kritik');
 const anime = document.querySelector('.anime');
 const kpop = document.querySelector('.kpop');
 const tokusatsu = document.querySelector('.tokusatsu');
-const sekteLain = document.querySelector('.sekte-lain');
+const sekteLain = document.querySelector('.sekte_lain');
 
 // Show dropdown on input click or focus
+
+
 inputJurusan.addEventListener('click', (e) => {
   dropdownContent.style.display = 'block';
 });
@@ -93,16 +95,24 @@ inputSekte.addEventListener('blur', (e) => {
   }
 });
 
+
+
 // Handle dropdown option click Jurusan
 inputJurusan.addEventListener('input', (e) => {
   const inputValue = e.target.value.toLowerCase();
   const options = dropdownContent.querySelectorAll('a');
 
-  // Filter existing options
-  options.forEach((option) => {
-    const optionValue = option.textContent.toLowerCase();
-    option.style.display = optionValue.includes(inputValue) ? 'block' : 'none';
-  });
+    // Filter existing options
+    options.forEach((option) => {
+      const optionValue = option.getAttribute('data-value').toLowerCase();
+      if (optionValue === inputValue) {
+        option.style.display = 'block';
+      } else if (optionValue.includes(inputValue)) {
+        option.style.display = 'block';
+      } else {
+        option.style.display = 'none';
+      }
+    });
 
   // Remove new options created based on user input
   const newOptions = dropdownContent.querySelectorAll('a[data-value][data-generated]');
@@ -110,19 +120,18 @@ inputJurusan.addEventListener('input', (e) => {
     option.remove();
   });
 
-  // Create new options based on user input
-  if (inputValue) {
-    const newOptions = inputValue.split(' ').map((word) => {
-      const option = document.createElement('a');
-      option.textContent = word;
-      option.setAttribute('data-value', word);
-      option.setAttribute('data-generated', true); // Add this attribute to mark as generated
-      return option;
-    });
+  // Check if the input value matches an existing data-value
+  const isExistingValue = Array.from(options).some((option) => option.getAttribute('data-value').toLowerCase() === inputValue);
 
-    // Add new options to the dropdown content
+  // Create new options based on user input only if it's not an existing value and not a partial match
+  if (inputValue && !isExistingValue && inputValue.trim().split(' ').every((word) => word.length > 1)) {
+    const newOptions = [inputValue];
     newOptions.forEach((option) => {
-      dropdownContent.appendChild(option);
+      const newOption = document.createElement('a');
+      newOption.textContent = option;
+      newOption.setAttribute('data-value', option);
+      newOption.setAttribute('data-generated', true); // Add this attribute to mark as generated
+      dropdownContent.appendChild(newOption);
     });
   }
 
@@ -481,7 +490,7 @@ submitButton.addEventListener('click', e => {
 
   
 
-// ...
+// ...  
 form2Inputs.forEach(input => {
   input.disabled = false;
 });
@@ -506,6 +515,9 @@ form2Inputs.forEach(input => {
     return;
   } else if (sekteValue === 'Kritik' && (!formData2 || formData2.kritik === '')) {
     alert('Isi kritik kamu, jangan sampai kosong');
+    return;
+  } else if (sekteValue === 'Sekte Lain' && (!formData2 || formData2.sekte_lain === '' || formData2.alasan === '')) {
+    alert('Isi sekte lain kamu, jangan sampai kosong');
     return;
   } else if (!formData2 || formData2.sekte === '') {
     alert('Isi semua field di form ini');
@@ -539,6 +551,7 @@ form2Inputs.forEach(input => {
   progressBar2.style.width = "0%";  
   // Simulasi loading (misalnya, fetch data dari server)
   setTimeout(() => {
+
     progressBar2.style.transition = 'width 3s ease-in-out';
    progressBar2.style.width = "100%";   
     alert2.style.display = 'block';
