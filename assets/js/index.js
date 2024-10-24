@@ -1,5 +1,5 @@
 function checkScreenWidth() {
-    if (window.innerWidth <= 1020) {
+    if (window.innerWidth <= 1024) {
         window.location.href = "./coming-soon.html";
     }
 }
@@ -9,6 +9,8 @@ window.onload = checkScreenWidth;
 window.onresize = checkScreenWidth;
 
 
+
+// Running Teks
 const texts = document.querySelectorAll('.marquee-content p');
 let index = 0;
 
@@ -49,5 +51,32 @@ document.addEventListener("DOMContentLoaded", function() {
             left: -scrollAmount,
             behavior: 'smooth' // Smooth scrolling
         });
+    });
+});
+
+
+//Optimize Picture
+document.addEventListener("DOMContentLoaded", function() {
+    const logos = document.querySelectorAll('.logo');
+
+    const lazyLoad = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const logo = entry.target;
+                const bgImage = logo.getAttribute('data-bg');
+                logo.style.backgroundImage = `url(${bgImage})`;
+                observer.unobserve(logo); // Hentikan pengamatan setelah gambar dimuat
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(lazyLoad, {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.1 // Memicu ketika 10% elemen terlihat
+    });
+
+    logos.forEach(logo => {
+        observer.observe(logo);
     });
 });

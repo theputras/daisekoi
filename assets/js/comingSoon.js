@@ -33,8 +33,8 @@ typeText();
 
 
 function checkScreenWidth() {
-    if (window.innerWidth > 1020) {
-        window.location.href = "index.html";
+    if (window.innerWidth > 1024) {
+        window.location.href = "/";
     }
 }
 
