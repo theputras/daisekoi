@@ -35,7 +35,7 @@ const alertback = document.getElementById('alertback');
 const title1 = document.getElementById('title1');
 const title2 = document.getElementById('title2');
 const redirectButton = document.getElementById('redirectButton');
-var url = "https://chat.whatsapp.com/GCqZifxj0VKLOL04dX3BcT"; // Ganti dengan URL Grup Daisekoi tujuan Anda
+var url = "https://chat.whatsapp.com/IYek8OzV4jY6eaoSYK0mSa"; // Ganti dengan URL Grup Daisekoi tujuan Anda
 var count = 5; // Waktu hitung mundur dalam detik
 const sekteInput = document.querySelector('#sekte');
 const selectedElement = Array.from(sekteDropdown.children).find(a => a.classList.contains('selected'));
