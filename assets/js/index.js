@@ -1,3 +1,5 @@
+/// COming Soon saat layar berubah //
+
 function checkScreenWidth() {
     if (window.innerWidth <= 1024) {
         window.location.href = "./coming-soon.html";
@@ -10,7 +12,7 @@ window.onresize = checkScreenWidth;
 
 
 
-// Running Teks
+// Running Teks //
 const texts = document.querySelectorAll('.marquee-content p');
 let index = 0;
 
@@ -55,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-//Optimize Picture
+//Optimize Picture //
 document.addEventListener("DOMContentLoaded", function() {
     const logos = document.querySelectorAll('.logo');
 
@@ -79,4 +81,20 @@ document.addEventListener("DOMContentLoaded", function() {
     logos.forEach(logo => {
         observer.observe(logo);
     });
+});
+
+
+
+// Navbar yang berubah warna saat di scroll //
+
+// Listen for the scroll event
+window.addEventListener('scroll', function() {
+    var navbar = document.getElementById('navbar');
+    
+    // Add or remove the 'scrolled' class depending on the scroll position
+    if (window.scrollY > 50) { // Change 50 to whatever scroll position you want
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
 });

@@ -28,6 +28,24 @@ color: #057499;
 
 }
 
+.overlay {
+height: auto !important;
+}
+
+.container, .overlay {
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 45px 241px 0px 241px;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 128px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+/* navbar */
 .navbar .navlink{
     color: #000;
     text-align: center;
@@ -36,7 +54,29 @@ color: #057499;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
+    transition: color 0.3s ease; /* Transisi untuk warna teks */
 }
+
+.navlink::after {
+    content: ''; /* Membuat elemen pseudo */
+    position: absolute; /* Posisi absolut untuk garis */
+    left: 0; /* Menempatkan garis di kiri */
+    bottom: 0; /* Menempatkan garis di bawah teks */
+    height: 3px; /* Tinggi garis */
+    width: 100%; /* Lebar mengikuti teks */
+    background-color: #0091C2; /* Warna garis */
+    transform: scaleX(0); /* Mengatur skala awal garis menjadi 0 (tidak terlihat) */
+    transition: transform 0.3s ease; /* Transisi untuk efek hover */
+  }
+  
+  .navlink:hover, .logoNav:hover {
+    padding-top: 10px; /* Mengubah padding saat hover */
+    color: #0091C2; /* Mengubah warna teks saat hover */
+  }
+  
+  .navlink:hover::after {
+    transform: scaleX(1); /* Mengubah skala garis menjadi 1 saat hover */
+  }
 
 .navbar {
     display: flex;
@@ -52,27 +92,23 @@ color: #057499;
     position: sticky;
     top: 0;
     z-index: 1020;
+    transition: background-color 0.3s ease;
 }
 
-.navbar .logo {
-    background: center / cover no-repeat;
+.navbar.scrolled {
+    background-color: #A3DDEE; /* Color when scrolled */
+}
+
+.navbar .logoNav {
+    background: url(/assets/LogoDaisekoi.png) center / cover no-repeat;
     width: 117px;
     height: 72.668px;
     flex-shrink: 0;
 }
 
-.container {
-    display: flex;
-    width: 100%;
-    height: auto;
-    padding: 45px 241px 0px 241px;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: flex-start;
-    gap: 128px;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-}
+/* Heading */
+
+
 
 .container .heading {
     display: flex;
@@ -87,6 +123,8 @@ color: #057499;
     width: 585px;
     height: 548px;
     background: url(/assets/HomePage.png) center / cover no-repeat;
+    background-size: cover;
+    will-change: background-position;
 }
 
 
@@ -206,6 +244,8 @@ flex-shrink: 0;
 }
 
 
+
+
 .headingGallery .Glr2{
     color: #F4A3BA;
     font-size: 64px;
@@ -236,19 +276,97 @@ flex-shrink: 0;
 }
 
 .pictFrame {
+    display: flex;
     width: 286px;
     height: 239px;
     border-radius: 23px;
     overflow: hidden;
     position: relative;
+    gap: 0;
 }
 
 .pictFrame img {
+    width: 100%;
+    height: auto;
+}
+
+.pictFrame:hover .overlayGaleri {
+    opacity: 1; /* Tampilkan overlayGaleri saat hover */
+    
+}
+
+.overlayGaleri {
+    display: flex;
+    padding: 44px;
+    flex-direction: column;
+    align-items: center;
+    gap: 75px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #0091c2b3;
+    border-radius: 23px; /* Sesuaikan dengan border-radius gambar */
+    opacity: 0; /* Sembunyikan overlayGaleri secara default */
+    transition: opacity 0.3s ease; /* Transisi untuk efek hover */
+    border-radius: 23px;
+    padding: 44px;
+}
+
+.hGdesc, .pGdesc {
+    color: #FFF;
+    font-style: normal;
+    line-height: normal;
+    text-align: center; /* Center the text */
+    margin:0;
+}
+
+.hGdesc {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.pGdesc {
+font-size: 13px;
+font-weight: 400;
+}
+
+.pictFrame .galleryPict {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 23px;
 }
+
+
+/* Tulisan Beta */
+
+.txtContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.txtContainer h1, p {
+    color: #0091C2;
+    text-align: center;
+}
+
+.txtContainer h2 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.txtContainer p {
+    font-size: 13px;
+font-weight: 400;
+}
+
+
 
 
 /* Portfolio */
@@ -259,7 +377,7 @@ flex-shrink: 0;
 }
 .portfolioContainer {
     display: flex;
-    width: 962px;
+    width: auto;
     height: 457px;
     padding: 76px 0px 76px 25px;
     flex-direction: column;
@@ -302,12 +420,14 @@ flex-shrink: 0;
 }
 
 .itemPortfolio {
+    position: relative;
     width: auto;
     height: 218px;
     flex-shrink: 0;
     display: flex;
     justify-content: space-between;;
     align-items: center;
+    overflow: hidden;
 }
 
 .portfolioPlacement {
@@ -330,6 +450,7 @@ scrollbar-width: none; /* For Firefox */
     border-radius: 10px;
 background: #FFEDA3;
 }
+
 .imgPorto {
     display: flex;
     width: 280px;
@@ -410,6 +531,34 @@ cursor: pointer;
 z-index: 9999;
 }
 
+.arrowLeft, .arrowRight {
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transisi untuk opacity dan transform */
+    position: absolute;
+    transform: translateY(-50%); /* Pindahkan ke tengah vertikal */
+    z-index: 10; /* Pastikan panah berada di atas */
+}
+
+.arrowLeft {
+    left: 10px; /* Posisi arrowLeft di kiri */
+    transform: translateX(20px) translateY(0); /* Posisi awal untuk arrowLeft dari kanan */
+}
+
+.arrowRight {
+    right: 10px; /* Posisi arrowRight di kanan */
+    transform: translateX(-20px) translateY(0); /* Posisi awal untuk arrowRight dari kiri */
+}
+
+.itemPortfolio:hover .arrowLeft {
+    opacity: 1; /* Tampilkan panah kiri saat hover */
+    transform: translateX(0) translateY(0); /* Kembalikan posisi ke normal */
+}
+
+.itemPortfolio:hover .arrowRight {
+    opacity: 1; /* Tampilkan panah kanan saat hover */
+    transform: translateX(0) translateY(0); /* Kembalikan posisi ke normal */
+}
+
 .arrowLeft {
 position: relative;;
 left: 10px;
@@ -418,6 +567,10 @@ left: 10px;
 .arrowRight {
     position: relative;;
     right: 10px;
+    }
+    
+    .linkGallery:hover, .linkPortfolio:hover {
+        color: #76ddff;
     }
 /* Footer */
 footer {
@@ -462,6 +615,10 @@ margin-bottom: 0;
     gap: 7px;
 }
 
+.social p:hover {
+    color: #0091C2;
+}
+
 .social .socialTxt {
     color: #000;
 text-align: center;
@@ -480,10 +637,20 @@ margin-bottom: 0;
 footer .copyright {
     display: flex;
     align-items: center;
-    gap: 20px;
 }
 
-.copyright p {
+
+.copyright .boldTeam {
+    color: #0091C2;
+    border-left: 1px solid rgba(154, 154, 154, 0.5);
+    margin-left: 10px;
+    line-height: 1.2;
+    padding-left: 14px;
+    font-style: normal;
+font-weight: 700;
+}
+
+.copyright span {
     color: #9A9A9A;
     text-align: center;
     font-size: 15px;
@@ -491,13 +658,5 @@ footer .copyright {
     font-weight: 400;
     line-height: normal;
     margin-bottom:0 ;
-}
-
-.boldTeam {
-    color: #0091C2;
-    text-align: center;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+    
 }

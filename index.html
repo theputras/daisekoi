@@ -3,25 +3,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daisekoi | Wujudkan Kreatifitasmu</title>
+    <link rel="shortcut icon" href="./assets/DaisekoiLogoBg.png" style="border-radius: 100%;" type="image/jpg">
     <link rel="stylesheet" href="./assets/css/styleIndex.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
     <a class="navlink">Gallery</a>
     <a class="navlink" href="/daftar.html">Pendaftaran</a>
-    <div class="logo" data-bg="/assets/LogoDaisekoi.png"></div>
+    <a class="logoNav" href="/"></a>
     <a class="navlink">Portfolio</a>
     <a class="navlink">Shop</a>
     
     </nav>
+    
+    <div class="overlay">
+        <div class="txtContainer">
+            <h1>Beta Tested</h1>
+            <p>Website masih dalam pengembangan</p>
+            </div>
+    </div>
     <div class="container">
         <div class="heading">
-            <div class="pictHeading"></div>
+            <div class="pictHeading" loading="lazy"></div>
             <div class="runningText">
-                <h2 class="HeadingTxt" id="">Apapun Kreatifitasmu</h2>
+                <h2 class="HeadingTxt">Apapun Kreatifitasmu</h2>
                 <div class="marquee-container">
                     <div class="marquee-content" id="marquee">
                         <p>Fotografi</p>
@@ -33,11 +41,9 @@
             
             </div>
         </div>
-        <div class="containerGallery">
-            
-            
-            
-        </div>
+        
+        
+        
         
         
         <!-- Galeri -->
@@ -45,7 +51,7 @@
             <div class="headingGallery">
                 <div class="txtGallery">
                 <div class="Glr1">Gallery</div>
-            <div class="Glr2">Gallery</div>
+                <div class="Glr2">Gallery</div>
                 </div>
                 <a class="linkGallery">Show More</a>
             
@@ -54,41 +60,90 @@
                 <div class="framePict">
                     <!-- Images repeated 12 times -->
                     <div class="pictFrame">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
-                    </div>
+                        <img class="galleryPict" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div> 
                     <div class="pictFrame">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
-                    </div>
+                        <img class="galleryPict" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div> 
                     <div class="pictFrame">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
-                    </div>
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div> 
                     <div class="pictFrame">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
-                    </div>
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div> 
                     <div class="pictFrame">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
-                    </div>
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div> 
                     <div class="pictFrame">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
-                    </div>
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div> 
                     <div class="pictFrame">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
-                    </div>
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div> 
                     <div class="pictFrame">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
-                    </div>
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div> 
                     <div class="pictFrame">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
-                    </div>
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div> 
                     <div class="pictFrame">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
-                    </div>
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div> 
                     <div class="pictFrame">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
-                    </div>
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div> 
                     <div class="pictFrame">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -115,7 +170,7 @@
                 <div class="portfolioPlacement">
                     <div class="portoVid">
                         <div class="imgPorto">
-                            <a href="https://www.youtube.com/watch?v=66b8VyVPi8o" >
+                            <a href="https://www.youtube.com/watch?v=66b8VyVPi8o" target="_blank"   >
                             <img src="https://img.youtube.com/vi/66b8VyVPi8o/maxresdefault.jpg" />
                             </a>
                             
@@ -214,20 +269,23 @@
     <footer>
     <div class="containerSocial">
         <p class="txtDanger">Follow US on</p>
-        <div class="social">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-            <path d="M8.3 2.5H16.7C19.9 2.5 22.5 5.1 22.5 8.3V16.7C22.5 18.2383 21.8889 19.7135 20.8012 20.8012C19.7135 21.8889 18.2383 22.5 16.7 22.5H8.3C5.1 22.5 2.5 19.9 2.5 16.7V8.3C2.5 6.76174 3.11107 5.28649 4.19878 4.19878C5.28649 3.11107 6.76174 2.5 8.3 2.5ZM8.1 4.5C7.14522 4.5 6.22955 4.87928 5.55442 5.55442C4.87928 6.22955 4.5 7.14522 4.5 8.1V16.9C4.5 18.89 6.11 20.5 8.1 20.5H16.9C17.8548 20.5 18.7705 20.1207 19.4456 19.4456C20.1207 18.7705 20.5 17.8548 20.5 16.9V8.1C20.5 6.11 18.89 4.5 16.9 4.5H8.1ZM17.75 6C18.0815 6 18.3995 6.1317 18.6339 6.36612C18.8683 6.60054 19 6.91848 19 7.25C19 7.58152 18.8683 7.89946 18.6339 8.13388C18.3995 8.3683 18.0815 8.5 17.75 8.5C17.4185 8.5 17.1005 8.3683 16.8661 8.13388C16.6317 7.89946 16.5 7.58152 16.5 7.25C16.5 6.91848 16.6317 6.60054 16.8661 6.36612C17.1005 6.1317 17.4185 6 17.75 6ZM12.5 7.5C13.8261 7.5 15.0979 8.02678 16.0355 8.96447C16.9732 9.90215 17.5 11.1739 17.5 12.5C17.5 13.8261 16.9732 15.0979 16.0355 16.0355C15.0979 16.9732 13.8261 17.5 12.5 17.5C11.1739 17.5 9.90215 16.9732 8.96447 16.0355C8.02678 15.0979 7.5 13.8261 7.5 12.5C7.5 11.1739 8.02678 9.90215 8.96447 8.96447C9.90215 8.02678 11.1739 7.5 12.5 7.5ZM12.5 9.5C11.7044 9.5 10.9413 9.81607 10.3787 10.3787C9.81607 10.9413 9.5 11.7044 9.5 12.5C9.5 13.2956 9.81607 14.0587 10.3787 14.6213C10.9413 15.1839 11.7044 15.5 12.5 15.5C13.2956 15.5 14.0587 15.1839 14.6213 14.6213C15.1839 14.0587 15.5 13.2956 15.5 12.5C15.5 11.7044 15.1839 10.9413 14.6213 10.3787C14.0587 9.81607 13.2956 9.5 12.5 9.5Z" fill="black"/>
-          </svg>
-    <p class="socialTxt">@daisekoi</p>
-    </div>
+        <a href="https://www.instagram.com/daisekoi" target="_blank">
+            <div class="social">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                <path d="M8.3 2.5H16.7C19.9 2.5 22.5 5.1 22.5 8.3V16.7C22.5 18.2383 21.8889 19.7135 20.8012 20.8012C19.7135 21.8889 18.2383 22.5 16.7 22.5H8.3C5.1 22.5 2.5 19.9 2.5 16.7V8.3C2.5 6.76174 3.11107 5.28649 4.19878 4.19878C5.28649 3.11107 6.76174 2.5 8.3 2.5ZM8.1 4.5C7.14522 4.5 6.22955 4.87928 5.55442 5.55442C4.87928 6.22955 4.5 7.14522 4.5 8.1V16.9C4.5 18.89 6.11 20.5 8.1 20.5H16.9C17.8548 20.5 18.7705 20.1207 19.4456 19.4456C20.1207 18.7705 20.5 17.8548 20.5 16.9V8.1C20.5 6.11 18.89 4.5 16.9 4.5H8.1ZM17.75 6C18.0815 6 18.3995 6.1317 18.6339 6.36612C18.8683 6.60054 19 6.91848 19 7.25C19 7.58152 18.8683 7.89946 18.6339 8.13388C18.3995 8.3683 18.0815 8.5 17.75 8.5C17.4185 8.5 17.1005 8.3683 16.8661 8.13388C16.6317 7.89946 16.5 7.58152 16.5 7.25C16.5 6.91848 16.6317 6.60054 16.8661 6.36612C17.1005 6.1317 17.4185 6 17.75 6ZM12.5 7.5C13.8261 7.5 15.0979 8.02678 16.0355 8.96447C16.9732 9.90215 17.5 11.1739 17.5 12.5C17.5 13.8261 16.9732 15.0979 16.0355 16.0355C15.0979 16.9732 13.8261 17.5 12.5 17.5C11.1739 17.5 9.90215 16.9732 8.96447 16.0355C8.02678 15.0979 7.5 13.8261 7.5 12.5C7.5 11.1739 8.02678 9.90215 8.96447 8.96447C9.90215 8.02678 11.1739 7.5 12.5 7.5ZM12.5 9.5C11.7044 9.5 10.9413 9.81607 10.3787 10.3787C9.81607 10.9413 9.5 11.7044 9.5 12.5C9.5 13.2956 9.81607 14.0587 10.3787 14.6213C10.9413 15.1839 11.7044 15.5 12.5 15.5C13.2956 15.5 14.0587 15.1839 14.6213 14.6213C15.1839 14.0587 15.5 13.2956 15.5 12.5C15.5 11.7044 15.1839 10.9413 14.6213 10.3787C14.0587 9.81607 13.2956 9.5 12.5 9.5Z" fill="black"/>
+              </svg>
+                <p class="socialTxt">@daisekoi</p>
+            </div>
+        </a>
+        
     </div>
     
     
     <div class="copyright">
-    <p>© <script>
+    <span>© <script>
         document.write(new Date().getFullYear());
-      </script>, Daisekoi Creative Media</p>
-      <p1 class="boldTeam">Create by Daisekoi Team</p1>
+      </script>, Daisekoi Creative Media</span>
+      <span class="boldTeam">Create by Daisekoi Team</span>
     </div>
     
     </footer>
