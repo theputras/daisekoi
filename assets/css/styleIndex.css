@@ -351,17 +351,17 @@ font-weight: 400;
     flex-shrink: 0;
 }
 
-.txtContainer h1, p {
+.txtContainer .betaH, .betaP {
     color: #0091C2;
     text-align: center;
 }
 
-.txtContainer h2 {
+.txtContainer .betaH {
     font-size: 30px;
     font-weight: 700;
 }
 
-.txtContainer p {
+.txtContainer .betaP {
     font-size: 13px;
 font-weight: 400;
 }
