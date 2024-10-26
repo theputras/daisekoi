@@ -216,7 +216,7 @@ flex-shrink: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 639px;
+        
         flex-wrap: nowrap;
     }
     
@@ -240,6 +240,7 @@ flex-shrink: 0;
         border: none;
         cursor: pointer;
         margin-top: 10px;
+        padding-left: 639px;
     }
     
     .menu-toggle svg {

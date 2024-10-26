@@ -130,33 +130,31 @@ document.querySelector('.menu-toggle').addEventListener('click', function() {
 
 // dark mode system //
 
+// Select the button
 const btnMode = document.querySelector('.btn-mode');
 
-btnMode.addEventListener('click', () => {
-    btnMode.classList.toggle('dark-active');
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem('theme', document.body.classList.contains('dark-mode')? 'dark' : 'light');
-  button.style.backgroundColor = document.body.classList.contains('dark-mode')? '#2C2C2C' : '#fff';
+// Check localStorage for saved theme on page load
+window.addEventListener('load', () => {
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');  // Apply dark mode
+        btnMode.classList.add('dark-active');  // Ensure button reflects dark mode state
+    }
 });
 
-// if (localStorage.getItem('theme') === 'dark') {
-//     document.body.classList.add('dark-mode');
-//     btnMode.classList.toggle('dark-active');
-//     button.style.backgroundColor = '#333';
-//   }
-//   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-//     if (event.matches) {
-//       document.body.classList.add('dark-mode');
-//       btnMode.classList.toggle('dark-active');
-//       localStorage.setItem('theme', 'dark');
-//       button.style.backgroundColor = '#333';
-//     } else {
-//       document.body.classList.remove('dark-mode');
-//       btnMode.classList.toggle('dark-active');
-//       localStorage.setItem('theme', 'light');
-//       button.style.backgroundColor = '#fff';
-//     }
-//   });
+// Toggle dark mode when the button is clicked
+btnMode.addEventListener('click', () => {
+    btnMode.classList.toggle('dark-active'); // Toggle button active state
+    document.body.classList.toggle('dark-mode'); // Toggle dark mode on body
+    
+    // Save theme preference in localStorage
+    const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('theme', currentTheme);
+});
+
+
+
 
 
 // Select Menu //
