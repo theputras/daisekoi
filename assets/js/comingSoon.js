@@ -1,3 +1,5 @@
+// Teks Berjalan //
+
 const img = document.getElementById('img');
     const formleft = document.querySelector('.form-left');
     const textContainer = document.getElementById('text-comingsoon');
@@ -31,9 +33,9 @@ function typeText() {
 currentText = texts[currentIndex];
 typeText();
 
-
+/// COming Soon saat layar berubah //
 function checkScreenWidth() {
-    if (window.innerWidth > 1024) {
+    if (window.innerWidth > 833) {
         window.location.href = "/";
     }
 }

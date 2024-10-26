@@ -1,7 +1,7 @@
 /// COming Soon saat layar berubah //
 
 function checkScreenWidth() {
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= 833) {
         window.location.href = "./coming-soon.html";
     }
 }
@@ -35,9 +35,17 @@ function showNextText() {
 // Mulai animasi saat halaman dimuat
 window.onload = showNextText;
 
+
+// Button Scroll //
 document.addEventListener("DOMContentLoaded", function() {
     const portfolioPlacement = document.querySelector('.portfolioPlacement');
-    const scrollAmount = 865; // Adjust this value based on the width of your items
+     // Set scroll amount based on screen width
+     let scrollAmount = window.innerWidth <= 1024 ? 576 : 865;
+
+     // Update scrollAmount on window resize
+     window.addEventListener('resize', function() {
+         scrollAmount = window.innerWidth <= 1024 ? 576 : 865;
+     });
 
     document.querySelector('.arrowRight').addEventListener('click', function() {
         portfolioPlacement.scrollBy({
@@ -54,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
             behavior: 'smooth' // Smooth scrolling
         });
     });
+    
 });
 
 
@@ -88,13 +97,119 @@ document.addEventListener("DOMContentLoaded", function() {
 // Navbar yang berubah warna saat di scroll //
 
 // Listen for the scroll event
-window.addEventListener('scroll', function() {
-    var navbar = document.getElementById('navbar');
-    
-    // Add or remove the 'scrolled' class depending on the scroll position
-    if (window.scrollY > 50) { // Change 50 to whatever scroll position you want
-        navbar.classList.add('scrolled');
+window.addEventListener('scroll', function () {
+    var navbarDesktop = document.getElementById('navbar-desktop');
+    var navbarMobile = document.getElementById('navbar-mobile');
+    var scrollLimit = window.innerWidth <= 1024 ? 314 : 900; // Set scroll limit based on screen width
+
+    if (window.scrollY > scrollLimit) {
+        if (navbarDesktop) navbarDesktop.classList.add('scrolled');
+        if (navbarMobile) navbarMobile.classList.add('scrolled');
     } else {
-        navbar.classList.remove('scrolled');
+        if (navbarDesktop) navbarDesktop.classList.remove('scrolled');
+        if (navbarMobile) navbarMobile.classList.remove('scrolled');
     }
 });
+
+
+// Tombol NavLinks //
+const navlinks = document.querySelector('.navlinks');
+const navmobile = document.querySelector('.navbar .mobile');
+
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    navlinks.classList.toggle('active');
+    
+    if (navlinks.classList.contains('active')) {
+        navlinks.style.maxHeight = navlinks.scrollHeight + "px"; // Set to content height
+    } else {
+        navlinks.style.maxHeight = null; // Remove max-height
+    }
+});
+
+
+
+// dark mode system //
+
+const btnMode = document.querySelector('.btn-mode');
+
+btnMode.addEventListener('click', () => {
+    btnMode.classList.toggle('dark-active');
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('theme', document.body.classList.contains('dark-mode')? 'dark' : 'light');
+  button.style.backgroundColor = document.body.classList.contains('dark-mode')? '#2C2C2C' : '#fff';
+});
+
+// if (localStorage.getItem('theme') === 'dark') {
+//     document.body.classList.add('dark-mode');
+//     btnMode.classList.toggle('dark-active');
+//     button.style.backgroundColor = '#333';
+//   }
+//   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+//     if (event.matches) {
+//       document.body.classList.add('dark-mode');
+//       btnMode.classList.toggle('dark-active');
+//       localStorage.setItem('theme', 'dark');
+//       button.style.backgroundColor = '#333';
+//     } else {
+//       document.body.classList.remove('dark-mode');
+//       btnMode.classList.toggle('dark-active');
+//       localStorage.setItem('theme', 'light');
+//       button.style.backgroundColor = '#fff';
+//     }
+//   });
+
+
+// Select Menu //
+
+const optionMenu = document.querySelector(".select-menu"),
+       selectBtn = optionMenu.querySelector(".select-btn"),
+       options = optionMenu.querySelectorAll(".option"),
+       sBtn_text = optionMenu.querySelector(".sBtn-text");
+
+
+selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));       
+
+options.forEach(option =>{
+        option.addEventListener("click", ()=>{
+        let selectedOption = option.querySelector(".option-text").innerText;
+        sBtn_text.innerText = selectedOption;        
+        optionMenu.classList.remove("active");
+        
+        console.log(selectedOption)
+        
+    });
+    
+});
+
+// protfolio sBtn-text
+$(window).on("load", function() {
+    var t = $(".framePict"); // Select the parent container for your gallery items
+
+    // Initially show #iniKaryaku by default
+    $("#dokumentasi").hide();
+    $("#iniKaryaku").show();
+
+    // Click event for filtering
+    $(".options li").click(function() {
+        $(".options .active").removeClass("active");
+        $(this).addClass("active");
+        
+        var filterValue = $(this).attr("data-filter");
+
+        // Filter based on id: #iniKaryaku or #dokumentasi with animation
+        if (filterValue === "iniKaryaku") {
+            $("#dokumentasi").slideUp(400, function() { // Slide up the content first
+                $("#iniKaryaku").slideDown(400); // Then slide down #iniKaryaku
+            });
+        } else if (filterValue === "dokumentasi") {
+            $("#iniKaryaku").slideUp(400, function() { // Slide up the content first
+                $("#dokumentasi").slideDown(400); // Then slide down #dokumentasi
+            });
+        }
+
+        return false;
+    });
+});
+
+
+

@@ -5,19 +5,50 @@
     <title>Daisekoi | Wujudkan Kreatifitasmu</title>
     <link rel="shortcut icon" href="./assets/DaisekoiLogoBg.png" style="border-radius: 100%;" type="image/jpg">
     <link rel="stylesheet" href="./assets/css/styleIndex.css">
+    <link rel="stylesheet" href="./assets/css/styleIndexMobile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar" id="navbar">
-    <a class="navlink" href="/comingSoon.html">Gallery</a>
-    <a class="navlink" href="/daftar">Pendaftaran</a>
+    <div class="btnDarkmode-container">
+        <button class="btn-mode"> 
+        <svg class="dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57 57" fill="none">
+            <path d="M37.6295 7.94201L34.238 9.79688L37.6295 11.6518L39.4844 15.0433L41.3393 11.6518L44.7307 9.79688L41.3393 7.94201L39.4844 4.55051L37.6295 7.94201ZM24.7285 9.87526C21.618 10.5064 18.7151 11.9067 16.285 13.9483C13.8549 15.9899 11.9749 18.6077 10.8168 21.5628C9.65863 24.5178 9.25921 27.7159 9.65498 30.865C10.0508 34.0142 11.2291 37.014 13.0824 39.5905C14.9358 42.1671 17.4051 44.2384 20.2648 45.6151C23.1245 46.9919 26.2836 47.6304 29.4536 47.4722C32.6235 47.314 35.7033 46.3643 38.4118 44.7097C41.1203 43.055 43.3711 40.7483 44.9588 38C39.3186 37.9561 33.9244 35.6848 29.9517 31.6809C25.979 27.6771 23.7498 22.2653 23.75 16.625C23.75 14.2975 24.0611 12.0246 24.7285 9.87526ZM4.75 28.5C4.75 15.3829 15.3829 4.75001 28.5 4.75001H32.6183L30.5568 8.31251C29.1816 10.6875 28.5 13.5138 28.5 16.625C28.4996 19.0798 29.0429 21.5043 30.0908 23.7242C31.1388 25.9442 32.6653 27.9045 34.5608 29.4644C36.4563 31.0243 38.6737 32.1451 41.0538 32.7462C43.4339 33.3474 45.9176 33.414 48.3265 32.9413L52.3213 32.1646L51.0316 36.0264C47.8847 45.4504 38.9904 52.25 28.5 52.25C15.3829 52.25 4.75 41.6171 4.75 28.5ZM48.6875 15.238L50.8582 19.2043L54.8245 21.375L50.8582 23.5458L48.6875 27.512L46.5168 23.5458L42.5505 21.375L46.5168 19.2043L48.6875 15.238Z" fill="#4F4F4F"/>
+          </svg>
+          <svg class="light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57 57" fill="none">
+            <path d="M28.5 38C33.7467 38 38 33.7467 38 28.5C38 23.2533 33.7467 19 28.5 19C23.2533 19 19 23.2533 19 28.5C19 33.7467 23.2533 38 28.5 38Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M47.5 28.5H49.875M7.125 28.5H9.5M28.5 47.5V49.875M28.5 7.125V9.5M41.9354 41.9354L43.6145 43.6145M13.3855 13.3855L15.0646 15.0646M15.0646 41.9354L13.3855 43.6145M43.6145 13.3855L41.9354 15.0646" stroke="#fffF" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          </button>
+    </div>
+    <nav class="navbar dekstop" id="navbar-desktop">
+        <a class="navlink" href="/comingSoon.html">Gallery</a>
+        <a class="navlink" href="/daftar">Pendaftaran</a>
     <a class="logoNav" href="/"></a>
     <a class="navlink" href="/comingSoon.html">Portfolio</a>
-    <a class="navlink" href="/comingSoon.html">Shop</a>
-    
+            <a class="navlink" href="/comingSoon.html">Shop</a>
     </nav>
+    
+    <!-- Mobile Navigation (Visible below 988px) -->
+<nav class="navbar mobile" id="navbar-mobile">
+    <div class="navbar mobile top">
+    <a class="logoNav" href="/"></a>
+    <button class="menu-toggle" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 11" fill="none">
+            <path d="M0 1.27744C0 1.06746 0.0856023 0.866084 0.237976 0.717606C0.390349 0.569128 0.597012 0.485714 0.8125 0.485714H12.1875C12.403 0.485714 12.6097 0.569128 12.762 0.717606C12.9144 0.866084 13 1.06746 13 1.27744C13 1.48742 12.9144 1.6888 12.762 1.83728C12.6097 1.98576 12.403 2.06917 12.1875 2.06917H0.8125C0.597012 2.06917 0.390349 1.98576 0.237976 1.83728C0.0856023 1.6888 0 1.48742 0 1.27744ZM0 5.5C0 5.29002 0.0856023 5.08864 0.237976 4.94016C0.390349 4.79168 0.597012 4.70827 0.8125 4.70827H12.1875C12.403 4.70827 12.6097 4.79168 12.762 4.94016C12.9144 5.08864 13 5.29002 13 5.5C13 5.70998 12.9144 5.91136 12.762 6.05984C12.6097 6.20831 12.403 6.29173 12.1875 6.29173H0.8125C0.597012 6.29173 0.390349 6.20831 0.237976 6.05984C0.0856023 5.91136 0 5.70998 0 5.5ZM0 9.72256C0 9.51258 0.0856023 9.3112 0.237976 9.16272C0.390349 9.01424 0.597012 8.93083 0.8125 8.93083H12.1875C12.403 8.93083 12.6097 9.01424 12.762 9.16272C12.9144 9.3112 13 9.51258 13 9.72256C13 9.93254 12.9144 10.1339 12.762 10.2824C12.6097 10.4309 12.403 10.5143 12.1875 10.5143H0.8125C0.597012 10.5143 0.390349 10.4309 0.237976 10.2824C0.0856023 10.1339 0 9.93254 0 9.72256Z" fill="black"/>
+          </svg>
+    </button>
+    </div>
+    
+    <div class="navlinks">
+        <a class="navlink" href="/comingSoon.html">Gallery</a>
+        <a class="navlink" href="/daftar">Pendaftaran</a>
+        <a class="navlink" href="/comingSoon.html">Portfolio</a>
+        <a class="navlink" href="/comingSoon.html">Shop</a>
+    </div>
+</nav>
     
     <div class="overlay">
         <div class="txtContainer">
@@ -56,9 +87,25 @@
                 <a class="linkGallery">Show More</a>
             
             </div>
+            
             <div class="picturePlacement">
-                <div class="framePict">
-                    <!-- Images repeated 12 times -->
+                <div class="select-menu">
+                    <div class="select-btn">
+                        <span class="sBtn-text">Filter Gallery</span>
+                        <i class="bx bx-chevron-down"></i>
+                    </div>
+                    <ul class="options">
+                        <li class="option active" data-filter="iniKaryaku">
+                            <span class="option-text">#IniKaryaku</span>
+                        </li>
+                        <li class="option active" data-filter="dokumentasi">
+                            <span class="option-text">Dokumentasi</span>
+                        </li>
+                      
+                    </ul>
+                </div>
+                <div class="framePict" id="iniKaryaku">
+                    <!-- Images repeated 12 times #IniKaryaku -->
                     <div class="pictFrame">
                         <img class="galleryPict" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I7WlNz3lnfHB-74Wkc7VTfRbk3Y-WLKYfQ&s" />
                         <div class="overlayGaleri">
@@ -74,14 +121,14 @@
                         </div>
                     </div> 
                     <div class="pictFrame">
-                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
                         <div class="overlayGaleri">
                             <h1 class="hGdesc">Anas Hisyam</h1>
                             <p1 class="pGdesc">Galeri karya</p1>
                         </div>
                     </div> 
                     <div class="pictFrame">
-                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
                         <div class="overlayGaleri">
                             <h1 class="hGdesc">Anas Hisyam</h1>
                             <p1 class="pGdesc">Galeri karya</p1>
@@ -143,8 +190,239 @@
                             <p1 class="pGdesc">Galeri karya</p1>
                         </div>
                     </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="./assets/templateGambar.jpg" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Galeri karya</p1>
+                        </div>
+                    </div>
                     
                 </div>
+                
+                <div class="framePict" id="dokumentasi">
+                    <!-- Images repeated 12 times -->
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div> 
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div> 
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div> 
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div> 
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div> 
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div> 
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div> 
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div> 
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div> 
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div> 
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div> 
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div>
+                    <div class="pictFrame">
+                        <img class="galleryPict" src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8991/production/_104871253_1a76b03a-0a86-4ee3-85de-46f66d7f179e.jpg.webp" />
+                        <div class="overlayGaleri">
+                            <h1 class="hGdesc">Anas Hisyam</h1>
+                            <p1 class="pGdesc">Dokumentasi</p1>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
             </div>
         </div>
 
@@ -272,7 +550,7 @@
         <a href="https://www.instagram.com/daisekoi" target="_blank">
             <div class="social">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                <path d="M8.3 2.5H16.7C19.9 2.5 22.5 5.1 22.5 8.3V16.7C22.5 18.2383 21.8889 19.7135 20.8012 20.8012C19.7135 21.8889 18.2383 22.5 16.7 22.5H8.3C5.1 22.5 2.5 19.9 2.5 16.7V8.3C2.5 6.76174 3.11107 5.28649 4.19878 4.19878C5.28649 3.11107 6.76174 2.5 8.3 2.5ZM8.1 4.5C7.14522 4.5 6.22955 4.87928 5.55442 5.55442C4.87928 6.22955 4.5 7.14522 4.5 8.1V16.9C4.5 18.89 6.11 20.5 8.1 20.5H16.9C17.8548 20.5 18.7705 20.1207 19.4456 19.4456C20.1207 18.7705 20.5 17.8548 20.5 16.9V8.1C20.5 6.11 18.89 4.5 16.9 4.5H8.1ZM17.75 6C18.0815 6 18.3995 6.1317 18.6339 6.36612C18.8683 6.60054 19 6.91848 19 7.25C19 7.58152 18.8683 7.89946 18.6339 8.13388C18.3995 8.3683 18.0815 8.5 17.75 8.5C17.4185 8.5 17.1005 8.3683 16.8661 8.13388C16.6317 7.89946 16.5 7.58152 16.5 7.25C16.5 6.91848 16.6317 6.60054 16.8661 6.36612C17.1005 6.1317 17.4185 6 17.75 6ZM12.5 7.5C13.8261 7.5 15.0979 8.02678 16.0355 8.96447C16.9732 9.90215 17.5 11.1739 17.5 12.5C17.5 13.8261 16.9732 15.0979 16.0355 16.0355C15.0979 16.9732 13.8261 17.5 12.5 17.5C11.1739 17.5 9.90215 16.9732 8.96447 16.0355C8.02678 15.0979 7.5 13.8261 7.5 12.5C7.5 11.1739 8.02678 9.90215 8.96447 8.96447C9.90215 8.02678 11.1739 7.5 12.5 7.5ZM12.5 9.5C11.7044 9.5 10.9413 9.81607 10.3787 10.3787C9.81607 10.9413 9.5 11.7044 9.5 12.5C9.5 13.2956 9.81607 14.0587 10.3787 14.6213C10.9413 15.1839 11.7044 15.5 12.5 15.5C13.2956 15.5 14.0587 15.1839 14.6213 14.6213C15.1839 14.0587 15.5 13.2956 15.5 12.5C15.5 11.7044 15.1839 10.9413 14.6213 10.3787C14.0587 9.81607 13.2956 9.5 12.5 9.5Z" fill="black"/>
+                <path d="M8.3 2.5H16.7C19.9 2.5 22.5 5.1 22.5 8.3V16.7C22.5 18.2383 21.8889 19.7135 20.8012 20.8012C19.7135 21.8889 18.2383 22.5 16.7 22.5H8.3C5.1 22.5 2.5 19.9 2.5 16.7V8.3C2.5 6.76174 3.11107 5.28649 4.19878 4.19878C5.28649 3.11107 6.76174 2.5 8.3 2.5ZM8.1 4.5C7.14522 4.5 6.22955 4.87928 5.55442 5.55442C4.87928 6.22955 4.5 7.14522 4.5 8.1V16.9C4.5 18.89 6.11 20.5 8.1 20.5H16.9C17.8548 20.5 18.7705 20.1207 19.4456 19.4456C20.1207 18.7705 20.5 17.8548 20.5 16.9V8.1C20.5 6.11 18.89 4.5 16.9 4.5H8.1ZM17.75 6C18.0815 6 18.3995 6.1317 18.6339 6.36612C18.8683 6.60054 19 6.91848 19 7.25C19 7.58152 18.8683 7.89946 18.6339 8.13388C18.3995 8.3683 18.0815 8.5 17.75 8.5C17.4185 8.5 17.1005 8.3683 16.8661 8.13388C16.6317 7.89946 16.5 7.58152 16.5 7.25C16.5 6.91848 16.6317 6.60054 16.8661 6.36612C17.1005 6.1317 17.4185 6 17.75 6ZM12.5 7.5C13.8261 7.5 15.0979 8.02678 16.0355 8.96447C16.9732 9.90215 17.5 11.1739 17.5 12.5C17.5 13.8261 16.9732 15.0979 16.0355 16.0355C15.0979 16.9732 13.8261 17.5 12.5 17.5C11.1739 17.5 9.90215 16.9732 8.96447 16.0355C8.02678 15.0979 7.5 13.8261 7.5 12.5C7.5 11.1739 8.02678 9.90215 8.96447 8.96447C9.90215 8.02678 11.1739 7.5 12.5 7.5ZM12.5 9.5C11.7044 9.5 10.9413 9.81607 10.3787 10.3787C9.81607 10.9413 9.5 11.7044 9.5 12.5C9.5 13.2956 9.81607 14.0587 10.3787 14.6213C10.9413 15.1839 11.7044 15.5 12.5 15.5C13.2956 15.5 14.0587 15.1839 14.6213 14.6213C15.1839 14.0587 15.5 13.2956 15.5 12.5C15.5 11.7044 15.1839 10.9413 14.6213 10.3787C14.0587 9.81607 13.2956 9.5 12.5 9.5Z"/>
               </svg>
                 <p class="socialTxt">@daisekoi</p>
             </div>
@@ -289,7 +567,7 @@
     </div>
     
     </footer>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./assets/js/index.js"></script>
 </body>
 </html>
