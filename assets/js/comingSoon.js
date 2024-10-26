@@ -3,7 +3,7 @@
 const img = document.getElementById('img');
     const formleft = document.querySelector('.form-left');
     const textContainer = document.getElementById('text-comingsoon');
-const texts = ['Something New', 'Coming Soon'];
+const texts = ['Something New', 'Coming Soon', 'Buka di Dekstop'];
 formleft.classList.remove('show');
 img.classList.remove('show');
 formleft.classList.add('show');
