@@ -33,13 +33,13 @@ function typeText() {
 currentText = texts[currentIndex];
 typeText();
 
-/// COming Soon saat layar berubah //
-function checkScreenWidth() {
-    if (window.innerWidth > 833) {
-        window.location.href = "/";
-    }
-}
+// /// COming Soon saat layar berubah //
+// function checkScreenWidth() {
+//     if (window.innerWidth > 833) {
+//         window.location.href = "/";
+//     }
+// }
 
-// Jalankan fungsi saat halaman dimuat dan saat ukuran layar berubah
-window.onload = checkScreenWidth;
-window.onresize = checkScreenWidth;
+// // Jalankan fungsi saat halaman dimuat dan saat ukuran layar berubah
+// window.onload = checkScreenWidth;
+// window.onresize = checkScreenWidth;
