@@ -52,27 +52,15 @@ height: auto !important;
 }
 
 
-/* navbar */
-.navbar {
-    padding: 14px 250px;
-}
-
-.navbar .navButton {
-    gap: 98px;
-}
-
-.navbar .logoNav {
-    width: 74px;
-    height: 46px;
-}
 
 
-/* Heading */
+
+/* Heading
 
 .heading .pictHeading{
     width: 367px;
     height: 344px;
-}
+} */
 
 /* Animasi Text */
 
@@ -118,14 +106,14 @@ flex-shrink: 0;
     align-items: center;
 }
 
-.picturePlacement .framePict {
+/* .picturePlacement .framePict {
     width: 638px;
     height: 672px;
     display: grid;
-    grid-template-columns: repeat(3, 30fr); /* Two columns */
+    grid-template-columns: repeat(3, 30fr); /* Two columns 
     gap: 13px;
     border-radius: 16px;
-}
+} */
 
 .pictFrame, .overlayGaleri {
     width: 203px;
@@ -175,19 +163,19 @@ flex-shrink: 0;
     font-size: 40px;
 }
 
-.arrowLeft, .arrowRight {
+/* .arrowLeft, .arrowRight {
     opacity: 1;
     transform: translateX(0) translateY(0); 
-}
+} */
 
 
 }
 
 @media (max-width: 1629px) { 
-    .arrowLeft, .arrowRight {
+    /* .arrowLeft, .arrowRight {
         opacity: 1;
         transform: translateX(0) translateY(0); 
-    }
+    } */
     
 }
 @media (max-width: 988px) {
@@ -310,13 +298,29 @@ flex-shrink: 0;
         align-items:center;
     }
     
+    /* Pastikan menu mobile disembunyikan di awal */
+.navlinks.mobile {
+    display: none;
+}
+
+/* Saat kelas 'hidden' ditambahkan, menu mobile disembunyikan */
+.navlinks.mobile.hidden {
+    display: none;
+}
+
+/* Saat kelas 'hidden' dihapus, menu mobile ditampilkan */
+.navlinks.mobile:not(.hidden) {
+    display: flex;
+}
+
     
-    /* Heading */
+    
+    /* Heading
 
 .heading .pictHeading{
     width: 367px;
     height: 344px;
-}
+} */
 
 /* Button Filter gallery & Portfolio */
 
@@ -329,3 +333,5 @@ flex-shrink: 0;
 }
 
 }
+
+

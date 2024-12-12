@@ -111,7 +111,7 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     opacity: 1; /* Tampilkan ikon light saat mode light aktif */
 }
 
-.dark-mode .navbar.dekstop, .dark-mode .container, body.dark-mode, .dark-mode .marquee-container {
+.dark-mode #navbar-mobile, .dark-mode #navbar-dekstop, .dark-mode .container, body.dark-mode, .dark-mode .marquee-container {
     background-color: #2C2C2C;
 }
 
@@ -144,6 +144,9 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     border-left: 1px solid #ffffff80 !important;
 }
 
+.dark-mode:has(#menu-toggle) svg {
+    fill: #fff;
+}
 
 .dark-mode footer, .dark-mode .portoVid {
     background-color: #B39D4A;
@@ -157,7 +160,7 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     background: url(/assets/LogoDaisekoiPutih.png) center / cover no-repeat !important;
 }
 
-.dark-mode .pictHeading {
+.dark-mode #pictHeadingDark {
     background: url(/assets/HomePageDark.png) center / cover no-repeat !important;
 }
 
@@ -165,93 +168,7 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 background: linear-gradient(180deg, #FF769D 0%, #0493BF 100%);
 }
 
-/* navbar */
 
-.navbar.dekstop .navButton {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    gap: 156px;
-    flex-wrap: nowrap;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-}
-
-.navbar.dekstop .navlink{
-    position: relative; 
-    color: #3A3A3A;
-    text-align: center;
-    text-decoration: none; /* Removes the underline */
-    font-size: 14px;
-    font-style: normal;
-    font-weight: bold;
-    line-height: normal;
-    transition: color 0.3s ease; /* Transisi untuk warna teks */
-}
-
-
-
-.navlink::after{
-    content: ''; /* Membuat elemen pseudo */
-    position: absolute; /* Posisi absolut untuk garis */
-    left: 0; /* Menempatkan garis di kiri */
-    bottom: 0; /* Menempatkan garis di bawah teks */
-    height: 3px; /* Tinggi garis */
-    width: 100%; /* Lebar mengikuti teks */
-    border-radius: 10px;
-    background-color: #0091C2; /* Warna garis */
-    transform: scaleX(0); /* Mengatur skala awal garis menjadi 0 (tidak terlihat) */
-    transition: transform 0.3s ease; /* Transisi untuk efek hover */
-  }
-  
-  .navlink:hover {
-    padding-top: 10px; /* Mengubah padding saat hover */
-    color: #0091C2; /* Mengubah warna teks saat hover */
-  }
-  
-  .logoNav:hover {
-    transform: translateY(5%);
-  }
-  
-  .navlink:hover::after{
-    transform: scaleX(1); /* Mengubah skala garis menjadi 1 saat hover */
-  }
-
-.navbar.mobile, .navbar.mobile.top {
-    display: none;
-}
-
-.navbar.dekstop {
-    display: flex;
-    width: 100%;
-    padding: 22px 398px;
-    justify-content: center;
-    align-items: center;
-    gap: 156px;
-    flex-shrink: 0;
-    background: #FFF;
-    flex-wrap: nowrap;
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-    transition: background-color 0.3s ease;
-}
-.navbar.dekstop.scrolled{
-    background-color: #A3DDEE; /* Color when scrolled */
-    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
-    /* align-items: flex-start;
-    height: 64px; */
-}
-
-.navbar .logoNav {
-    background: url(/assets/LogoDaisekoi.png) center / cover no-repeat;
-    width: 117px;
-    height: 72.668px;
-    flex-shrink: 0;
-    position: relative; /* Posisi absolut untuk garis */
-}
 
 /* Heading */
 
@@ -272,8 +189,6 @@ background: linear-gradient(180deg, #FF769D 0%, #0493BF 100%);
     height: 548px;
     background: url(/assets/HomePage.png) center / cover no-repeat;
     background-size: cover;
-    will-change: background-position;
-    transition: background-color 0.3s ease-in-out;
 }
 
 
@@ -352,25 +267,12 @@ line-height: normal;
 
 .select-menu {
     width: 274px;
-    position: absolute;
-    z-index: 1015;
+    position: sticky;
     padding: 10px 0;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease; /* Smooth transition for visibility */
-    pointer-events: none; /* Prevent interaction when not visible */
-    transform: translateY(-75px);
+    z-index: 2;
 }
 
-/* When hovering on picturePlacement, show select-menu */
-.picturePlacement:hover .select-menu, .containerGallery:hover .select-menu {
-    opacity: 1; /* Make select-menu visible */
-    pointer-events: auto; /* Allow interaction when visible */
-}
 
-.picturePlacement .framePict:hover > .select-menu {
-    opacity: 0; /* Hide select-menu when hovering over framePict */
-    pointer-events: none; /* Prevent interaction when hovering on framePict */
-}
   .select-menu .select-btn{
     display: flex;
     height: 45px;
@@ -406,7 +308,7 @@ line-height: normal;
     box-shadow: 0 0 3px rgba(0,0,0,0.1);
     opacity: 0;
     visibility: hidden;
-    z-index: 1;
+    z-index: 2;
     transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
   }
   
@@ -552,12 +454,11 @@ flex-shrink: 0;
     background-color: #0092c28c; /* Customize scrollbar thumb color */
     border-radius: 4px; /* Rounded corners for the scrollbar thumb */
 }
-.picturePlacement .framePict {
-    display: grid;
-    grid-template-columns: repeat(2, 30fr); /* Two columns */
-    gap: 15px;
+/* .picturePlacement .framePict {
+    
+    
     width: 100%;
-}
+} */
 
 
 .pictFrame {
@@ -571,9 +472,8 @@ flex-shrink: 0;
 }
 
 .pictFrame:hover .overlayGaleri {
-    opacity: 1; /* Tampilkan overlayGaleri saat hover */
-    
-}
+    opacity: 1;
+  }
 
 .overlayGaleri {
     display: flex;
@@ -704,8 +604,8 @@ font-weight: 400;
 
 .itemPortfolio {
     position: relative;
-    width: 100%;
     height: 218px;
+    width: 100%;
     flex-shrink: 0;
     display: flex;
     justify-content: space-between;;
@@ -714,8 +614,7 @@ font-weight: 400;
 }
 
 .portfolioPlacement {
-    width: 865px;
-    height: 100%; /* Fixed height to enable scrolling */
+    width: 100%;
     overflow-x: scroll; /* Enable vertical scroll */
     display: flex;
 align-items: center;
@@ -829,41 +728,41 @@ z-index: 9999;
     padding-bottom: 15px;
 }
 
-.arrowLeft, .arrowRight {
+/* .arrowLeft, .arrowRight {
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Transisi untuk opacity dan transform */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transisi untuk opacity dan transform 
     position: absolute;
-    transform: translateY(-50%); /* Pindahkan ke tengah vertikal */
-    z-index: 10; /* Pastikan panah berada di atas */
+    transform: translateY(-50%); /* Pindahkan ke tengah vertikal 
+    z-index: 10; /* Pastikan panah berada di atas 
 }
 
 .arrowLeft {
-    left: 10px; /* Posisi arrowLeft di kiri */
-    transform: translateX(20px) translateY(0); /* Posisi awal untuk arrowLeft dari kanan */
-}
+    left: 10px; /* Posisi arrowLeft di kiri 
+    transform: translateX(20px) translateY(0); /* Posisi awal untuk arrowLeft dari kanan 
+} */
 
 .arrowRight {
     right: 10px; /* Posisi arrowRight di kanan */
     transform: translateX(-20px) translateY(0); /* Posisi awal untuk arrowRight dari kiri */
 }
 
-.itemPortfolio:hover .arrowLeft {
-    opacity: 1; /* Tampilkan panah kiri saat hover */
-    transform: translateX(0) translateY(0); /* Kembalikan posisi ke normal */
+/* .itemPortfolio:hover .arrowLeft {
+    opacity: 1; /* Tampilkan panah kiri saat hover 
+    transform: translateX(0) translateY(0); /* Kembalikan posisi ke normal 
 }
 
 .itemPortfolio:hover .arrowRight {
-    opacity: 1; /* Tampilkan panah kanan saat hover */
-    transform: translateX(0) translateY(0); /* Kembalikan posisi ke normal */
-}
+    opacity: 1; /* Tampilkan panah kanan saat hover 
+    transform: translateX(0) translateY(0); /* Kembalikan posisi ke normal 
+} */
 
 .arrowLeft {
-position: relative;;
+position: relative;
 left: 10px;
 }
 
 .arrowRight {
-    position: relative;;
+    position: relative;
     right: 10px;
     }
     

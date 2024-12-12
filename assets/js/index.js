@@ -1,14 +1,30 @@
-/// COming Soon saat layar berubah //
+// /// COming Soon saat layar berubah //
 
-function checkScreenWidth() {
-    if (window.innerWidth <= 833) {
-        window.location.href = "./coming-soon.html";
+// function checkScreenWidth() {
+//     if (window.innerWidth <= 833) {
+//         window.location.href = "./coming-soon.html";
+//     }
+// }
+
+// // Jalankan fungsi saat halaman dimuat dan saat ukuran layar berubah
+// window.onload = checkScreenWidth;
+// window.onresize = checkScreenWidth;
+
+
+// Tombol NavLinks //
+const navlinks = document.querySelector('.navlinks');
+const navmobile = document.querySelector('.navbar .mobile');
+
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    navlinks.classList.toggle('active');
+    
+    
+    if (navlinks.classList.contains('active')) {
+        navlinks.style.maxHeight = navlinks.scrollHeight + "px"; // Set to content height
+    } else {
+        navlinks.style.maxHeight = null; // Remove max-height
     }
-}
-
-// Jalankan fungsi saat halaman dimuat dan saat ukuran layar berubah
-window.onload = checkScreenWidth;
-window.onresize = checkScreenWidth;
+});
 
 
 
@@ -112,20 +128,6 @@ window.addEventListener('scroll', function () {
 });
 
 
-// Tombol NavLinks //
-const navlinks = document.querySelector('.navlinks');
-const navmobile = document.querySelector('.navbar .mobile');
-
-document.querySelector('.menu-toggle').addEventListener('click', function() {
-    navlinks.classList.toggle('active');
-    
-    if (navlinks.classList.contains('active')) {
-        navlinks.style.maxHeight = navlinks.scrollHeight + "px"; // Set to content height
-    } else {
-        navlinks.style.maxHeight = null; // Remove max-height
-    }
-});
-
 
 
 // dark mode system //
@@ -140,6 +142,8 @@ window.addEventListener('load', () => {
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');  // Apply dark mode
         btnMode.classList.add('dark-active');  // Ensure button reflects dark mode state
+        lightModeImage.classList.add('hidden');  // Hide light mode image
+        darkModeImage.classList.remove('hidden');  // Show dark mode image
     }
 });
 
@@ -151,6 +155,15 @@ btnMode.addEventListener('click', () => {
     // Save theme preference in localStorage
     const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
     localStorage.setItem('theme', currentTheme);
+    
+     // Toggle image visibility based on dark mode
+            if (document.body.classList.contains('dark')) {
+                lightModeImage.classList.add('hidden');  // Hide light mode image
+                darkModeImage.classList.remove('hidden');  // Show dark mode image
+            } else {
+                lightModeImage.classList.remove('hidden');  // Show light mode image
+                darkModeImage.classList.add('hidden');  // Hide dark mode image
+            }
 });
 
 
