@@ -253,7 +253,6 @@ function openModal(item) {
   
   // Show the modal
   modal.classList.remove('hidden');
-  
 }
 
 // Close the modal
