@@ -142,8 +142,6 @@ window.addEventListener('load', () => {
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');  // Apply dark mode
         btnMode.classList.add('dark-active');  // Ensure button reflects dark mode state
-        lightModeImage.classList.add('hidden');  // Hide light mode image
-        darkModeImage.classList.remove('hidden');  // Show dark mode image
     }
 });
 
@@ -156,14 +154,7 @@ btnMode.addEventListener('click', () => {
     const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
     localStorage.setItem('theme', currentTheme);
     
-     // Toggle image visibility based on dark mode
-            if (document.body.classList.contains('dark')) {
-                lightModeImage.classList.add('hidden');  // Hide light mode image
-                darkModeImage.classList.remove('hidden');  // Show dark mode image
-            } else {
-                lightModeImage.classList.remove('hidden');  // Show light mode image
-                darkModeImage.classList.add('hidden');  // Hide dark mode image
-            }
+     
 });
 
 
@@ -186,7 +177,7 @@ options.forEach(option =>{
         sBtn_text.innerText = selectedOption;        
         optionMenu.classList.remove("active");
         
-        console.log(selectedOption)
+        
         
     });
     
@@ -226,60 +217,73 @@ $(window).on("load", function() {
 
 
 
+
 // ambil elemen galeri
 const galeriDokumentasi = document.getElementById('dokumentasi');
 const galeriKaryaku = document.getElementById('iniKaryaku');
 
-// buat fungsi untuk menampilkan konten galeri
-function tampilkanGaleri(data, galeri) {
+// Function to create and show gallery items
+function createGalleryItem(item, galeri) {
+  // Create the gallery item container
+  const galeriItem = document.createElement('div');
+  galeriItem.classList.add('pictFrame', 'max-w-xs', 'overflow-hidden', 'relative', 'rounded-lg', 'cursor-pointer', 'hover:shadow-lg', 'transition-all');
 
+  // Create the image element
+  const gambar = document.createElement('img');
+  gambar.classList.add('galleryPict', 'w-full', 'h-full', 'object-cover', 'rounded');
+  gambar.src = item.galleryPict;
 
-  // loop data galeri
-  data.forEach((item) => {
-    // buat elemen galeri
-    const galeriItem = document.createElement('div');
-    galeriItem.classList.add('pictFrame', 'max-w-[286px]', 'max-h-[239px]', 'rounded-[23px]');
+  // Set an event listener on the image to open the modal
+  gambar.addEventListener('click', () => openModal(item));
 
-    // buat elemen gambar
-    const gambar = document.createElement('img');
-    gambar.classList.add('galleryPict', 'w-full', 'h-full', 'object-cover');
-    gambar.src = item.galleryPict;
+  // Add image to the gallery item
+  galeriItem.appendChild(gambar);
 
-    // buat elemen overlay
-    const overlay = document.createElement('div');
-    overlay.classList.add('overlayGaleri');
-
-    // buat elemen judul
-    const judul = document.createElement('h1');
-    judul.classList.add('hGdesc');
-    judul.textContent = item.hGdesc;
-
-    // buat elemen deskripsi
-    const deskripsi = document.createElement('p');
-    deskripsi.classList.add('pGdesc');
-    deskripsi.textContent = item.pGdesc;
-
-    // tambahkan elemen ke galeri
-    galeriItem.appendChild(gambar);
-    overlay.appendChild(judul);
-    overlay.appendChild(deskripsi);
-    galeriItem.appendChild(overlay);
-    galeri.appendChild(galeriItem);
-  });
+  // Append the item to the gallery container
+  galeri.appendChild(galeriItem);
 }
 
+// Function to open the modal and display the clicked item's data
+function openModal(item) {
+  const modal = document.getElementById('galleryModal');
+  document.getElementById('modalImage').src = item.galleryPict;
+  document.getElementById('modalTitle').textContent = item.hGdesc;
+  document.getElementById('modalDescription').textContent = item.pGdesc;
+  document.getElementById('modalId').textContent = `Kategori: ${item.id}`;
+  
+  // Show the modal
+  modal.classList.remove('hidden');
+  
+}
 
-// ambil data galeri dari file JSON
+// Close the modal
+document.querySelector('.closeModal').addEventListener('click', () => {
+  const modal = document.getElementById('galleryModal');
+  modal.classList.add('hidden');
+});
+
+
+// Close the modal when clicking on the background or the close button
+document.getElementById('galleryModal').addEventListener('click', (event) => {
+    // Close the modal if the background (not modal content) is clicked
+    if (event.target === event.currentTarget) {
+      const modal = document.getElementById('galleryModal');
+      modal.classList.add('hidden');
+    }
+  });
+
+// Fetch the gallery data from JSON
 fetch('/assets/json/gallery-dokumentasi.json')
-  .then((response) => response.json())
-  .then((data) => {
-    tampilkanGaleri(data, galeriDokumentasi);
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(item => createGalleryItem(item, galeriDokumentasi));
   })
-  .catch((error) => console.error(error));
+  .catch(error => console.error('Error loading dokumentasi data:', error));
 
 fetch('/assets/json/gallery-karya.json')
-  .then((response) => response.json())
-  .then((data) => {
-    tampilkanGaleri(data, galeriKaryaku);
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(item => createGalleryItem(item, galeriKaryaku));
   })
-  .catch((error) => console.error(error));
+  .catch(error => console.error('Error loading karyaku data:', error));
+

@@ -24,7 +24,27 @@
           </svg>
           </button>
     </div>
-    <nav class="navbar desktop justify flex items-center gap-[156px] p-[22px_398x] bg-white sticky top-0 z-50 transition-all duration-300 ease-in-out hidden lg:flex max-w-screen-lg mx-auto rounded-1" id="navbar-desktop">
+    
+    <!-- Modal (Initially hidden) -->
+    <div id="galleryModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center hidden">
+        <div class="modalContent p-6 rounded-lg shadow-lg max-w-lg w-full">
+            <!-- Close Button -->
+            <button class="closeModal absolute top-4 right-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+    
+            <!-- Modal Content -->
+            <div class="galleryContent">
+                <img id="modalImage" class="w-full h-auto object-cover mb-4 rounded" src="" alt="Gallery Image">
+                <h1 id="modalTitle" class="text-2xl font-bold mb-2"></h1>
+                <p id="modalDescription" class="text-sm text-gray-700 mb-4"></p>
+                <p id="modalId" class="text-sm text-gray-500"></p>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar desktop justify flex items-center gap-[156px] p-[22px_398x] sticky top-0 z-50 transition-all duration-300 ease-in-out hidden lg:flex max-w-screen-lg mx-auto rounded-1" id="navbar-desktop">
         <!-- Link Galeri -->
         <a class="navlink text-gray-800 text-center font-bold text-sm transition-colors duration-300 ease-in-out hover:text-blue-500 hover:pt-2" href="/comingSoon.html">Galeri</a>
         
@@ -42,7 +62,7 @@
     </nav>
     
     
-    <nav class="navbar mobile flex flex-col justify-center items-center w-full p-4 sticky-lg-top top-0 z-2000 lg:hidden bg-white" id="navbar-mobile">
+    <nav class="navbar mobile flex flex-col justify-center items-center w-full p-4 sticky-lg-top top-0 z-2000 lg:hidden" id="navbar-mobile">
         <div class="flex w-full justify-between items-center">
             <!-- Logo -->
             <a class="logoNav bg-[url('/assets/LogoDaisekoi.png')] bg-center bg-cover max-w-md max-h-md md:max-w-lg md:max-h-lg lg:max-w-xl lg:max-h-xl xl:max-w-2xl xl:max-h-2xl w-[17vw] h-[10.5vw]" href="/"></a>
@@ -53,7 +73,7 @@
                 </svg>
             </button> -->
             
-            <button id="menu-toggle" class="menu-toggle flex justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 shadow-none hover:bg-blue-500 hover:text-white p-0 -ml-2 h-9 w-9">
+            <button id="menu-toggle" class="menu-toggle flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 shadow-none hover:bg-blue-500 hover:text-white p-0 -ml-2 h-9 w-9">
                 <svg stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
                     <path d="M3 5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                     <path d="M3 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -81,11 +101,22 @@
     
     <div class="overlay">
         <div class="txtContainer">
-            <h1 class="betaH">Beta Tested v1</h1>
+            <h1 class="betaH">Beta Tested v1.1</h1>
             <p class="betaP">Website masih dalam pengembangan</p>
             </div>
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="container mx-auto px-1 md:px-6 lg:px-8">
+    
+    
+    
         <div class="heading flex flex-col justify-center items-center gap-20 p-0 mb-20 md:gap-30 lg:gap-40 ">
             
             <div id="pictHeadingDark" class="w-full h-[calc(100vw*548/585)] max-w-[585px] max-h-[548px] bg-cover bg-center bg-no-repeat" style="background-image: url('/assets/HomePage.png');"></div>
@@ -275,7 +306,7 @@
     
    
     
-    <footer class="flex flex-col justify-center items-center bg-[#FFEDA3] px-4 sm:px-10 md:px-16 lg:px-24 xl:px-60 py-4 gap-4 sm:gap-6 lg:gap-8">
+    <footer class="flex flex-col justify-center items-center bg-[#FFEDA3] px-4 sm:px-10 md:px-16 lg:px-24  xl:px-60 py-4 gap-4 sm:gap-6 lg:gap-8">
         <div class="containerSocial flex flex-col justify-center items-center gap-3 sm:gap-5 md:gap-7">
             <p class="txtDanger text-black text-center text-sm sm:text-base font-bold mb-0">Follow Us on</p>
             

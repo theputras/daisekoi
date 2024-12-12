@@ -163,10 +163,10 @@ flex-shrink: 0;
     font-size: 40px;
 }
 
-/* .arrowLeft, .arrowRight {
+.arrowLeft, .arrowRight {
     opacity: 1;
     transform: translateX(0) translateY(0); 
-} */
+}
 
 
 }

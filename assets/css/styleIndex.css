@@ -20,6 +20,7 @@ body {
     font-family: "Noto Sans";
     background-color: #fff;
     transition: background-color 0.3s ease-in-out;
+    cursor: url('/assets/cursor_2.png') 20 20, auto; /* Set hotspot at the center of the cursor image */
 }
 
 a {
@@ -67,7 +68,7 @@ background: linear-gradient(180deg, #F4A3BA 0%, #A3DDEE 100%);
 position: fixed;
 top: 150px; 
 right: -45px;
-z-index: 10000000; 
+z-index: 39999; 
 box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -111,7 +112,7 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     opacity: 1; /* Tampilkan ikon light saat mode light aktif */
 }
 
-.dark-mode #navbar-mobile, .dark-mode #navbar-dekstop, .dark-mode .container, body.dark-mode, .dark-mode .marquee-container {
+.dark-mode #navbar-mobile, .dark-mode #navbar-desktop, .dark-mode .container, body.dark-mode, .dark-mode .marquee-container {
     background-color: #2C2C2C;
 }
 
@@ -144,8 +145,8 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     border-left: 1px solid #ffffff80 !important;
 }
 
-.dark-mode:has(#menu-toggle) svg {
-    fill: #fff;
+.dark-mode #menu-toggle  svg{
+    color: #fff;
 }
 
 .dark-mode footer, .dark-mode .portoVid {
@@ -168,7 +169,10 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 background: linear-gradient(180deg, #FF769D 0%, #0493BF 100%);
 }
 
-
+/* navbar */
+#navbar-desktop, #navbar-mobile {
+background-color: #fff;
+}
 
 /* Heading */
 
@@ -363,6 +367,15 @@ padding: 76px 40px;
 align-items: center;
 gap: 76px;
 flex-shrink: 0;
+}
+
+
+#galleryModal {
+z-index: 40000;
+}
+
+.modalContent{
+    background: linear-gradient(151deg, #A3DDEE 0%, #FFEDA3 77.91%);
 }
 
 .headingGallery, .headingPortfolio {
@@ -724,37 +737,35 @@ cursor: pointer;
 z-index: 9999;
 }
 
-.arrowRight:hover, .arrowLeft:hover {
-    padding-bottom: 15px;
-}
 
-/* .arrowLeft, .arrowRight {
+
+.arrowLeft, .arrowRight {
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Transisi untuk opacity dan transform 
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transisi untuk opacity dan transform */
     position: absolute;
-    transform: translateY(-50%); /* Pindahkan ke tengah vertikal 
-    z-index: 10; /* Pastikan panah berada di atas 
+    transform: translateY(-50%); /* Pindahkan ke tengah vertikal  */
+    z-index: 10; /* Pastikan panah berada di atas */
 }
 
 .arrowLeft {
-    left: 10px; /* Posisi arrowLeft di kiri 
-    transform: translateX(20px) translateY(0); /* Posisi awal untuk arrowLeft dari kanan 
-} */
+    left: 10px; /* Posisi arrowLeft di kiri */
+    transform: translateX(20px) translateY(0); /* Posisi awal untuk arrowLeft dari kanan */
+}
 
 .arrowRight {
     right: 10px; /* Posisi arrowRight di kanan */
     transform: translateX(-20px) translateY(0); /* Posisi awal untuk arrowRight dari kiri */
 }
 
-/* .itemPortfolio:hover .arrowLeft {
-    opacity: 1; /* Tampilkan panah kiri saat hover 
-    transform: translateX(0) translateY(0); /* Kembalikan posisi ke normal 
+.itemPortfolio:hover .arrowLeft {
+    opacity: 1; /* Tampilkan panah kiri saat hover */
+    transform: translateX(0) translateY(0); /* Kembalikan posisi ke normal */
 }
 
 .itemPortfolio:hover .arrowRight {
-    opacity: 1; /* Tampilkan panah kanan saat hover 
-    transform: translateX(0) translateY(0); /* Kembalikan posisi ke normal 
-} */
+    opacity: 1; /* Tampilkan panah kanan saat hover */
+    transform: translateX(0) translateY(0); /* Kembalikan posisi ke normal */
+}
 
 .arrowLeft {
 position: relative;
