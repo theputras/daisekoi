@@ -224,3 +224,62 @@ $(window).on("load", function() {
 
 
 
+
+
+// ambil elemen galeri
+const galeriDokumentasi = document.getElementById('dokumentasi');
+const galeriKaryaku = document.getElementById('iniKaryaku');
+
+// buat fungsi untuk menampilkan konten galeri
+function tampilkanGaleri(data, galeri) {
+
+
+  // loop data galeri
+  data.forEach((item) => {
+    // buat elemen galeri
+    const galeriItem = document.createElement('div');
+    galeriItem.classList.add('pictFrame', 'max-w-[286px]', 'max-h-[239px]', 'rounded-[23px]');
+
+    // buat elemen gambar
+    const gambar = document.createElement('img');
+    gambar.classList.add('galleryPict', 'w-full', 'h-full', 'object-cover');
+    gambar.src = item.galleryPict;
+
+    // buat elemen overlay
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlayGaleri');
+
+    // buat elemen judul
+    const judul = document.createElement('h1');
+    judul.classList.add('hGdesc');
+    judul.textContent = item.hGdesc;
+
+    // buat elemen deskripsi
+    const deskripsi = document.createElement('p');
+    deskripsi.classList.add('pGdesc');
+    deskripsi.textContent = item.pGdesc;
+
+    // tambahkan elemen ke galeri
+    galeriItem.appendChild(gambar);
+    overlay.appendChild(judul);
+    overlay.appendChild(deskripsi);
+    galeriItem.appendChild(overlay);
+    galeri.appendChild(galeriItem);
+  });
+}
+
+
+// ambil data galeri dari file JSON
+fetch('/assets/json/gallery-dokumentasi.json')
+  .then((response) => response.json())
+  .then((data) => {
+    tampilkanGaleri(data, galeriDokumentasi);
+  })
+  .catch((error) => console.error(error));
+
+fetch('/assets/json/gallery-karya.json')
+  .then((response) => response.json())
+  .then((data) => {
+    tampilkanGaleri(data, galeriKaryaku);
+  })
+  .catch((error) => console.error(error));
