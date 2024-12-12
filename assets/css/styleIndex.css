@@ -116,7 +116,7 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     background-color: #2C2C2C;
 }
 
-.dark-mode p, .dark-mode h2  {
+.dark-mode h2  {
     color: #fff;
 }
 
@@ -124,7 +124,7 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     color: #fff !important;
 }
 
-.dark-mode .navlink, .dark-mode .socialTxt {
+.dark-mode .navlink, .dark-mode .socialTxt, .dark-mode .txtDanger, .dark-mode .headDesc, .dark-mode .pDesc{
     color: #fff !important;
 }
 
@@ -168,6 +168,8 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 .dark-mode .btnDarkmode-container {
 background: linear-gradient(180deg, #FF769D 0%, #0493BF 100%);
 }
+
+
 
 /* navbar */
 #navbar-desktop, #navbar-mobile {
@@ -377,6 +379,8 @@ z-index: 40000;
 .modalContent{
     background: linear-gradient(151deg, #A3DDEE 0%, #FFEDA3 77.91%);
 }
+
+
 
 .headingGallery, .headingPortfolio {
     display: flex;
