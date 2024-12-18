@@ -34,17 +34,13 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload public directory
+      - name: Upload all content
         uses: actions/upload-pages-artifact@v3
         with:
-          name: public-artifact # Nama unik untuk artifact ini
-          path: ./public
-
-      - name: Upload root directory
-        uses: actions/upload-pages-artifact@v3
-        with:
-          name: root-artifact # Nama unik untuk artifact ini
-          path: .
+          name: github-pages
+          path: |
+            ./public
+            .
 
       - name: Deploy to GitHub Pages
         id: deployment
