@@ -286,3 +286,28 @@ fetch('/assets/json/gallery-karya.json')
   })
   .catch(error => console.error('Error loading karyaku data:', error));
 
+// dashboard Button
+
+const btnModeDashboard = document.getElementById('dashboard');
+const redirectUrl = '/dashboard';
+const btnModeSettings = document.querySelector('.Dashboard-container');
+btnModeDashboard.addEventListener('click', () => {
+    location.href = redirectUrl;
+});
+window.onload = () => {
+    if (sessionStorage.name) {
+        btnModeSettings.classList.add('show');
+          
+    }
+};
+
+// // Menampilkan data dari sessionStorage di konsol
+// const displaySessionStorageData = () => {
+//     console.log("Data di sessionStorage:");
+//     console.log("Name:", sessionStorage.getItem('name'));
+//     console.log("Username:", sessionStorage.getItem('username'));
+//     console.log("Role:", sessionStorage.getItem('role'));
+// };
+
+// // Panggil fungsi untuk menampilkan data
+// displaySessionStorageData();

@@ -48,31 +48,104 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
                 // Handle Form Submission
-                loginForm.addEventListener('submit', async (e) => {
-                    e.preventDefault(); // Prevent default form submission
-                    const username = document.getElementById('username').value;
-                    const password = document.getElementById('password').value;
-    
-                    // Send POST request to backend
-                    const response = await fetch('/', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: new URLSearchParams({ username, password })
-                    });
-    
-                    if (response.ok) {
-                        const result = await response.text();
-                        document.body.innerHTML = result; // Display response
-                    } else {
-                        const error = await response.text();
-                        alert(error); // Show error message
-                    }
-                });
+             
 });
 
+
+//Login Program
+
+window.onload = () => {
+    // Cek apakah sessionStorage memiliki 'username' yang menandakan login
+    if (!sessionStorage.username) {
+        // Jika tidak ada, arahkan ke halaman login tanpa memperlihatkan halaman dashboard
+        window.location.replace("/d@1s3k01");
+    }
+};
+// form loading animation
+const form = [...document.querySelector('.form').children];
+const redirectUrl = '/dashboard'; 
+const btnModeSettings = document.querySelector('.Dashboard-container');
+const btnModeDashboard = document.getElementById('dashboard');
+
+
+
+form.forEach((item, i) => {
+    setTimeout(() => {
+        item.style.opacity = 1;
+    }, i * 100);
+});
+
+window.onload = () => {
+    if (sessionStorage.name) {
+        location.href = redirectUrl;
+        btnModeSettings.classList.add('show');
+          
+    }
+};
+
+
+
+// form validation
+const username = document.getElementById('username'); // Check if the username input exists
+const password = document.getElementById('password'); // Check if the password input exists
+const submitBtn = document.querySelector('.submit-btn'); // Make sure this button exists
+const eyeOpen = document.getElementById('eyeOpen');
+    const eyeClosed = document.getElementById('eyeClosed');
+
+
+// Check if username and password inputs are found
+if (username && password && submitBtn) {
+    eyeOpen.classList.add('hidden');
+    eyeClosed.classList.remove('hidden');
+ // Handle Enter key press event for form submission
+    // Handle button click event
+    submitBtn.addEventListener('click', () => {
+        loginUser();
+    });
+
+    // Handle Enter key press event for form submission
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            loginUser();
+        }
+    });
+const loginUser = () => {
+    eyeOpen.classList.add('hidden');
+    eyeClosed.classList.remove('hidden');   
+    fetch('/login-user', {
+        method: 'post',
+        headers: new Headers({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({
+            username: username.value,
+            password: password.value
+        })
+    })
+        .then(res => res.json())
+        .then(data => {
+            validateData(data);
+        });
+};
     
-    
-//Verifikasi password
+} else {
+    console.error('Missing required elements in the DOM');
+}
 
+const validateData = (data) => {
+    if (data.username) { // Cek apakah username ada
+        sessionStorage.username = data.username; // Simpan hanya username
+        location.href = redirectUrl; // Arahkan ke URL yang ditentukan
+    } else {
+        alertBox(data); // Tampilkan alert jika username tidak ada
+    }
+};
 
+const alertBox = (data) => {
+    const alertContainer = document.querySelector('.alert-box');
+    const alertMsg = document.querySelector('.alert');
+    alertMsg.innerHTML = data;
 
+    alertContainer.style.top = `5%`;
+    setTimeout(() => {
+        alertContainer.style.top = null;
+    }, 5000);
+};

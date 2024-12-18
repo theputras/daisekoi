@@ -1,72 +1,105 @@
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
-const querystring = require('querystring');
+const fs = require('fs');
 
-const USERS_FILE = './assets/json/awokwa.json';
-const PORT = 3000;
+const app = express();
 
-// Fungsi untuk memverifikasi login
-async function loginUser(username, plainPassword) {
-    if (!fs.existsSync(USERS_FILE)) {
-        return { success: false, message: 'No users registered' };
-    }
+let intialPath = path.join(__dirname, "public");
 
-    const users = JSON.parse(fs.readFileSync(USERS_FILE));
-    const user = users.find((u) => u.username === username);
+app.use(bodyParser.json());
+app.use(express.static(intialPath));
 
-    if (!user) {
-        return { success: false, message: 'User not found' };
-    }
+// Membaca file JSON yang berisi data pengguna
+const usersFilePath = path.join(__dirname, '/assets/json/awokwa.json');
 
-    const isMatch = await bcrypt.compare(plainPassword, user.password);
-    if (isMatch) {
-        return { success: true, message: 'Login successful' };
-    } else {
-        return { success: false, message: 'Incorrect password' };
-    }
-}
+// Melayani file statis di folder 'public' dan 'assets'
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/assets', express.static(path.join(__dirname, 'assets'))); // Ini untuk melayani file dalam /assets
 
-// Membuat server HTTP
-const server = http.createServer(async (req, res) => {
-    if (req.method === 'GET' && req.url === '/') {
-        // Melayani halaman login
-        fs.readFile('/', (err, data) => {
+// Fungsi untuk membaca file JSON
+const readUsersFromFile = () => {
+    const rawData = fs.readFileSync(usersFilePath);
+    return JSON.parse(rawData);
+};
+
+
+
+
+
+app.get('/daisekoi-login', (req, res) => {
+    res.sendFile(path.join(intialPath, "index.html"));
+});
+
+// Endpoint login
+app.post('/login-user', (req, res) => {
+    const { username, password } = req.body;
+
+    // Cek apakah username yang diberikan ada di dalam file JSON
+    const users = readUsersFromFile();
+    const user = users.find(user => user.username === username);
+
+    if (user) {
+        // Jika user ditemukan, kita verifikasi password yang di-hash
+        bcrypt.compare(password, user.password, (err, result) => {
             if (err) {
-                res.writeHead(500, { 'Content-Type': 'text/plain' });
-                res.end('Internal Server Error');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
+                return res.status(500).json('An error occurred');
             }
-        });
-    } else if (req.method === 'POST' && req.url === '/login') {
-        // Menangani form login
-        let body = '';
-        req.on('data', chunk => {
-            body += chunk.toString();
-        });
 
-        req.on('end', async () => {
-            const { username, password } = querystring.parse(body);
-            const result = await loginUser(username, password);
-
-            if (result.success) {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end('<h1>Login successful!</h1>');
+            if (result) {
+                res.json({ name: user.nama, username: user.username });
             } else {
-                res.writeHead(401, { 'Content-Type': 'text/html' });
-                res.end(`<h1>Login failed: ${result.message}</h1>`);
+                res.json('Username or password is incorrect');
             }
         });
     } else {
-        // Endpoint tidak ditemukan
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('Not Found');
+        res.json('Username or password is incorrect');
     }
 });
 
-// Menjalankan server
-server.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+// Endpoint untuk menambah pengguna
+app.post('/api/users', async (req, res) => {
+    const { username, email, password, role } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    fs.readFile('./assets/json/awokwa.json', 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).send('Error reading file');
+        }
+        const users = JSON.parse(data);
+        users.push({ username, email, role, password: hashedPassword });
+
+        fs.writeFile('./assets/json/awokwa.json', JSON.stringify(users, null, 2), (err) => {
+            if (err) {
+                return res.status(500).send('Error writing file');
+            }
+            res.status(201).send('User  added');
+        });
+    });
+});
+
+// Endpoint untuk menghapus pengguna
+app.delete('/api/users/:username', (req, res) => {
+    const { username } = req.params;
+
+    fs.readFile('./assets/json/awokwa.json', 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).send('Error reading file');
+        }
+        let users = JSON.parse(data);
+        users = users.filter(user => user.username !== username);
+
+        fs.writeFile('./assets/json/awokwa.json', JSON.stringify(users, null, 2), (err) => {
+            if (err) {
+                return res.status(500).send('Error writing file');
+            }
+            res.send('User  deleted');
+        });
+    });
+});
+
+
+app.listen(5501, () => {
+    console.log('listening on port 5501......');
 });

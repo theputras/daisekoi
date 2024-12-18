@@ -1,6 +1,34 @@
 [
-    {
-        "username": "admin",
-        "password": "$2b$10$FEj4rXz8rLJNC5FxiCIpSejN8wO5KfE3Z3rX97tDsP1/G6YhNqreO"
-    }
+  {
+    "isChecked": false,
+    "username": "gacorDaisekoi",
+    "nama": "Super SU Administrator Daisekoi",
+    "password": "$2a$12$3QeK65V4K6nhnorpNJV0JeWdlM5g0K2yetfQYXaUhSvKALjwk6oRW",
+    "email": "gacorDaisekoi@outlook.com",
+    "role": "adminGacor"
+  },
+  {
+    "isChecked": false,
+    "username": "anashisyam",
+    "nama": "Mochamad Anas Nur Hisyam",
+    "password": "$2a$12$rVHj4Kj5MckRVaTaDuN0pOuIWwjW9lPtlD76WWK40nYOVB47IWAWC",
+    "email": "23410100015@dinamika.ac.id",
+    "role": "Low Bos"
+  },
+  {
+    "isChecked": false,
+    "username": "anashisyam2",
+    "nama": "Mochamad Anas Nur Hisyam2",
+    "password": "$2a$12$rVHj4Kj5MckRVaTaDuN0pOuIWwjW9lPtlD76WWK40nYOVB47IWAWC",
+    "email": "23410100015@dinamika.ac.id",
+    "role": "Low Bos"
+  },
+  {
+    "isChecked": false,
+    "username": "coba1",
+    "nama": "Coba 1",
+    "password": "$2a$12$So1XO26kXw.AD5ptfJwWYebRpoSEtkBfTc6L9fYEyPxq6PO00uLPy",
+    "email": "cobaaa@dinamika.ac.id",
+    "role": "testingUser"
+  }
 ]

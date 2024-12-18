@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Website Admin</title>
-    <link rel="shortcut icon" href="./assets/DaisekoiLogoBg.png" style="border-radius: 100%;" type="image/jpg">
+    <link rel="shortcut icon" href="/assets/DaisekoiLogoBg.png" style="border-radius: 100%;" type="image/jpg">
     <link rel="stylesheet" href="/assets/css/styleLogin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -25,18 +25,26 @@
       <!-- Logo -->
       <a class="logoNav bg-[url('/assets/LogoDaisekoi.png')] bg-center bg-cover w-[117px] h-[72.668px] flex-shrink-0 relative transform transition-transform hover:translate-y-[5%]" href="/"></a>
   </nav>
-  
+  <nav class="navbar mobile flex flex-col justify-center items-center w-full p-4 sticky-lg-top top-0 z-2000 lg:hidden" id="navbar-mobile">
+    <div class="flex w-full justify-between items-center">
+        <!-- Logo -->
+        <a class="logoNav bg-[url('/assets/LogoDaisekoi.png')] bg-center bg-cover max-w-md max-h-md md:max-w-lg md:max-h-lg lg:max-w-xl lg:max-h-xl xl:max-w-2xl xl:max-h-2xl w-[17vw] h-[10.5vw]" href="/"></a>
+        
+</nav>
     
   <div class="flex flex-col lg:flex-row lg:gap-auto justify-between items-center w-full max-w-[1180px] h-auto mx-auto px-[20px] lg:px-[40px] py-[15px]">
     <!-- Kolom Kiri: Gambar -->
-    <div class="relative w-full lg:w-[40%] h-[300px] lg:h-[474px] flex items-center justify-center mb-6 lg:mb-0">
+    <div class="relative w-full lg:w-[50%] h-[300px] lg:h-[510px] flex items-center justify-center mb-6 lg:mb-0">
         <div class="w-full h-full max-w-[300px] lg:max-w-none bg-cover bg-center" 
              style="background-image: url('/assets/HomePage.png');"></div>
     </div>
 
 
     <!-- Kolom Kanan: Form Login -->
-    <form id="login"  method="POST" class="w-full lg:w-[40%] h-auto lg:h-[444px] bg-[#a3ddee] rounded-lg shadow-lg flex flex-col justify-center items-center gap-8 px-[20px] py-6 lg:px-[40px] lg:py-8">
+    <div class="alert-box">
+      <p class="alert"></p>
+  </div>
+    <div class="form w-full lg:w-[40%] h-auto lg:h-[444px] bg-[#a3ddee] rounded-lg shadow-lg flex flex-col justify-center items-center gap-8 px-[20px] py-6 lg:px-[40px] lg:py-8">
         <!-- Judul -->
         <h2 class="text-[24px] lg:text-[32px] text-[#2c2c2c] font-semibold text-center">Masuk ke Daisekoi Admin</h2>
 
@@ -44,7 +52,7 @@
         <div class="relative w-full">
           <label for="username">Username</label>
             <input type="text" 
-                   class="w-full h-[48px] lg:h-[54px] border border-black rounded-lg px-[25px] text-[14px] lg:text-[15px] placeholder:text-black/25" 
+                   class="username w-full h-[48px] lg:h-[54px] border border-black rounded-lg px-[25px] text-[14px] lg:text-[15px] placeholder:text-black/25" 
                    placeholder="Username" id="username" required/>
         </div>
 
@@ -54,13 +62,13 @@
           <!-- Input Password -->
           <input id="password" required
                  type="password" 
-                 class="w-full h-[48px] lg:h-[54px] border border-black rounded-lg px-[25px] text-[14px] lg:text-[15px] placeholder:text-black/25" 
+                 class="password w-full h-[48px] lg:h-[54px] border border-black rounded-lg px-[25px] text-[14px] lg:text-[15px] placeholder:text-black/25" 
                  placeholder="Password" />
       
               <!-- Tombol Toggle Password -->
         <button type="button" 
         id="togglePassword" 
-        class="absolute right-4 top-[50%] transform -translate-y-[50%]">
+        class="absolute right-4 top-[50%]">
     <!-- Icon Mata Default -->
     <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/>
@@ -73,10 +81,10 @@
       </div>
 
         <!-- Tombol Selanjutnya -->
-        <button class="w-full h-[54px] lg:h-[68px] bg-[#c69c6d] text-[#f5f5dc] text-xl lg:text-2xl font-bold rounded-lg">
-            Selanjutnya
+        <button class="submit-btn w-full h-[54px] lg:h-[68px] bg-[#c69c6d] text-[#f5f5dc] text-xl lg:text-2xl font-bold rounded-lg">
+            Login
         </button>
-      </form>
+      </div>
     
 </div>
 
