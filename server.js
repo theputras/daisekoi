@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const fs = require('fs');
+const functions = require('firebase-functions');
 
 const app = express();
 
@@ -99,7 +100,7 @@ app.delete('/api/users/:username', (req, res) => {
     });
 });
 
-
-app.listen(5501, () => {
-    console.log('listening on port 5501......');
-});
+exports.app = functions.https.onRequest(app);
+// app.listen(5501, () => {
+//     console.log('listening on port 5501......');
+// });
