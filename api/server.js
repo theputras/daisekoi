@@ -110,7 +110,6 @@ app.delete('/api/serverLogin/:username', (req, res) => {
 // });
 
 
-// Export aplikasi Express sebagai handler untuk Vercel
-// Jika Anda mengekspor app:
-export const handler = serverless(app);
+// Export handler untuk serverless function
+export default serverless(app); // Ini adalah ekspor yang benar
 
