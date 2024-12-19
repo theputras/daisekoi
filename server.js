@@ -4,9 +4,11 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const router = express.Router();
+const port = 3000;
 
 const app = express();
-
+const cors = require('cors');
+app.use(cors());
 let intialPath = path.join(__dirname, "public");
 
 app.use(bodyParser.json());
@@ -103,3 +105,5 @@ app.delete('/api/users/:username', (req, res) => {
 // });
 
 module.exports = router;
+module.exports = port;
+module.exports = app;
