@@ -1,24 +1,15 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcryptjs');
-const fs = require('fs');
-const router = express.Router();
-const port = 3000;
+import express from 'express';
+import bodyParser from 'body-parser';
+import bcrypt from 'bcryptjs';
+import fs from 'fs';
+import path from 'path';
+import serverless from 'serverless-http';
 
 const app = express();
-const cors = require('cors');
-app.use(cors());
-let intialPath = path.join(__dirname, "public");
+const usersFilePath = path.join(process.cwd(), 'public', 'assets', 'json', 'awokwa.json');
 
+// Middleware untuk parsing JSON
 app.use(bodyParser.json());
-app.use(express.static(intialPath)); // Melayani file dalam folder 'public'
-
-// Membaca file JSON yang berisi data pengguna
-const usersFilePath = path.join(intialPath, '/assets/json/awokwa.json'); // Perbarui path ke file JSON
-
-// Melayani file dalam '/public/assets'
-app.use('/assets', express.static(path.join(intialPath, 'assets'))); // Melayani file dalam '/public/assets'
 
 // Fungsi untuk membaca file JSON
 const readUsersFromFile = () => {
@@ -26,84 +17,60 @@ const readUsersFromFile = () => {
     return JSON.parse(rawData);
 };
 
+// Fungsi untuk menulis kembali data ke file JSON
+const writeUsersToFile = (users) => {
+    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+};
 
+// Endpoint untuk login dan create user
+app.post('/api/serverLogin', async (req, res) => {
+    const { action } = req.body; // Action untuk menentukan login atau create
 
+    if (action === 'login') {
+        const { username, password } = req.body;
+        const users = readUsersFromFile();
+        const user = users.find(user => user.username === username);
 
+        if (user) {
+            bcrypt.compare(password, user.password, (err, result) => {
+                if (err) {
+                    return res.status(500).json('An error occurred');
+                }
+                if (result) {
+                    return res.status(200).json({ name: user.nama, username: user.username });
+                } else {
+                    return res.status(401).json('Username or password is incorrect');
+                }
+            });
+        } else {
+            return res.status(401).json('Username or password is incorrect');
+        }
+    } else if (action === 'create') {
+        const { username, email, password, role } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const users = readUsersFromFile();
+        users.push({ username, email, role, password: hashedPassword });
 
-app.get('/daisekoi-login', (req, res) => {
-    res.sendFile(path.join(intialPath, "index.html"));
-});
-
-// Endpoint login
-app.post('/login-user', (req, res) => {
-    const { username, password } = req.body;
-
-    // Cek apakah username yang diberikan ada di dalam file JSON
-    const users = readUsersFromFile();
-    const user = users.find(user => user.username === username);
-
-    if (user) {
-        // Jika user ditemukan, kita verifikasi password yang di-hash
-        bcrypt.compare(password, user.password, (err, result) => {
-            if (err) {
-                return res.status(500).json('An error occurred');
-            }
-
-            if (result) {
-                res.json({ name: user.nama, username: user.username });
-            } else {
-                res.json('Username or password is incorrect');
-            }
-        });
+        writeUsersToFile(users);
+        return res.status(201).send('User added');
     } else {
-        res.json('Username or password is incorrect');
+        return res.status(400).json('Invalid action');
     }
 });
 
-// Endpoint untuk menambah pengguna
-app.post('/api/users', async (req, res) => {
-    const { username, email, password, role } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
+// Endpoint untuk menghapus user
+app.delete('/api/serverLogin', (req, res) => {
+    const { username } = req.query;
+    const users = readUsersFromFile();
+    const filteredUsers = users.filter(user => user.username !== username);
 
-    fs.readFile(usersFilePath, 'utf8', (err, data) => {
-        if (err) {
-            return res.status(500).send('Error reading file');
-        }
-        const users = JSON.parse(data);
-        users.push({ username, email, role, password: hashedPassword });
-
-        fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (err) => {
-            if (err) {
-                return res.status(500).send('Error writing file');
-            }
-            res.status(201).send('User  added');
-        });
-    });
+    writeUsersToFile(filteredUsers);
+    return res.status(200).send('User deleted');
 });
 
-// Endpoint untuk menghapus pengguna
-app.delete('/api/users/:username', (req, res) => {
-    const { username } = req.params;
+// Export aplikasi Express sebagai handler untuk Vercel
+export default serverless(app);
 
-    fs.readFile(usersFilePath, 'utf8', (err, data) => {
-        if (err) {
-            return res.status(500).send('Error reading file');
-        }
-        let users = JSON.parse(data);
-        users = users.filter(user => user.username !== username);
-
-        fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (err) => {
-            if (err) {
-                return res.status(500).send('Error writing file');
-            }
-            res.send('User  deleted');
-        });
-    });
+app.listen(5501, () => {
+    console.log('listening on port 5501......');
 });
-// app.listen(5501, () => {
-//     console.log('listening on port 5501......');
-// });
-
-module.exports = router;
-module.exports = port;
-module.exports = app;

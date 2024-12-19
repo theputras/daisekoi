@@ -11,7 +11,8 @@
     "express": "^4.21.2",
     "express-fileupload": "^1.5.1",
     "express.js": "^1.0.0",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "serverless-http": "^3.2.0"
   },
   "name": "daisekoi",
   "version": "1.0.0",
