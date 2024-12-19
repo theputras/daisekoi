@@ -448,7 +448,7 @@ addUserButton.onclick = async () => {
     
     
   // Event listener untuk edit form
-  document.getElementById('editUserss').addEventListener('click', function() {
+  document.getElementById('editUsers').addEventListener('click', function() {
     // const userForm = document.getElementById('userForm');
     // // Toggle visibility
     // userForm.classList.toggle('hidden');
