@@ -112,7 +112,7 @@ if (username && password && submitBtn) {
 const loginUser = () => {
     eyeOpen.classList.add('hidden');
     eyeClosed.classList.remove('hidden');   
-    fetch('/login-user', {
+    fetch('/api/serverLogin', {
         method: 'post',
         headers: new Headers({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({

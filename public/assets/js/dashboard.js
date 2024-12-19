@@ -371,7 +371,7 @@ individualCheckboxes.forEach(checkbox => {
 async function deleteUser (username) {
     if (confirm(`Are you sure you want to delete ${username}?`)) {
         try {
-            const response = await fetch(`/api/users/${username}`, {
+            const response = await fetch(`/api/serverLogin/${username}`, {
                 method: 'DELETE'
             });
             if (response.ok) {
@@ -428,7 +428,7 @@ addUserButton.onclick = async () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    const response = await fetch('/api/users', {
+    const response = await fetch('/api/serverLogin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

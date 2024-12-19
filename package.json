@@ -14,13 +14,14 @@
     "nodemon": "^3.1.9",
     "serverless-http": "^3.2.0"
   },
+  "type": "module",
   "name": "daisekoi",
   "version": "1.0.0",
   "description": "12",
-  "main": "server.js",
+  "main": "api/server.cjs",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node server.cjs",
+    "dev": "nodemon server.cjs"
   },
   "author": "",
   "license": "ISC"

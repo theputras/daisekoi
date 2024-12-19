@@ -1,6 +1,5 @@
 {
     "rewrites": [
-      { "source": "/daisekoi-login", "destination": "/public/" }
+      { "source": "/(.*)", "destination": "/public/$1" }
     ]
   }
-  
