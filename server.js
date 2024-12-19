@@ -71,6 +71,6 @@ app.delete('/api/serverLogin', (req, res) => {
 // Export aplikasi Express sebagai handler untuk Vercel
 export default serverless(app);
 
-app.listen(5501, () => {
-    console.log('listening on port 5501......');
-});
+// app.listen(5501, () => {
+//     console.log('listening on port 5501......');
+// });
