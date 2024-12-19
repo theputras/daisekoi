@@ -18,10 +18,10 @@
   "name": "daisekoi",
   "version": "1.0.0",
   "description": "12",
-  "main": "api/server.cjs",
+  "main": "server.cjs",
   "scripts": {
-    "start": "node server.cjs",
-    "dev": "nodemon server.cjs"
+    "start": "node api/server.cjs",
+    "dev": "nodemon api/server.cjs"
   },
   "author": "",
   "license": "ISC"
