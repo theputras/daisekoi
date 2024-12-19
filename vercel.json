@@ -1,5 +1,4 @@
-{   
-    
+{
     "version": 2,
     "builds": [
         {
@@ -10,15 +9,8 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/public",
-            "methods": [
-                "GET",
-                "POST",
-                "PUT",
-                "PATCH",
-                "DELETE",
-                "OPTIONS"
-            ]
+            "dest": "/api/server.js",
+            "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
         }
     ]
-  }
+}
