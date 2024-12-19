@@ -1,16 +1,22 @@
-const express = require('express');
-const serverless = require('serverless-http');
-const path = require('path');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcryptjs');
-const fs = require('fs');
+import express from 'express';
+import serverless from 'serverless-http';
+import path from 'path';
+import bodyParser from 'body-parser';
+import bcrypt from 'bcryptjs';
+import fs from 'fs';
 
+// Membuat aplikasi express
 const app = express();
 
+// Body parser middleware untuk menangani JSON request body
+app.use(bodyParser.json());
+
 // Mengatur path untuk folder 'public' yang ada di root
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
 const initialPath = path.join(__dirname, '../public');  // Menggunakan '..' untuk naik satu level ke root
 
-app.use(bodyParser.json());
+
 app.use(express.static(initialPath));  // Melayani file dalam folder 'public'
 
 // Membaca file JSON yang berisi data pengguna
@@ -106,4 +112,5 @@ app.delete('/api/serverLogin/:username', (req, res) => {
 
 // Export aplikasi Express sebagai handler untuk Vercel
 // Jika Anda mengekspor app:
-module.exports.handler = serverless(app);
+export const handler = serverless(app);
+
