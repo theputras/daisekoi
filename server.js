@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const router = express.Router();
 
@@ -98,8 +98,8 @@ app.delete('/api/users/:username', (req, res) => {
         });
     });
 });
-// app.listen(5501, () => {
-//     console.log('listening on port 5501......');
-// });
+app.listen(5501, () => {
+    console.log('listening on port 5501......');
+});
 
-module.exports = router;
+// module.exports = router;
