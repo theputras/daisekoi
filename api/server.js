@@ -35,12 +35,12 @@ const readUsersFromFile = () => {
 
 
 
-app.get('/daisekoi-login', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(intialPath, "index.html"));
 });
 
 // Endpoint login
-app.post('/api/serverLogin', (req, res) => {
+app.post('/api/serverLogin', async(req, res) => {
     const { username, password } = req.body;
 
     // Cek apakah username yang diberikan ada di dalam file JSON
@@ -87,7 +87,7 @@ app.post('/api/serverLogin', async (req, res) => {
 });
 
 // Endpoint untuk menghapus pengguna
-app.delete('/api/serverLogin/:username', (req, res) => {
+app.delete('/api/serverLogin/:username', async (req, res) => {
     const { username } = req.params;
 
     fs.readFile(usersFilePath, 'utf8', (err, data) => {
