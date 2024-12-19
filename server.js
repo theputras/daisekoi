@@ -98,8 +98,8 @@ app.delete('/api/users/:username', (req, res) => {
         });
     });
 });
-app.listen(5501, () => {
-    console.log('listening on port 5501......');
-});
+// app.listen(5501, () => {
+//     console.log('listening on port 5501......');
+// });
 
-// module.exports = router;
+module.exports = router;

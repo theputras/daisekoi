@@ -327,10 +327,10 @@ const userList = document.getElementById('userList');
                 <td class="text-left px-4 py-2 border border-dark">
                     <input class="cursor-pointer" type="checkbox" data-username="${user.username}" data-name="${user.nama || 'N/A'}" ${user.isChecked ? 'checked' : ''}>
                 </td>
-                <td class="text-left px-4 py-2 border border-dark text-wrap">${user.username}</td>
+                <td class="text-left px-4 py-2 border border-dark text-wrap">${user.username|| 'N/A'}</td>
                 <td class="text-left px-4 py-2 border border-dark text-wrap">${user.nama || 'N/A'}</td>
-                <td class="text-left px-4 py-2 border border-dark text-wrap">${user.email}</td>
-                <td class="text-left px-4 py-2 border border-dark text-wrap">${user.role}</td>
+                <td class="text-left px-4 py-2 border border-dark text-wrap">${user.email|| 'N/A'}</td>
+                <td class="text-left px-4 py-2 border border-dark text-wrap">${user.role|| 'N/A'}</td>
             `;
             tbody.appendChild(tr);
         });
@@ -414,13 +414,13 @@ async function handleDeleteButtonClick() {
 document.getElementById('deleteUsers').addEventListener('click', handleDeleteButtonClick);
 
 
-  // Event listener untuk menampilkan form
+  // Event listener untuk menampilkan tambah user
   document.getElementById('addUsers').addEventListener('click', function() {
-    // const userForm = document.getElementById('userForm');
-    // // Toggle visibility
-    // userForm.classList.toggle('hidden');
+    const userForm = document.getElementById('userForm');
+    // Toggle visibility
+    userForm.classList.toggle('hidden');
     
-    alert(`Fungsi masih belum bisa`);
+    // alert(`Fungsi masih belum bisa`);
 });
 // Function to add user
 addUserButton.onclick = async () => {
@@ -433,11 +433,11 @@ addUserButton.onclick = async () => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, email, password, role: 'user' }) // Default role
+        body: JSON.stringify({isChecked: false, username, email, password, role: 'user' }) // Default role
     });
 
     if (response.ok) {
-        alert(`User  ${username} added!`);
+        alert(`User ${username} added!`);
         fetchUsers(); // Refresh the user list
     } else {
         alert('Error adding user');
